@@ -1,62 +1,41 @@
-import React from "react";
-import HomepageCarousel from "../components/HomepageCarousel";
-// import Button from "react-bootstrap/Button";
-// import styles from "./Home.module.css";
+import React, { useState, useEffect, useContext } from "react";
+// import HomepageCarousel from "../components/HomepageCarousel";
+import AuthContext from "../context/AuthContext";
+import useFetch from "../utils/useFetch";
 
 const Home = () => {
-  // const seedTask = async () => {
-  //   try {
-  //     await fetch(`https://sei33-community-app.herokuapp.com/seedtask`);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  let [reviews, setReviews] = useState([]);
 
-  // const deleteTasks = async () => {
-  //   try {
-  //     await fetch(`https://sei33-community-app.herokuapp.com/delete/alltask`);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  let api = useFetch();
 
-  // const seedUser = async () => {
-  //   try {
-  //     await fetch(`https://sei33-community-app.herokuapp.com/seeduser`);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  useEffect(() => {
+    getReviews();
+  }, []);
 
-  // const deleteUsers = async () => {
-  //   try {
-  //     await fetch(`https://sei33-community-app.herokuapp.com/delete/alluser`);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  let getReviews = async () => {
+    let { response, data } = await api("/review/view-all/");
+
+    if (response.status === 200) {
+      setReviews(data);
+    }
+  };
 
   return (
     <>
       <br />
-      <div className="carousel">
+      {/* <div className="carousel">
         <HomepageCarousel />
-      </div>
-
-      {/* <div className={styles.buttons}>
-        <Button onClick={seedTask} variant="dark" type="submit" size="sm">
-          Seed Tasks
-        </Button>{" "}
-        <Button onClick={deleteTasks} variant="danger" type="submit" size="sm">
-          Delete Tasks
-        </Button>{" "}
-        <Button onClick={seedUser} variant="dark" type="submit" size="sm">
-          Seed Users
-        </Button>{" "}
-        <Button onClick={deleteUsers} variant="danger" type="submit" size="sm">
-          Delete Users
-        </Button>
       </div> */}
+      <p>You are logged in to the home page!</p>
+
+      <ul>
+        {reviews.map((review) => (
+          <li key={review.id}>
+            {review.title}
+            {review.description}
+          </li>
+        ))}
+      </ul>
     </>
   );
 };

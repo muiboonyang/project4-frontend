@@ -1,39 +1,13 @@
 import { NavLink, Link, Redirect } from "react-router-dom";
 import React, { useState, useContext } from "react";
-import LoginContext from "../context/login-context";
+
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Alert from "react-bootstrap/Alert";
 import styles from "./NavBar.module.css";
+import AuthContext from "../context/AuthContext";
 
 const NavBar = () => {
-  const loginContext = useContext(LoginContext);
-
-  const [successMessage, setSuccessMessage] = useState("");
-  const [failureMessage, setFailureMessage] = useState("");
-  const [showMessage, setShowMessage] = useState(false);
-
-  const handleLogout = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch(
-        "https://sei33-community-app.herokuapp.com/sessions/logout"
-      );
-      await res.json();
-
-      if (res.status === 200) {
-        setSuccessMessage("Log out successful!");
-        loginContext.setLoggedIn(false);
-        loginContext.setProfileName("");
-        setShowMessage(true);
-      } else {
-        setFailureMessage("Log out unsuccessful!");
-        setShowMessage(true);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  let { user, logoutUser } = useContext(AuthContext);
 
   return (
     <>
@@ -59,7 +33,7 @@ const NavBar = () => {
           </Nav>
 
           <Nav>
-            {loginContext.profileName ? (
+            {user ? (
               <div className={styles.loggedInContainer}>
                 <NavLink to="/purchase" activeClassName={styles.active}>
                   Purchase
@@ -67,15 +41,13 @@ const NavBar = () => {
                 <NavLink to="/myclasses" activeClassName={styles.active}>
                   My Classes
                 </NavLink>
-
                 <NavLink to="/profile" activeClassName={styles.active}>
                   <i className="fa fa-fw fa-user"></i>
-                  {loginContext.profileName}
                 </NavLink>
-
-                <NavLink onClick={handleLogout} to="/">
+                <a onClick={logoutUser}>
                   <i className="fa fa-fw fa-sign-out"></i>
-                </NavLink>
+                  LOG OUT
+                </a>
               </div>
             ) : (
               <NavLink to="/login" activeClassName={styles.active}>
@@ -84,30 +56,6 @@ const NavBar = () => {
             )}
           </Nav>
         </Navbar>
-      </div>
-
-      <div className={styles.message}>
-        {successMessage && showMessage ? (
-          <>
-            <Redirect to="/login" />
-            <Alert
-              variant="success"
-              onClose={() => setShowMessage(false)}
-              dismissible
-            >
-              {successMessage}
-            </Alert>
-          </>
-        ) : null}
-        {failureMessage && showMessage ? (
-          <Alert
-            variant="danger"
-            onClose={() => setShowMessage(false)}
-            dismissible
-          >
-            {failureMessage}
-          </Alert>
-        ) : null}
       </div>
     </>
   );

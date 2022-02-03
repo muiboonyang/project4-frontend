@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
-import LoginContext from "./context/login-context";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import PrivateRoute from "./utils/PrivateRoute";
 
 import NavBar from "./components/NavBar";
 
@@ -16,19 +16,9 @@ import Profile from "./pages/Profile";
 import Reviews from "./pages/Reviews";
 
 const App = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [profileName, setProfileName] = useState("");
-
   return (
-    <LoginContext.Provider
-      value={{
-        profileName,
-        setProfileName,
-        loggedIn,
-        setLoggedIn,
-      }}
-    >
-      <BrowserRouter>
+    <Router>
+      <AuthProvider>
         <NavBar />
         <Switch>
           <Route path="/" exact component={Home} />
@@ -37,17 +27,12 @@ const App = () => {
           <Route path="/search/:type/:id" exact component={TaskDetails} />
           <Route path="/login" exact component={Login} />
           <Route path="/:username/reviews" exact component={Reviews} />
-
-          {loggedIn ? (
-            <Switch>
-              <Route path="/profile" exact component={Profile} />
-              <Route path="/createrequest" exact component={CreateRequest} />
-              <Route path="/mytasks" exact component={MyTasks} />
-            </Switch>
-          ) : null}
+          <PrivateRoute path="/profile" exact component={Profile} />
+          <PrivateRoute path="/createrequest" exact component={CreateRequest} />
+          <PrivateRoute path="/mytasks" exact component={MyTasks} />
         </Switch>
-      </BrowserRouter>
-    </LoginContext.Provider>
+      </AuthProvider>
+    </Router>
   );
 };
 
