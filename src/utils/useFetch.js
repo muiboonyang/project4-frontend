@@ -3,6 +3,10 @@ import jwt_decode from "jwt-decode";
 import dayjs from "dayjs";
 import AuthContext from "../context/AuthContext";
 
+////////////////////////////////////////////////////////////
+// Custom hook (useFetch) to check token expiry during each 'GET' request and initiate token refresh
+///////////////////////////////////////////////////////////
+
 const useFetch = () => {
   const config = {};
 
@@ -34,9 +38,20 @@ const useFetch = () => {
   };
 
   const callFetch = async (url) => {
+    // get access token expiry date
     const user = jwt_decode(authTokens.access);
+    // compare access token expiry date and current date (<1 -> expired)
     const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
 
+    console.log(`Access Token expiring on: ${dayjs.unix(user.exp)}`);
+    console.log(`Time now: ${dayjs()}`);
+    console.log(
+      `Access Token remaining validity: ${
+        dayjs.unix(user.exp).diff(dayjs()) / 1000
+      } seconds`
+    );
+
+    // Initiate token refresh when access token has expired, to get new access token
     if (isExpired) {
       authTokens = await refreshToken(authTokens);
     }
