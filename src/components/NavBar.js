@@ -44,10 +44,10 @@ const NavBar = () => {
                 <NavLink to="/profile" activeClassName={styles.active}>
                   <i className="fa fa-fw fa-user"></i>
                 </NavLink>
-                <a onClick={logoutUser}>
+                <button onClick={logoutUser}>
                   <i className="fa fa-fw fa-sign-out"></i>
                   LOG OUT
-                </a>
+                </button>
               </div>
             ) : (
               <NavLink to="/login" activeClassName={styles.active}>

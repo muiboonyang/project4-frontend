@@ -3,14 +3,14 @@ import jwt_decode from "jwt-decode";
 import dayjs from "dayjs";
 import AuthContext from "../context/AuthContext";
 
-let useFetch = () => {
-  let config = {};
+const useFetch = () => {
+  const config = {};
 
   let { authTokens, setAuthTokens, setUser } = useContext(AuthContext);
 
-  let baseURL = "http://127.0.0.1:8000";
+  const baseURL = "http://127.0.0.1:8000";
 
-  let originalRequest = async (url, config) => {
+  const originalRequest = async (url, config) => {
     url = `${baseURL}${url}`;
     let response = await fetch(url, config);
     let data = await response.json();
@@ -18,7 +18,7 @@ let useFetch = () => {
     return { response, data };
   };
 
-  let refreshToken = async (authTokens) => {
+  const refreshToken = async (authTokens) => {
     let response = await fetch("http://127.0.0.1:8000/auth/refreshtoken/", {
       method: "POST",
       headers: {
@@ -33,7 +33,7 @@ let useFetch = () => {
     return data;
   };
 
-  let callFetch = async (url) => {
+  const callFetch = async (url) => {
     const user = jwt_decode(authTokens.access);
     const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
 
@@ -47,19 +47,6 @@ let useFetch = () => {
     };
 
     let { response, data } = await originalRequest(url, config);
-
-    if (response.statusText === "Unauthorized") {
-      authTokens = await refreshToken(authTokens);
-
-      config["headers"] = {
-        Authorization: `Bearer ${authTokens?.access}`,
-      };
-
-      let newResponse = await originalRequest(url, config);
-      response = newResponse.response;
-      data = newResponse.data;
-    }
-
     return { response, data };
   };
 

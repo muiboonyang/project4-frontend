@@ -1,23 +1,24 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 // import HomepageCarousel from "../components/HomepageCarousel";
 import useFetch from "../utils/useFetch";
 
 const Home = () => {
-  let [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
-  let api = useFetch();
+  const api = useFetch();
 
-  useEffect(() => {
-    getReviews();
-  }, []);
-
-  let getReviews = async () => {
-    let { response, data } = await api("/review/view-all/");
+  const getReviews = async () => {
+    const { response, data } = await api("/review/view-all/");
 
     if (response.status === 200) {
       setReviews(data);
     }
   };
+
+  useEffect(() => {
+    getReviews();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>

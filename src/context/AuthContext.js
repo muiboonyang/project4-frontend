@@ -65,39 +65,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   //////////////////////////////////
-  // UPDATE user
-  //////////////////////////////////
-  //   const updateUser = async (e) => {
-  //     e.preventDefault();
-  //     try {
-  //       const res = await fetch(
-  //         `http://127.0.0.1:8000/personal-details/update/`,
-  //         {
-  //           method: "POST",
-  //           mode: "cors",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({
-  //             password: e.target.password.value,
-  //             name: e.target.name.value,
-  //             surname: e.target.surname.value,
-  //           }),
-  //         }
-  //       );
-
-  //       await res.json();
-
-  //       if (res.status === 200) {
-  //       } else {
-  //         alert("Update Failed!");
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-
-  //////////////////////////////////
   // Pass contextData into context provider
   //////////////////////////////////
 
