@@ -16,13 +16,16 @@ const Profile = () => {
   // Fetch user data from API (by specific username)
   //================
 
-  const url = `https://sei33-community-app.herokuapp.com/users/${currentUser}`;
+  // const url = `http://localhost:8000/personal-details/${currentUser}`;
+
+  const url = `http://localhost:8000/personal-details/view/1/`;
 
   const getUserInfo = async () => {
     try {
       const res = await fetch(url);
       const data = await res.json();
       setUserInfo(data);
+      console.log(data);
     } catch (err) {
       console.log(err);
     }

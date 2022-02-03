@@ -3,7 +3,6 @@ import React, { useState, useContext } from "react";
 import LoginContext from "../context/login-context";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Dropdown from "react-bootstrap/Dropdown";
 import Alert from "react-bootstrap/Alert";
 import styles from "./NavBar.module.css";
 
@@ -47,56 +46,26 @@ const NavBar = () => {
               activeClassName={styles.active}
               style={{ textShadow: "1px 0 grey" }}
             >
-              <i className="fa fa-fw fa-tasks"></i> Community
+              <i className="fa fa-fw fa-bicycle"></i> Anywhere Fitness
             </NavLink>
           </Navbar.Brand>
 
           <Nav className="me-auto">
-            <Dropdown>
-              <Dropdown.Toggle
-                variant={"warning"}
-                style={{ fontWeight: "bold" }}
-              >
-                <i className="fa fa-fw fa-search"></i> Search Category
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu variant="dark" className={styles.dropdown}>
-                <Link to="/search/all">
-                  <Dropdown.Item as="button" value="all">
-                    <i className="fa fa-fw fa-thumb-tack"></i> All tasks
-                  </Dropdown.Item>
-                </Link>
-
-                <Link to="/search/business">
-                  <Dropdown.Item as="button" value="business">
-                    <i className="fa fa-fw fa-tint"></i> Business
-                  </Dropdown.Item>
-                </Link>
-
-                <Link to="/search/lifestyle">
-                  <Dropdown.Item as="button" value="lifestyle">
-                    <i className="fa fa-fw fa-shower"></i> Lifestyle
-                  </Dropdown.Item>
-                </Link>
-
-                <Link to="/search/homeservices">
-                  <Dropdown.Item as="button" value="homeservices">
-                    <i className="fa fa-fw fa-shopping-cart"></i> Home Services
-                  </Dropdown.Item>
-                </Link>
-              </Dropdown.Menu>
-            </Dropdown>
+            <Link to="/">Home</Link>
+            <Link to="/workouts">Workouts</Link>
+            <Link to="/pricing">Pricing</Link>
+            <Link to="/schedule">Schedule</Link>
+            <Link to="/instructors">Instructors</Link>
           </Nav>
 
           <Nav>
             {loginContext.profileName ? (
               <div className={styles.loggedInContainer}>
-                <NavLink to="/createrequest" activeClassName={styles.active}>
-                  <i className="fa fa-fw fa-envelope"></i> Create New Request
+                <NavLink to="/purchase" activeClassName={styles.active}>
+                  Purchase
                 </NavLink>
-                <NavLink to="/mytasks" activeClassName={styles.active}>
-                  <i className="fa fa-fw fa-list"></i>
-                  My Tasks
+                <NavLink to="/myclasses" activeClassName={styles.active}>
+                  My Classes
                 </NavLink>
 
                 <NavLink to="/profile" activeClassName={styles.active}>
