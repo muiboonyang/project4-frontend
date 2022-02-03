@@ -1,5 +1,5 @@
-import { NavLink, Link, Redirect } from "react-router-dom";
-import React, { useState, useContext } from "react";
+import { NavLink, Link } from "react-router-dom";
+import React, { useContext } from "react";
 
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";

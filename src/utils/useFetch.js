@@ -46,9 +46,7 @@ let useFetch = () => {
       Authorization: `Bearer ${authTokens?.access}`,
     };
 
-    console.log("Before Request");
     let { response, data } = await originalRequest(url, config);
-    console.log("After Request");
 
     if (response.statusText === "Unauthorized") {
       authTokens = await refreshToken(authTokens);

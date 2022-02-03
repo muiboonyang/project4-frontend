@@ -5,7 +5,9 @@ import { useHistory } from "react-router-dom";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  //////////////////////////////////
   // State: Auth Tokens
+  //////////////////////////////////
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
       ? JSON.parse(localStorage.getItem("authTokens"))
@@ -19,14 +21,18 @@ export const AuthProvider = ({ children }) => {
       : null
   );
 
-  // State: Loading
+  //////////////////////////////////
+  // State: Loading, useHistory to redirect
+  //////////////////////////////////
   const [loading, setLoading] = useState(true);
   let history = useHistory();
 
+  //////////////////////////////////
   // LOGIN user
+  //////////////////////////////////
   const loginUser = async (e) => {
     e.preventDefault();
-    let response = await fetch("http://127.0.0.1:8000/auth/login/", {
+    const response = await fetch("http://127.0.0.1:8000/auth/login/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +42,7 @@ export const AuthProvider = ({ children }) => {
         password: e.target.password.value,
       }),
     });
-    let data = await response.json();
+    const data = await response.json();
 
     if (response.status === 200) {
       setAuthTokens(data);
@@ -48,7 +54,9 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  //////////////////////////////////
   // LOGOUT user
+  //////////////////////////////////
   const logoutUser = () => {
     setAuthTokens(null);
     setUser(null);
@@ -56,36 +64,42 @@ export const AuthProvider = ({ children }) => {
     history.push("/login");
   };
 
+  //////////////////////////////////
   // UPDATE user
-  const updateUser = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch(
-        `https://sei33-community-app.herokuapp.com/users/${currentUser}/update`,
-        {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            password: e.target.password.value,
-            name: e.target.password.value,
-          }),
-        }
-      );
+  //////////////////////////////////
+  //   const updateUser = async (e) => {
+  //     e.preventDefault();
+  //     try {
+  //       const res = await fetch(
+  //         `http://127.0.0.1:8000/personal-details/update/`,
+  //         {
+  //           method: "POST",
+  //           mode: "cors",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify({
+  //             password: e.target.password.value,
+  //             name: e.target.name.value,
+  //             surname: e.target.surname.value,
+  //           }),
+  //         }
+  //       );
 
-      const data = await res.json();
-      console.log(data);
+  //       await res.json();
 
-      if (res.status === 200) {
-      } else {
-        alert("Update Failed!");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //       if (res.status === 200) {
+  //       } else {
+  //         alert("Update Failed!");
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+
+  //////////////////////////////////
+  // Pass contextData into context provider
+  //////////////////////////////////
 
   const contextData = {
     user: user,
@@ -94,8 +108,11 @@ export const AuthProvider = ({ children }) => {
     setUser: setUser,
     loginUser: loginUser,
     logoutUser: logoutUser,
-    updateUser: updateUser,
   };
+
+  //////////////////////////////////
+  // useEffect
+  //////////////////////////////////
 
   useEffect(() => {
     if (authTokens) {
@@ -103,6 +120,11 @@ export const AuthProvider = ({ children }) => {
     }
     setLoading(false);
   }, [authTokens, loading]);
+
+  //////////////////////////////////
+  // dont load child components until 'loading' is false
+  // - to render everything out with data passed in
+  //////////////////////////////////
 
   return (
     <AuthContext.Provider value={contextData}>

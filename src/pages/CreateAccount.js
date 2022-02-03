@@ -1,172 +1,178 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Alert from "react-bootstrap/Alert";
 import styles from "./CreateAccount.module.css";
 
 const CreateAccount = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState();
+  const [password2, setPassword2] = useState();
+  let history = useHistory();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [contact, setContact] = useState("");
-  const [address, setAddress] = useState("");
-  const [unit, setUnit] = useState("");
-  const [zipcode, setZipcode] = useState("");
+  //////////////////////////////////
+  // CREATE user
+  //////////////////////////////////
 
-  const [successMessage, setSuccessMessage] = useState("");
-  const [failureMessage, setFailureMessage] = useState("");
-  const [showMessage, setShowMessage] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch(
-        "https://sei33-community-app.herokuapp.com/users/new",
-        {
+  const createUser = async (e) => {
+    if (password !== password2) {
+      alert("Passwords don't match");
+    } else {
+      e.preventDefault();
+      try {
+        const res = await fetch("http://127.0.0.1:8000/auth/register/", {
           method: "POST",
           mode: "cors",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            username: username,
-            password: password,
-            name: name,
-            email: email,
-            contact: contact,
-            address: address,
-            unit: unit,
-            zipcode: zipcode,
+            email: e.target.email.value,
+            password: e.target.password.value,
+            name: e.target.name.value,
+            surname: e.target.surname.value,
           }),
-        }
-      );
+        });
 
-      const data = await res.json();
-      console.log(data);
-      if (res.status === 200) {
-        setSuccessMessage("Account created!");
-        setShowMessage(true);
-        setUsername("");
-        setPassword("");
-        setName("");
-        setEmail("");
-        setContact("");
-        setAddress("");
-        setUnit("");
-        setZipcode("");
-      } else {
-        setFailureMessage("Account not created!");
-        setShowMessage(true);
+        //   const res2 = await fetch(
+        //     "http://127.0.0.1:8000/personal-details/create/",
+        //     {
+        //       method: "POST",
+        //       mode: "cors",
+        //       headers: {
+        //         "Content-Type": "application/json",
+        //       },
+        //       body: JSON.stringify({
+        //         contact: e.target.contact.value,
+        //         date_of_birth: e.target.date_of_birth.value,
+        //         gender: e.target.gender.value,
+        //         address_line: e.target.address_line.value,
+        //         unit: e.target.unit.value,
+        //         postal_code: e.target.postal_code.value,
+        //         emergency_contact: e.target.emergency_contact.value,
+        //         emergency_number: e.target.emergency_number.value,
+        //       }),
+        //     }
+        //   );
+
+        await res.json();
+        // await res2.json();
+
+        if (res.status === 200) {
+          history.push("/login");
+        } else {
+          alert("Registration Failed!");
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
     }
   };
 
   return (
     <>
-      <div className={styles.message}>
-        {successMessage && showMessage ? (
-          <Alert
-            variant="success"
-            onClose={() => setShowMessage(false)}
-            dismissible
-          >
-            {successMessage}
-          </Alert>
-        ) : null}
-        {failureMessage && showMessage ? (
-          <Alert
-            variant="danger"
-            onClose={() => setShowMessage(false)}
-            dismissible
-          >
-            {failureMessage}
-          </Alert>
-        ) : null}
-      </div>
-
       <div className={styles.createAccount}>
         <h3>Create Account</h3>
         <br />
 
-        <form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formRegisterUsername">
-            <Form.Label>Username</Form.Label>
+        <form onSubmit={createUser}>
+          <Form.Group className="mb-3" controlId="formRegisterEmail">
+            <Form.Label>Email</Form.Label>
             <Form.Control
               required
               type="text"
-              name="username"
-              value={username}
-              placeholder="Enter username"
-              onChange={(e) => setUsername(e.target.value)}
+              name="email"
+              placeholder="Enter email"
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formRegisterPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              required
-              type="password"
-              name="password"
-              value={password}
-              placeholder="Enter password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Group>
+          <Row>
+            <Form.Group
+              as={Col}
+              className="mb-3"
+              controlId="formRegisterPassword1"
+            >
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                required
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group
+              as={Col}
+              className="mb-3"
+              controlId="formRegisterPassword2"
+            >
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+                required
+                type="password"
+                name="password2"
+                placeholder="Re-enter password"
+                value={password2}
+                onChange={(e) => setPassword2(e.target.value)}
+              />
+            </Form.Group>
+          </Row>
 
           <hr />
 
           <Row>
-            <Form.Group as={Col} className="mb-3" controlId="formGridEmail">
-              <Form.Label>Name</Form.Label>
+            <Form.Group as={Col} className="mb-3" controlId="formGridName">
+              <Form.Label>Given Name</Form.Label>
               <Form.Control
                 type="input"
                 name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
                 placeholder="Enter name"
+                required
+              />
+            </Form.Group>
+            <Form.Group as={Col} className="mb-3" controlId="formGridSurname">
+              <Form.Label>Surname</Form.Label>
+              <Form.Control
+                type="input"
+                name="surname"
+                placeholder="Enter surname"
                 required
               />
             </Form.Group>
           </Row>
 
+          {/* 
           <Row>
-            <Form.Group as={Col} className="mb-3" controlId="formEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter email"
-                required
-              />
-            </Form.Group>
-
             <Form.Group as={Col} className="mb-3" controlId="formNumber">
               <Form.Label>Contact number</Form.Label>
               <Form.Control
                 type="number"
                 name="contact"
-                value={contact}
-                onChange={(e) => setContact(e.target.value)}
                 placeholder="Enter contact number"
                 required
               />
+            </Form.Group>
+
+            <Form.Group as={Col} className="mb-3" controlId="formDOB">
+              <Form.Label>Date of birth</Form.Label>
+              <Form.Control type="date" name="date_of_birth" required />
+            </Form.Group>
+
+            <Form.Group as={Col} className="mb-3" controlId="formGender">
+              <Form.Label>Gender</Form.Label>
+              <Form.Select aria-label="gender" name="gender">
+                <option>Select gender</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+              </Form.Select>
             </Form.Group>
           </Row>
 
           <Form.Group className="mb-3" controlId="formGridAddress">
             <Form.Label>Address</Form.Label>
             <Form.Control
-              name="address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              name="address_line"
               placeholder="Enter address"
               required
             />
@@ -177,24 +183,50 @@ const CreateAccount = () => {
               <Form.Label>Unit number</Form.Label>
               <Form.Control
                 name="unit"
-                value={unit}
-                onChange={(e) => setUnit(e.target.value)}
                 placeholder="Enter unit number"
                 required
               />
             </Form.Group>
 
             <Form.Group as={Col} className="mb-3" controlId="formGridZip">
-              <Form.Label>Zip code</Form.Label>
+              <Form.Label>Postal code</Form.Label>
               <Form.Control
-                name="zipcode"
-                value={zipcode}
-                onChange={(e) => setZipcode(e.target.value)}
-                placeholder="Enter zip code"
+                name="postal_code"
+                placeholder="Enter postal code"
                 required
               />
             </Form.Group>
           </Row>
+
+          <hr />
+
+          <Row className="mb-3">
+            <Form.Group
+              as={Col}
+              className="mb-3"
+              controlId="formEmergencyContact"
+            >
+              <Form.Label>Emergency Contact</Form.Label>
+              <Form.Control
+                name="emergency_contact"
+                placeholder="Enter contact"
+                required
+              />
+            </Form.Group>
+
+            <Form.Group
+              as={Col}
+              className="mb-3"
+              controlId="formEmergencyNumber"
+            >
+              <Form.Label>Emergency Number</Form.Label>
+              <Form.Control
+                name="emergency_number"
+                placeholder="Enter number"
+                required
+              />
+            </Form.Group>
+          </Row> */}
 
           <div className="d-grid gap-2">
             <button className={styles.create} type="submit">

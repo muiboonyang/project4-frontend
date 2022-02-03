@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 // import HomepageCarousel from "../components/HomepageCarousel";
-import AuthContext from "../context/AuthContext";
 import useFetch from "../utils/useFetch";
 
 const Home = () => {

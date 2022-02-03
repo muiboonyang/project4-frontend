@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./Reviews.module.css";
+import useFetch from "../utils/useFetch";
 
 const Reviews = () => {
   const params = useParams();
