@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   );
 
   //////////////////////////////////
-  // State: Loading, useHistory to redirect
+  // State: Loading / useHistory to redirect
   //////////////////////////////////
   const [loading, setLoading] = useState(true);
   let history = useHistory();
@@ -79,6 +79,7 @@ export const AuthProvider = ({ children }) => {
 
   //////////////////////////////////
   // useEffect
+  // - re-render when there is change in authToken / loading state
   //////////////////////////////////
 
   useEffect(() => {

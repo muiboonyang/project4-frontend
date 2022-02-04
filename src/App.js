@@ -21,7 +21,7 @@ const App = () => {
       <AuthProvider>
         <NavBar />
         <Switch>
-          <Route path="/" exact component={Home} />
+          <PrivateRoute path="/" exact component={Home} />
           <Route path="/search/:type" exact component={SearchResults} />
           <Route path="/register" exact component={CreateAccount} />
           <Route path="/search/:type/:id" exact component={TaskDetails} />

@@ -6,8 +6,10 @@ import Navbar from "react-bootstrap/Navbar";
 import styles from "./NavBar.module.css";
 import AuthContext from "../context/AuthContext";
 
+import jwt_decode from "jwt-decode";
+
 const NavBar = () => {
-  let { user, logoutUser } = useContext(AuthContext);
+  let { user, logoutUser, authTokens } = useContext(AuthContext);
 
   return (
     <>
