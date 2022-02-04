@@ -8,22 +8,48 @@ import AuthContext from "../context/AuthContext";
 
 const Profile = () => {
   const [userInfo, setUserInfo] = useState([]);
-  let { authTokens } = useContext(AuthContext);
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+  let { authTokens, user } = useContext(AuthContext);
+
+  //////////////////////////////////
+  // Store current user details in state
+  //////////////////////////////////
+
+  const [email, setEmail] = useState(user.email);
+  const [name, setName] = useState(user.name);
+  const [surname, setSurname] = useState(user.surname);
+
+  const [contact, setContact] = useState(userInfo.contact);
+  const [date_of_birth, setDateOfBirth] = useState(userInfo.date_of_birth);
+  const [gender, setGender] = useState(userInfo.gender);
+  const [address_line, setAddressLine] = useState(userInfo.address_line);
+  const [unit, setUnit] = useState(userInfo.unit);
+  const [postal_code, setPostalCode] = useState(userInfo.postal_code);
+  const [emergency_contact, setEmergencyContact] = useState(
+    userInfo.emergency_contact
+  );
+  const [emergency_number, setEmergencyNumber] = useState(
+    userInfo.emergency_number
+  );
 
   //////////////////////////////////
   // Fetch user data from API (by specific username)
+  // - Contact, DOB, Gender, Address, Unit, Postal Code, Emergency Contact, Emergency Number
   //////////////////////////////////
 
   const api = useFetch();
 
   const getUserInfo = async () => {
     try {
-      const { response, data } = await api("/personal-details/view/1");
+      const { response, data } = await api(
+        `/personal-details/view/${user.user_id}`
+      );
 
       if (response.status === 200) {
         setUserInfo(data);
       } else {
-        alert("Update Failed!");
+        alert("Failed to retrieve profile!");
       }
     } catch (err) {
       console.log(err);
@@ -40,41 +66,75 @@ const Profile = () => {
   //////////////////////////////////
 
   const updateUser = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch(
-        "http://127.0.0.1:8000/personal-details/update/1",
-        {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${authTokens?.access}`,
-          },
-          body: JSON.stringify({
-            // password: e.target.password.value,
-            // name: e.target.name.value,
-            // surname: e.target.surname.value,
-            contact: e.target.contact.value,
-            date_of_birth: e.target.date_of_birth.value,
-            gender: e.target.gender.value,
-            address_line: e.target.address_line.value,
-            unit: e.target.unit.value,
-            postal_code: e.target.postal_code.value,
-            emergency_contact: e.target.emergency_contact.value,
-            emergency_number: e.target.emergency_number.value,
-          }),
-        }
-      );
-      const data = await res.json();
+    if (password !== password2) {
+      alert("Passwords don't match");
+    } else {
+      e.preventDefault();
+      try {
+        // Update email, password, name, surname
+        const res = await fetch(
+          `http://127.0.0.1:8000/auth/update/${user.user_id}`,
+          {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${authTokens?.access}`,
+            },
+            body: JSON.stringify({
+              email: email,
+              password: password,
+              name: name,
+              surname: surname,
+            }),
+          }
+        );
+        await res.json();
 
-      if (res.status === 200) {
-        console.log(data);
-      } else {
-        alert("Update Failed!");
+        // Update personal details
+        const res2 = await fetch(
+          `http://127.0.0.1:8000/personal-details/update/${user.user_id}`,
+          {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${authTokens?.access}`,
+            },
+            body: JSON.stringify({
+              contact: contact,
+              date_of_birth: date_of_birth,
+              gender: gender,
+              address_line: address_line,
+              unit: unit,
+              postal_code: postal_code,
+              emergency_contact: emergency_contact,
+              emergency_number: emergency_number,
+            }),
+          }
+        );
+        await res2.json();
+
+        if (res.status && res2.status === 200) {
+          alert("Update Successful!");
+          setEmail("");
+          setName("");
+          setSurname("");
+          setContact("");
+          setDateOfBirth("");
+          setGender("");
+          setAddressLine("");
+          setUnit("");
+          setPostalCode("");
+          setEmergencyContact("");
+          setEmergencyNumber("");
+          window.location.reload(false);
+        } else {
+          alert("Update Failed!");
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
     }
   };
 
@@ -85,66 +145,102 @@ const Profile = () => {
           <br />
           <h2>Update Profile</h2>
           <br />
-          {/* <Form.Group className="mb-3" controlId="formRegisterUsername">
-            <Form.Label>Username: </Form.Label>
+          <Form.Group className="mb-3" controlId="formUpdateEmail">
+            <Form.Label>Email: </Form.Label>
             <Form.Control
-              type="text"
-              name="username"
-              value={userInfo.email}
+              type="input"
+              name="email"
+              placeholder={user.email}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formRegisterPassword">
-            <Form.Label>Password: </Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              value={password}
-              placeholder="Enter new password"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </Form.Group>
+          <Row>
+            <Form.Group
+              as={Col}
+              className="mb-3"
+              controlId="formUpdatePassword"
+            >
+              <Form.Label>New Password: </Form.Label>
+              <Form.Control
+                type="password"
+                name="password"
+                placeholder="Enter new password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group
+              as={Col}
+              className="mb-3"
+              controlId="formUpdatePassword2"
+            >
+              <Form.Label>Confirm New Password: </Form.Label>
+              <Form.Control
+                type="password"
+                name="password2"
+                placeholder="Enter new password"
+                onChange={(e) => setPassword2(e.target.value)}
+              />
+            </Form.Group>
+          </Row>
 
           <hr />
 
           <Row>
-            <Form.Group as={Col} className="mb-3" controlId="formGridEmail">
-              <Form.Label>Name: </Form.Label>
+            <Form.Group as={Col} className="mb-3" controlId="formGridName">
+              <Form.Label>Given Name: </Form.Label>
               <Form.Control
                 type="input"
                 name="name"
+                placeholder={user.name}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder={userInfo.name}
               />
             </Form.Group>
-          </Row> */}
+
+            <Form.Group as={Col} className="mb-3" controlId="formGridSurname">
+              <Form.Label>Surname: </Form.Label>
+              <Form.Control
+                type="input"
+                name="surname"
+                placeholder={user.surname}
+                value={surname}
+                onChange={(e) => setSurname(e.target.value)}
+              />
+            </Form.Group>
+          </Row>
 
           <Row>
-            <Form.Group as={Col} className="mb-3" controlId="formNumber">
+            <Form.Group as={Col} className="mb-3" controlId="formContact">
               <Form.Label>Contact number: </Form.Label>
               <Form.Control
                 type="number"
                 name="contact"
                 placeholder={userInfo.contact}
+                value={contact}
+                onChange={(e) => setContact(e.target.value)}
               />
             </Form.Group>
-            <Form.Group as={Col} className="mb-3" controlId="formNumber">
+            <Form.Group as={Col} className="mb-3" controlId="formDateOfBirth">
               <Form.Label>Date of birth: </Form.Label>
               <Form.Control
                 type="input"
                 name="date_of_birth"
                 placeholder={userInfo.date_of_birth}
+                value={date_of_birth}
+                onChange={(e) => setDateOfBirth(e.target.value)}
               />
             </Form.Group>
-            <Form.Group as={Col} className="mb-3" controlId="formNumber">
+            <Form.Group as={Col} className="mb-3" controlId="formGender">
               <Form.Label>Gender: </Form.Label>
               <Form.Control
                 type="input"
                 name="gender"
                 placeholder={userInfo.gender}
-                value={userInfo.gender}
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
               />
             </Form.Group>
           </Row>
@@ -154,20 +250,34 @@ const Profile = () => {
             <Form.Control
               name="address_line"
               placeholder={userInfo.address_line}
+              value={address_line}
+              onChange={(e) => setAddressLine(e.target.value)}
             />
           </Form.Group>
 
           <Row className="mb-3">
             <Form.Group as={Col} className="mb-3" controlId="formGridUnit">
               <Form.Label>Unit number: </Form.Label>
-              <Form.Control name="unit" placeholder={userInfo.unit} />
+              <Form.Control
+                name="unit"
+                placeholder={userInfo.unit}
+                value={unit}
+                onChange={(e) => setUnit(e.target.value)}
+              />
             </Form.Group>
 
-            <Form.Group as={Col} className="mb-3" controlId="formGridZip">
+            <Form.Group
+              as={Col}
+              className="mb-3"
+              controlId="formGridPostalCode"
+            >
               <Form.Label>Postal code: </Form.Label>
               <Form.Control
+                typ="number"
                 name="postal_code"
                 placeholder={userInfo.postal_code}
+                value={postal_code}
+                onChange={(e) => setPostalCode(e.target.value)}
               />
             </Form.Group>
           </Row>
@@ -180,8 +290,11 @@ const Profile = () => {
             >
               <Form.Label>Emergency Contact: </Form.Label>
               <Form.Control
+                typ="input"
                 name="emergency_contact"
                 placeholder={userInfo.emergency_contact}
+                value={emergency_contact}
+                onChange={(e) => setEmergencyContact(e.target.value)}
               />
             </Form.Group>
 
@@ -192,8 +305,11 @@ const Profile = () => {
             >
               <Form.Label>Emergency Number: </Form.Label>
               <Form.Control
+                typ="number"
                 name="emergency_number"
                 placeholder={userInfo.emergency_number}
+                value={emergency_number}
+                onChange={(e) => setEmergencyNumber(e.target.value)}
               />
             </Form.Group>
           </Row>

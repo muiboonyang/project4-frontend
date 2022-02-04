@@ -6,10 +6,8 @@ import Navbar from "react-bootstrap/Navbar";
 import styles from "./NavBar.module.css";
 import AuthContext from "../context/AuthContext";
 
-import jwt_decode from "jwt-decode";
-
 const NavBar = () => {
-  let { user, logoutUser, authTokens } = useContext(AuthContext);
+  let { user, logoutUser } = useContext(AuthContext);
 
   return (
     <>
@@ -45,10 +43,10 @@ const NavBar = () => {
                 </NavLink>
                 <NavLink to="/profile" activeClassName={styles.active}>
                   <i className="fa fa-fw fa-user"></i>
+                  {user.name}
                 </NavLink>
                 <button onClick={logoutUser}>
                   <i className="fa fa-fw fa-sign-out"></i>
-                  LOG OUT
                 </button>
               </div>
             ) : (
