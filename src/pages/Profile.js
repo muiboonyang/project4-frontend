@@ -8,6 +8,7 @@ import AuthContext from "../context/AuthContext";
 
 const Profile = () => {
   const [userInfo, setUserInfo] = useState([]);
+  const [userInfo2, setUserInfo2] = useState([]);
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   let { authTokens, user } = useContext(AuthContext);
@@ -16,9 +17,9 @@ const Profile = () => {
   // Store current user details in state
   //////////////////////////////////
 
-  const [email, setEmail] = useState(user.email);
-  const [name, setName] = useState(user.name);
-  const [surname, setSurname] = useState(user.surname);
+  const [email, setEmail] = useState(userInfo2.email);
+  const [name, setName] = useState(userInfo2.name);
+  const [surname, setSurname] = useState(userInfo2.surname);
 
   const [contact, setContact] = useState(userInfo.contact);
   const [date_of_birth, setDateOfBirth] = useState(userInfo.date_of_birth);
@@ -56,8 +57,23 @@ const Profile = () => {
     }
   };
 
+  const getUserInfo2 = async () => {
+    try {
+      const { response, data } = await api(`/auth/view/${user.user_id}`);
+
+      if (response.status === 200) {
+        setUserInfo2(data);
+      } else {
+        alert("Failed to retrieve profile!");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getUserInfo();
+    getUserInfo2();
     // eslint-disable-next-line
   }, []);
 
@@ -150,7 +166,7 @@ const Profile = () => {
             <Form.Control
               type="input"
               name="email"
-              placeholder={user.email}
+              placeholder={userInfo2.email}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -194,7 +210,7 @@ const Profile = () => {
               <Form.Control
                 type="input"
                 name="name"
-                placeholder={user.name}
+                placeholder={userInfo2.name}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -205,7 +221,7 @@ const Profile = () => {
               <Form.Control
                 type="input"
                 name="surname"
-                placeholder={user.surname}
+                placeholder={userInfo2.surname}
                 value={surname}
                 onChange={(e) => setSurname(e.target.value)}
               />
