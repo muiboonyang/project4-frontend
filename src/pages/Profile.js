@@ -35,33 +35,6 @@ const Profile = () => {
 
   const api = useFetch();
 
-  // const createUserDetailsModel = async () => {
-  //   try {
-  //     const res = await fetch(
-  //       "http://127.0.0.1:8000/personal-details/create/",
-  //       {
-  //         method: "POST",
-  //         mode: "cors",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${authTokens?.access}`,
-  //         },
-  //         body: JSON.stringify({
-  //           user: user.user_id,
-  //         }),
-  //       }
-  //     );
-  //     await res.json();
-
-  //     if (res.status === 200) {
-  //     } else {
-  //       alert("Failed to create user details model!");
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
   const getUserInfo = async () => {
     try {
       const { response, data } = await api(
@@ -183,7 +156,7 @@ const Profile = () => {
           <Form.Group className="mb-3" controlId="formUpdateEmail">
             <Form.Label>Email: </Form.Label>
             <Form.Control
-              type="input"
+              type="email"
               name="email"
               placeholder={userInfo2.email}
               value={email}
@@ -197,7 +170,7 @@ const Profile = () => {
               className="mb-3"
               controlId="formUpdatePassword"
             >
-              <Form.Label>New Password: </Form.Label>
+              <Form.Label>*New Password: </Form.Label>
               <Form.Control
                 type="password"
                 name="password"
@@ -214,13 +187,16 @@ const Profile = () => {
               className="mb-3"
               controlId="formUpdatePassword2"
             >
-              <Form.Label>Confirm New Password: </Form.Label>
+              <Form.Label>*Confirm New Password: </Form.Label>
               <Form.Control
                 type="password"
                 name="password2"
                 placeholder="Enter new password"
                 onChange={(e) => setPassword2(e.target.value)}
               />
+              <Form.Text id="passwordHelpBlock" muted>
+                *Required <br />
+              </Form.Text>
             </Form.Group>
           </Row>
 
@@ -230,7 +206,6 @@ const Profile = () => {
             <Form.Group as={Col} className="mb-3" controlId="formGridName">
               <Form.Label>Given Name: </Form.Label>
               <Form.Control
-                type="input"
                 name="name"
                 placeholder={userInfo2.name}
                 value={name}
@@ -241,7 +216,6 @@ const Profile = () => {
             <Form.Group as={Col} className="mb-3" controlId="formGridSurname">
               <Form.Label>Surname: </Form.Label>
               <Form.Control
-                type="input"
                 name="surname"
                 placeholder={userInfo2.surname}
                 value={surname}
@@ -268,22 +242,27 @@ const Profile = () => {
             <Form.Group as={Col} className="mb-3" controlId="formDateOfBirth">
               <Form.Label>Date of birth: </Form.Label>
               <Form.Control
-                type="input"
                 name="date_of_birth"
                 placeholder={userInfo.date_of_birth}
                 value={date_of_birth}
                 onChange={(e) => setDateOfBirth(e.target.value)}
               />
+              <Form.Text id="passwordHelpBlock" muted>
+                Format: YYYY-MM-DD
+              </Form.Text>
             </Form.Group>
             <Form.Group as={Col} className="mb-3" controlId="formGender">
               <Form.Label>Gender: </Form.Label>
               <Form.Control
-                type="input"
+                maxLength={1}
                 name="gender"
                 placeholder={userInfo.gender}
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
               />
+              <Form.Text id="passwordHelpBlock" muted>
+                M / F
+              </Form.Text>
             </Form.Group>
           </Row>
 
@@ -316,7 +295,7 @@ const Profile = () => {
               <Form.Label>Postal code: </Form.Label>
               <Form.Control
                 maxLength={6}
-                typ="number"
+                type="number"
                 name="postal_code"
                 placeholder={userInfo.postal_code}
                 value={postal_code}
