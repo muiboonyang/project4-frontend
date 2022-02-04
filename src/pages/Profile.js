@@ -27,12 +27,6 @@ const Profile = () => {
   const [address_line, setAddressLine] = useState(userInfo.address_line);
   const [unit, setUnit] = useState(userInfo.unit);
   const [postal_code, setPostalCode] = useState(userInfo.postal_code);
-  const [emergency_contact, setEmergencyContact] = useState(
-    userInfo.emergency_contact
-  );
-  const [emergency_number, setEmergencyNumber] = useState(
-    userInfo.emergency_number
-  );
 
   //////////////////////////////////
   // Fetch user data from API (by specific username)
@@ -40,6 +34,33 @@ const Profile = () => {
   //////////////////////////////////
 
   const api = useFetch();
+
+  // const createUserDetailsModel = async () => {
+  //   try {
+  //     const res = await fetch(
+  //       "http://127.0.0.1:8000/personal-details/create/",
+  //       {
+  //         method: "POST",
+  //         mode: "cors",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${authTokens?.access}`,
+  //         },
+  //         body: JSON.stringify({
+  //           user: user.user_id,
+  //         }),
+  //       }
+  //     );
+  //     await res.json();
+
+  //     if (res.status === 200) {
+  //     } else {
+  //       alert("Failed to create user details model!");
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const getUserInfo = async () => {
     try {
@@ -72,6 +93,7 @@ const Profile = () => {
   };
 
   useEffect(() => {
+    // createUserDetailsModel();
     getUserInfo();
     getUserInfo2();
     // eslint-disable-next-line
@@ -124,8 +146,6 @@ const Profile = () => {
               address_line: address_line,
               unit: unit,
               postal_code: postal_code,
-              emergency_contact: emergency_contact,
-              emergency_number: emergency_number,
             }),
           }
         );
@@ -142,8 +162,7 @@ const Profile = () => {
           setAddressLine("");
           setUnit("");
           setPostalCode("");
-          setEmergencyContact("");
-          setEmergencyNumber("");
+
           window.location.reload(false);
         } else {
           alert("Update Failed!");
@@ -185,6 +204,9 @@ const Profile = () => {
                 placeholder="Enter new password"
                 onChange={(e) => setPassword(e.target.value)}
               />
+              <Form.Text id="passwordHelpBlock" muted>
+                Your password must contain at least 8 characters.
+              </Form.Text>
             </Form.Group>
 
             <Form.Group
@@ -232,12 +254,16 @@ const Profile = () => {
             <Form.Group as={Col} className="mb-3" controlId="formContact">
               <Form.Label>Contact number: </Form.Label>
               <Form.Control
+                maxLength={8}
                 type="number"
                 name="contact"
                 placeholder={userInfo.contact}
                 value={contact}
                 onChange={(e) => setContact(e.target.value)}
               />
+              <Form.Text id="passwordHelpBlock" muted>
+                Must begin with '6', '8' or '9'.
+              </Form.Text>
             </Form.Group>
             <Form.Group as={Col} className="mb-3" controlId="formDateOfBirth">
               <Form.Label>Date of birth: </Form.Label>
@@ -289,43 +315,12 @@ const Profile = () => {
             >
               <Form.Label>Postal code: </Form.Label>
               <Form.Control
+                maxLength={6}
                 typ="number"
                 name="postal_code"
                 placeholder={userInfo.postal_code}
                 value={postal_code}
                 onChange={(e) => setPostalCode(e.target.value)}
-              />
-            </Form.Group>
-          </Row>
-
-          <Row className="mb-3">
-            <Form.Group
-              as={Col}
-              className="mb-3"
-              controlId="formEmergencyContact"
-            >
-              <Form.Label>Emergency Contact: </Form.Label>
-              <Form.Control
-                typ="input"
-                name="emergency_contact"
-                placeholder={userInfo.emergency_contact}
-                value={emergency_contact}
-                onChange={(e) => setEmergencyContact(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group
-              as={Col}
-              className="mb-3"
-              controlId="formEmergencyNumber"
-            >
-              <Form.Label>Emergency Number: </Form.Label>
-              <Form.Control
-                typ="number"
-                name="emergency_number"
-                placeholder={userInfo.emergency_number}
-                value={emergency_number}
-                onChange={(e) => setEmergencyNumber(e.target.value)}
               />
             </Form.Group>
           </Row>

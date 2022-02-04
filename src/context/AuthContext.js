@@ -57,11 +57,39 @@ export const AuthProvider = ({ children }) => {
   //////////////////////////////////
   // LOGOUT user
   //////////////////////////////////
-  const logoutUser = () => {
-    setAuthTokens(null);
-    setUser(null);
-    localStorage.removeItem("authTokens");
-    history.push("/login");
+  //   const logoutUser = () => {
+  //     setAuthTokens(null);
+  //     setUser(null);
+  //     localStorage.removeItem("authTokens");
+  //     history.push("/login");
+  //   };
+
+  //////////////////////////////////
+  // LOGOUT user + BLACKLIST token
+  //////////////////////////////////
+
+  const logoutUser = async (e) => {
+    e.preventDefault();
+    const response = await fetch("http://127.0.0.1:8000/auth/logout/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        refresh: authTokens.refresh,
+      }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+
+    if (response.status === 200) {
+      setUser(null);
+      localStorage.removeItem("authTokens");
+      history.push("/");
+    } else {
+      alert("Logout Failed!");
+    }
   };
 
   //////////////////////////////////

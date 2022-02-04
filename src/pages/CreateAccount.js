@@ -11,7 +11,7 @@ const CreateAccount = () => {
   let history = useHistory();
 
   //////////////////////////////////
-  // CREATE user
+  // CREATE user + personal fields
   //////////////////////////////////
 
   const createUser = async (e) => {
@@ -34,29 +34,7 @@ const CreateAccount = () => {
           }),
         });
 
-        //   const res2 = await fetch(
-        //     "http://127.0.0.1:8000/personal-details/create/",
-        //     {
-        //       method: "POST",
-        //       mode: "cors",
-        //       headers: {
-        //         "Content-Type": "application/json",
-        //       },
-        //       body: JSON.stringify({
-        //         contact: e.target.contact.value,
-        //         date_of_birth: e.target.date_of_birth.value,
-        //         gender: e.target.gender.value,
-        //         address_line: e.target.address_line.value,
-        //         unit: e.target.unit.value,
-        //         postal_code: e.target.postal_code.value,
-        //         emergency_contact: e.target.emergency_contact.value,
-        //         emergency_number: e.target.emergency_number.value,
-        //       }),
-        //     }
-        //   );
-
         await res.json();
-        // await res2.json();
 
         if (res.status === 200) {
           history.push("/login");
@@ -142,11 +120,11 @@ const CreateAccount = () => {
             </Form.Group>
           </Row>
 
-          {/* 
-          <Row>
+          {/* <Row>
             <Form.Group as={Col} className="mb-3" controlId="formNumber">
               <Form.Label>Contact number</Form.Label>
               <Form.Control
+                maxLength={8}
                 type="number"
                 name="contact"
                 placeholder="Enter contact number"
@@ -191,38 +169,9 @@ const CreateAccount = () => {
             <Form.Group as={Col} className="mb-3" controlId="formGridZip">
               <Form.Label>Postal code</Form.Label>
               <Form.Control
+                maxLength={6}
                 name="postal_code"
                 placeholder="Enter postal code"
-                required
-              />
-            </Form.Group>
-          </Row>
-
-          <hr />
-
-          <Row className="mb-3">
-            <Form.Group
-              as={Col}
-              className="mb-3"
-              controlId="formEmergencyContact"
-            >
-              <Form.Label>Emergency Contact</Form.Label>
-              <Form.Control
-                name="emergency_contact"
-                placeholder="Enter contact"
-                required
-              />
-            </Form.Group>
-
-            <Form.Group
-              as={Col}
-              className="mb-3"
-              controlId="formEmergencyNumber"
-            >
-              <Form.Label>Emergency Number</Form.Label>
-              <Form.Control
-                name="emergency_number"
-                placeholder="Enter number"
                 required
               />
             </Form.Group>
