@@ -33,6 +33,7 @@ const Reviews = () => {
         title: e.target.title.value,
         description: e.target.description.value,
         user: user.user_id,
+        name: user.name,
       });
 
       if (response.status === 200) {
@@ -51,39 +52,46 @@ const Reviews = () => {
       <h3>Leave a review!</h3>
       <ul>
         {reviews.map((review) => (
-          <li key={review.id}>
-            {review.title}
-            {review.description}
-          </li>
+          <p key={review.id}>
+            Title: {review.title}
+            <br />
+            Description: {review.description}
+            <br />
+            Date: {review.date}
+            <br />
+            Submitted by: {review.name}
+          </p>
         ))}
       </ul>
 
-      <form onSubmit={createReview}>
-        <Form.Group className="mb-3" controlId="reviewTitle">
-          <Form.Label>Title</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            name="title"
-            placeholder="Enter title"
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="reviewDescription">
-          <Form.Label>Description</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            name="description"
-            placeholder="Enter description"
-          />
-        </Form.Group>
+      <div className={styles.reviewsForm}>
+        <form onSubmit={createReview}>
+          <Form.Group className="mb-3" controlId="reviewTitle">
+            <Form.Label>Title</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="title"
+              placeholder="Enter title"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="reviewDescription">
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="description"
+              placeholder="Enter description"
+            />
+          </Form.Group>
 
-        <div className="d-grid gap-2">
-          <button className={styles.create} type="submit">
-            Submit
-          </button>
-        </div>
-      </form>
+          <div className="d-grid gap-2">
+            <button className={styles.create} type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

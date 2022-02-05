@@ -21,8 +21,6 @@ const Purchase = () => {
 
   return (
     <div>
-      <p>You are logged in to the purchase page!</p>
-
       <ul>
         {reviews.map((review) => (
           <li key={review.id}>

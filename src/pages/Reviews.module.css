@@ -3,6 +3,11 @@
   margin: 10px;
 }
 
+.reviewsForm {
+  margin: auto;
+  width: 800px;
+}
+
 .reviewsContainer h3 {
   text-transform: uppercase;
   letter-spacing: 0.1rem;
