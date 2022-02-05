@@ -120,63 +120,6 @@ const CreateAccount = () => {
             </Form.Group>
           </Row>
 
-          {/* <Row>
-            <Form.Group as={Col} className="mb-3" controlId="formNumber">
-              <Form.Label>Contact number</Form.Label>
-              <Form.Control
-                maxLength={8}
-                type="number"
-                name="contact"
-                placeholder="Enter contact number"
-                required
-              />
-            </Form.Group>
-
-            <Form.Group as={Col} className="mb-3" controlId="formDOB">
-              <Form.Label>Date of birth</Form.Label>
-              <Form.Control type="date" name="date_of_birth" required />
-            </Form.Group>
-
-            <Form.Group as={Col} className="mb-3" controlId="formGender">
-              <Form.Label>Gender</Form.Label>
-              <Form.Select aria-label="gender" name="gender">
-                <option>Select gender</option>
-                <option value="M">Male</option>
-                <option value="F">Female</option>
-              </Form.Select>
-            </Form.Group>
-          </Row>
-
-          <Form.Group className="mb-3" controlId="formGridAddress">
-            <Form.Label>Address</Form.Label>
-            <Form.Control
-              name="address_line"
-              placeholder="Enter address"
-              required
-            />
-          </Form.Group>
-
-          <Row className="mb-3">
-            <Form.Group as={Col} className="mb-3" controlId="formGridUnit">
-              <Form.Label>Unit number</Form.Label>
-              <Form.Control
-                name="unit"
-                placeholder="Enter unit number"
-                required
-              />
-            </Form.Group>
-
-            <Form.Group as={Col} className="mb-3" controlId="formGridZip">
-              <Form.Label>Postal code</Form.Label>
-              <Form.Control
-                maxLength={6}
-                name="postal_code"
-                placeholder="Enter postal code"
-                required
-              />
-            </Form.Group>
-          </Row> */}
-
           <div className="d-grid gap-2">
             <button className={styles.create} type="submit">
               Submit

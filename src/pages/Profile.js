@@ -3,11 +3,11 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import styles from "./Profile.module.css";
-import useFetch from "../utils/useFetch";
+import useFetchGet from "../utils/useFetchGet";
 import AuthContext from "../context/AuthContext";
 
 const Profile = () => {
-  const [userInfo, setUserInfo] = useState([]);
+  const [userInfo1, setUserInfo1] = useState([]);
   const [userInfo2, setUserInfo2] = useState([]);
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
@@ -17,32 +17,30 @@ const Profile = () => {
   // Store current user details in state
   //////////////////////////////////
 
-  const [email, setEmail] = useState(userInfo2.email);
-  const [name, setName] = useState(userInfo2.name);
-  const [surname, setSurname] = useState(userInfo2.surname);
+  const [email, setEmail] = useState(userInfo1.email);
+  const [name, setName] = useState(userInfo1.name);
+  const [surname, setSurname] = useState(userInfo1.surname);
 
-  const [contact, setContact] = useState(userInfo.contact);
-  const [date_of_birth, setDateOfBirth] = useState(userInfo.date_of_birth);
-  const [gender, setGender] = useState(userInfo.gender);
-  const [address_line, setAddressLine] = useState(userInfo.address_line);
-  const [unit, setUnit] = useState(userInfo.unit);
-  const [postal_code, setPostalCode] = useState(userInfo.postal_code);
+  const [contact, setContact] = useState(userInfo2.contact);
+  const [date_of_birth, setDateOfBirth] = useState(userInfo2.date_of_birth);
+  const [gender, setGender] = useState(userInfo2.gender);
+  const [address_line, setAddressLine] = useState(userInfo2.address_line);
+  const [unit, setUnit] = useState(userInfo2.unit);
+  const [postal_code, setPostalCode] = useState(userInfo2.postal_code);
 
   //////////////////////////////////
   // Fetch user data from API (by specific username)
   // - Contact, DOB, Gender, Address, Unit, Postal Code, Emergency Contact, Emergency Number
   //////////////////////////////////
 
-  const api = useFetch();
+  const api = useFetchGet();
 
-  const getUserInfo = async () => {
+  const getUserInfo1 = async () => {
     try {
-      const { response, data } = await api(
-        `/personal-details/view/${user.user_id}`
-      );
+      const { response, data } = await api(`/auth/view/${user.user_id}`);
 
       if (response.status === 200) {
-        setUserInfo(data);
+        setUserInfo1(data);
       } else {
         alert("Failed to retrieve profile!");
       }
@@ -53,7 +51,9 @@ const Profile = () => {
 
   const getUserInfo2 = async () => {
     try {
-      const { response, data } = await api(`/auth/view/${user.user_id}`);
+      const { response, data } = await api(
+        `/personal-details/view/${user.user_id}`
+      );
 
       if (response.status === 200) {
         setUserInfo2(data);
@@ -67,7 +67,7 @@ const Profile = () => {
 
   useEffect(() => {
     // createUserDetailsModel();
-    getUserInfo();
+    getUserInfo1();
     getUserInfo2();
     // eslint-disable-next-line
   }, []);
@@ -158,7 +158,7 @@ const Profile = () => {
             <Form.Control
               type="email"
               name="email"
-              placeholder={userInfo2.email}
+              placeholder={userInfo1.email}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -187,7 +187,7 @@ const Profile = () => {
               className="mb-3"
               controlId="formUpdatePassword2"
             >
-              <Form.Label>*Confirm New Password: </Form.Label>
+              <Form.Label>*Confirm Password: </Form.Label>
               <Form.Control
                 type="password"
                 name="password2"
@@ -207,7 +207,7 @@ const Profile = () => {
               <Form.Label>Given Name: </Form.Label>
               <Form.Control
                 name="name"
-                placeholder={userInfo2.name}
+                placeholder={userInfo1.name}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -217,7 +217,7 @@ const Profile = () => {
               <Form.Label>Surname: </Form.Label>
               <Form.Control
                 name="surname"
-                placeholder={userInfo2.surname}
+                placeholder={userInfo1.surname}
                 value={surname}
                 onChange={(e) => setSurname(e.target.value)}
               />
@@ -231,7 +231,7 @@ const Profile = () => {
                 maxLength={8}
                 type="number"
                 name="contact"
-                placeholder={userInfo.contact}
+                placeholder={userInfo2.contact}
                 value={contact}
                 onChange={(e) => setContact(e.target.value)}
               />
@@ -243,7 +243,7 @@ const Profile = () => {
               <Form.Label>Date of birth: </Form.Label>
               <Form.Control
                 name="date_of_birth"
-                placeholder={userInfo.date_of_birth}
+                placeholder={userInfo2.date_of_birth}
                 value={date_of_birth}
                 onChange={(e) => setDateOfBirth(e.target.value)}
               />
@@ -256,7 +256,7 @@ const Profile = () => {
               <Form.Control
                 maxLength={1}
                 name="gender"
-                placeholder={userInfo.gender}
+                placeholder={userInfo2.gender}
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
               />
@@ -270,7 +270,7 @@ const Profile = () => {
             <Form.Label>Address: </Form.Label>
             <Form.Control
               name="address_line"
-              placeholder={userInfo.address_line}
+              placeholder={userInfo2.address_line}
               value={address_line}
               onChange={(e) => setAddressLine(e.target.value)}
             />
@@ -281,7 +281,7 @@ const Profile = () => {
               <Form.Label>Unit number: </Form.Label>
               <Form.Control
                 name="unit"
-                placeholder={userInfo.unit}
+                placeholder={userInfo2.unit}
                 value={unit}
                 onChange={(e) => setUnit(e.target.value)}
               />
@@ -297,7 +297,7 @@ const Profile = () => {
                 maxLength={6}
                 type="number"
                 name="postal_code"
-                placeholder={userInfo.postal_code}
+                placeholder={userInfo2.postal_code}
                 value={postal_code}
                 onChange={(e) => setPostalCode(e.target.value)}
               />

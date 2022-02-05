@@ -35,6 +35,9 @@ const NavBar = () => {
           <Nav>
             {user ? (
               <div className={styles.loggedInContainer}>
+                <NavLink to="/reviews" activeClassName={styles.active}>
+                  Reviews
+                </NavLink>
                 <NavLink to="/purchase" activeClassName={styles.active}>
                   Purchase
                 </NavLink>

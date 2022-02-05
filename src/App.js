@@ -27,7 +27,7 @@ const App = () => {
           <Route path="/register" exact component={CreateAccount} />
           <Route path="/search/:type/:id" exact component={TaskDetails} />
           <Route path="/login" exact component={Login} />
-          <Route path="/:username/reviews" exact component={Reviews} />
+          <PrivateRoute path="/reviews" exact component={Reviews} />
           <PrivateRoute path="/purchase" exact component={Purchase} />
           <PrivateRoute path="/classes" exact component={Classes} />
           <PrivateRoute path="/profile" exact component={Profile} />

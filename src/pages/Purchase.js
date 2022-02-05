@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import useFetch from "../utils/useFetch";
+import useFetchGet from "../utils/useFetchGet";
 
 const Purchase = () => {
   const [reviews, setReviews] = useState([]);
 
-  const api = useFetch();
+  const api = useFetchGet();
 
   const getReviews = async () => {
     const { response, data } = await api("/review/view-all/");
