@@ -34,6 +34,11 @@
   color: white;
 }
 
+.logout {
+  background-color: black;
+  color: white;
+}
+
 .message {
   font-size: 1.2em;
   text-align: center;
@@ -41,28 +46,6 @@
 
 .active {
   border-bottom: 2px solid rgb(255, 255, 255);
-}
-
-.dropdown {
-  background-color: rgb(85, 85, 85);
-  padding: 0;
-}
-
-.dropdown a {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-.dropdown a:hover {
-  background-color: rgb(67, 172, 173);
-  border: none;
-}
-
-.dropdown button {
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  font-size: 15px;
 }
 
 .loggedInContainer a {

@@ -6,11 +6,12 @@ import Col from "react-bootstrap/Col";
 
 const Workouts = () => {
   return (
-    <div classname={styles.workoutsContainer}>
-      <p>Workouts</p>
+    <div className={styles.workoutsContainer}>
       <Container fluid="md">
         <Row>
-          <Col>1 of 1</Col>
+          <Col className="title">
+            <h2>Workouts</h2>
+          </Col>
         </Row>
         <Row>
           <Col>Workout 1</Col>

@@ -2,17 +2,19 @@
 
 img {
   height: 800px;
+  opacity: 0.5;
 }
 
 .carousel {
   text-align: center;
   position: relative;
   margin: auto;
-  width: 95%;
+  width: 100%;
+  /* overflow: auto; */
 }
 
 .carouselCaption {
-  /* background: rgba(28, 29, 28, 0.7); */
   text-decoration: none;
+  outline: 10px;
   color: white;
 }

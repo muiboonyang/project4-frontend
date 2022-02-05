@@ -1,5 +1,8 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import React, { useContext } from "react";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRunning } from "@fortawesome/free-solid-svg-icons";
 
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -15,7 +18,7 @@ const NavBar = () => {
         <Navbar>
           <Navbar.Brand>
             <NavLink to="/" exact style={{ textShadow: "1px 0 grey" }}>
-              <i className="fa fa-fw fa-bicycle"></i> Anywhere Fitness
+              <FontAwesomeIcon icon={faRunning} /> Anywhere Fitness
             </NavLink>
           </Navbar.Brand>
 
@@ -44,14 +47,14 @@ const NavBar = () => {
                 <NavLink to="/purchase" activeClassName={styles.active}>
                   Purchase
                 </NavLink>
-                <NavLink to="/myclasses" activeClassName={styles.active}>
+                <NavLink to="/classes" activeClassName={styles.active}>
                   My Classes
                 </NavLink>
                 <NavLink to="/profile" activeClassName={styles.active}>
                   <i className="fa fa-fw fa-user"></i>
                   {user.name}
                 </NavLink>
-                <button onClick={logoutUser}>
+                <button onClick={logoutUser} className={styles.logout}>
                   <i className="fa fa-fw fa-sign-out"></i>
                 </button>
               </div>

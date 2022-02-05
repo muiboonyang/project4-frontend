@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import styles from "./Reviews.module.css";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import Form from "react-bootstrap/Form";
 import useFetchGet from "../utils/useFetchGet";
 import useFetchPost from "../utils/useFetchPost";
@@ -49,51 +53,60 @@ const Reviews = () => {
 
   return (
     <div className={styles.reviewsContainer}>
-      <h3>Leave a review!</h3>
+      <Container fluid="md">
+        <Row>
+          <Col>
+            <h3>Leave a review!</h3>
 
-      <div className={styles.reviewsForm}>
-        <form onSubmit={createReview}>
-          <Form.Group className="mb-3" controlId="reviewTitle">
-            <Form.Label>Title</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              name="title"
-              placeholder="Enter title"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="reviewDescription">
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              name="description"
-              placeholder="Enter description"
-            />
-          </Form.Group>
+            <div className={styles.reviewsForm}>
+              <form onSubmit={createReview}>
+                <Form.Group className="mb-3" controlId="reviewTitle">
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
+                    name="title"
+                    placeholder="Enter title"
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="reviewDescription">
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
+                    name="description"
+                    placeholder="Enter description"
+                  />
+                </Form.Group>
 
-          <div className="d-grid gap-2">
-            <button className={styles.create} type="submit">
-              Submit
-            </button>
-          </div>
-        </form>
+                <br />
 
-        <br />
-        <ul>
-          {reviews.map((review) => (
-            <p key={review.id}>
-              Title: {review.title}
-              <br />
-              Description: {review.description}
-              <br />
-              Date: {review.date}
-              <br />
-              Submitted by: {review.name}
-            </p>
-          ))}
-        </ul>
-      </div>
+                <div className="d-grid gap-2">
+                  <button className={styles.create} type="submit">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </Col>
+
+          <Col>
+            <ul>
+              {reviews.map((review) => (
+                <p key={review.id}>
+                  Title: {review.title}
+                  <br />
+                  Description: {review.description}
+                  <br />
+                  Date: {review.date}
+                  <br />
+                  Submitted by: {review.name}
+                </p>
+              ))}
+            </ul>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

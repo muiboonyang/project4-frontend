@@ -5,7 +5,7 @@
 
 .reviewsForm {
   margin: auto;
-  width: 800px;
+  width: 500px;
 }
 
 .reviewsContainer h3 {
@@ -32,4 +32,22 @@
 
 .reviewsContainer h6 {
   margin-left: 5px;
+}
+
+.create {
+  background-color: rgb(0 0 0);
+  border: 1px solid rgb(255 255 255);
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Charlotte";
+  text-transform: uppercase;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.create:hover {
+  background-color: rgb(255 193 7);
+  border: 1px solid rgb(255 193 7);
+  color: black;
 }
