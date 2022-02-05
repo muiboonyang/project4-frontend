@@ -8,20 +8,8 @@
 }
 
 body {
-  background-color: rgb(246 245 245);
-  color: rgb(85 85 85);
+  background-color: rgb(32 32 32);
+  /* color: rgb(85 85 85); */
+  color: rgb(256 256 256);
   font-family: "Charlotte";
-}
-
-/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
-@media screen and (max-width: 500px) {
-  .navbar a {
-    float: none;
-    display: block;
-  }
-
-  .login,
-  .createAccount {
-    width: 300px;
-  }
 }

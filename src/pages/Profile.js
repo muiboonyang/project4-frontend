@@ -11,7 +11,7 @@ const Profile = () => {
   const [userInfo2, setUserInfo2] = useState([]);
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  let { authTokens, user } = useContext(AuthContext);
+  let { user, authTokens } = useContext(AuthContext);
 
   //////////////////////////////////
   // Store current user details in state
@@ -33,13 +33,13 @@ const Profile = () => {
   // - Contact, DOB, Gender, Address, Unit, Postal Code, Emergency Contact, Emergency Number
   //////////////////////////////////
 
-  const api = useFetchGet();
+  const get = useFetchGet();
 
   const getUserInfo1 = async () => {
     try {
-      const { response, data } = await api(`/auth/view/${user.user_id}`);
+      const { res, data } = await get(`/auth/view/${user.user_id}`);
 
-      if (response.status === 200) {
+      if (res.status === 200) {
         setUserInfo1(data);
       } else {
         alert("Failed to retrieve profile!");
@@ -51,11 +51,9 @@ const Profile = () => {
 
   const getUserInfo2 = async () => {
     try {
-      const { response, data } = await api(
-        `/personal-details/view/${user.user_id}`
-      );
+      const { res, data } = await get(`/personal-details/view/${user.user_id}`);
 
-      if (response.status === 200) {
+      if (res.status === 200) {
         setUserInfo2(data);
       } else {
         alert("Failed to retrieve profile!");
@@ -82,7 +80,8 @@ const Profile = () => {
     } else {
       e.preventDefault();
       try {
-        // Update email, password, name, surname
+        // Update section1: email, password, name, surname
+
         const res = await fetch(
           `http://127.0.0.1:8000/auth/update/${user.user_id}`,
           {
@@ -102,7 +101,8 @@ const Profile = () => {
         );
         await res.json();
 
-        // Update personal details
+        // Update section2: personal details
+
         const res2 = await fetch(
           `http://127.0.0.1:8000/personal-details/update/${user.user_id}`,
           {

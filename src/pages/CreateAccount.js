@@ -50,6 +50,7 @@ const CreateAccount = () => {
   return (
     <>
       <div className={styles.createAccount}>
+        <br />
         <h3>Create Account</h3>
         <br />
 
@@ -119,6 +120,8 @@ const CreateAccount = () => {
               />
             </Form.Group>
           </Row>
+
+          <br />
 
           <div className="d-grid gap-2">
             <button className={styles.create} type="submit">

@@ -7,14 +7,16 @@
   overflow: visible;
   padding: 15px;
   margin-bottom: 10px;
-  background-image: url("https://cdn.vox-cdn.com/thumbor/VcMfVaDXYqBzbPSs8LU0vKUCdDU=/0x0:3000x2000/1200x0/filters:focal(0x0:3000x2000):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/19832394/House_Calls_Bainbridge_Au_NY_bookshelf.jpg");
+  /* background-image: url("https://cdn.vox-cdn.com/thumbor/VcMfVaDXYqBzbPSs8LU0vKUCdDU=/0x0:3000x2000/1200x0/filters:focal(0x0:3000x2000):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/19832394/House_Calls_Bainbridge_Au_NY_bookshelf.jpg"); */
+  /* background-color: rgb(246 245 245); */
+  background-color: rgb(0, 0, 0);
   font-family: "Montserrat", sans-serif;
-  box-shadow: 0 2px 10px darkgray;
+  box-shadow: 0 2px 2px darkgray;
 }
 
 /* Navbar links */
 .navbar a {
-  color: rgb(85 85 85);
+  color: #c9c5c2;
   float: left;
   text-align: center;
   text-decoration: none;
@@ -28,7 +30,8 @@
 
 /* Navbar links on mouse-over */
 .navbar a:hover {
-  border-bottom: 2px solid rgb(67, 172, 173);
+  border-bottom: 2px solid rgb(255, 255, 255);
+  color: white;
 }
 
 .message {
@@ -37,7 +40,7 @@
 }
 
 .active {
-  border-bottom: 2px solid rgb(67, 172, 173);
+  border-bottom: 2px solid rgb(255, 255, 255);
 }
 
 .dropdown {

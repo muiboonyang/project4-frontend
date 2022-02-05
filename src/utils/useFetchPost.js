@@ -16,22 +16,22 @@ const useFetchPost = () => {
 
   const originalRequest = async (url, config) => {
     url = `${baseURL}${url}`;
-    let response = await fetch(url, config);
-    let data = await response.json();
+    let res = await fetch(url, config);
+    let data = await res.json();
     console.log("POSTING:", data);
-    return { response, data };
+    return { res, data };
   };
 
   // Token refresh process
   const refreshToken = async (authTokens) => {
-    let response = await fetch("http://127.0.0.1:8000/auth/refreshtoken/", {
+    let res = await fetch("http://127.0.0.1:8000/auth/refreshtoken/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ refresh: authTokens.refresh }),
     });
-    let data = await response.json();
+    let data = await res.json();
     localStorage.setItem("authTokens", JSON.stringify(data));
     setAuthTokens(data);
     setUser(jwt_decode(data.access));
@@ -51,11 +51,11 @@ const useFetchPost = () => {
     // // Token expiry details
     // console.log(`Access Token expiring on: ${dayjs.unix(user.exp)}`);
     // console.log(`Time now: ${dayjs()}`);
-    // console.log(
-    //   `Access Token remaining validity: ${
-    //     dayjs.unix(user.exp).diff(dayjs()) / 1000
-    //   } seconds`
-    // );
+    console.log(
+      `Access Token remaining validity: ${
+        dayjs.unix(user.exp).diff(dayjs()) / 1000
+      } seconds`
+    );
 
     // Initiate token refresh when access token has expired, to get new access token
     if (isExpired) {
@@ -74,8 +74,8 @@ const useFetchPost = () => {
 
     console.log(config);
 
-    let { response, data } = await originalRequest(url, config);
-    return { response, data };
+    let { res, data } = await originalRequest(url, config);
+    return { res, data };
   };
 
   return callFetch;

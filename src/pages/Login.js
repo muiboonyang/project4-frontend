@@ -36,6 +36,8 @@ const Login = () => {
               />
             </Form.Group>
 
+            <br />
+
             <div className="d-grid gap-2">
               <button className={styles.submit}>Submit</button>
             </div>

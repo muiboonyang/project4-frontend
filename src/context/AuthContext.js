@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
   //////////////////////////////////
   const loginUser = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/auth/login/", {
+    const res = await fetch("http://127.0.0.1:8000/auth/login/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,9 +42,9 @@ export const AuthProvider = ({ children }) => {
         password: e.target.password.value,
       }),
     });
-    const data = await response.json();
+    const data = await res.json();
 
-    if (response.status === 200) {
+    if (res.status === 200) {
       setAuthTokens(data);
       setUser(jwt_decode(data.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }) => {
 
   const logoutUser = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/auth/logout/", {
+    const res = await fetch("http://127.0.0.1:8000/auth/logout/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -80,10 +80,10 @@ export const AuthProvider = ({ children }) => {
       }),
     });
 
-    const data = await response.json();
+    const data = await res.json();
     console.log(data);
 
-    if (response.status === 200) {
+    if (res.status === 200) {
       setUser(null);
       localStorage.removeItem("authTokens");
       history.push("/");

@@ -6,15 +6,17 @@ import PrivateRoute from "./utils/PrivateRoute";
 import NavBar from "./components/NavBar";
 
 import Home from "./pages/Home";
-
-import SearchResults from "./pages/SearchResults";
-import TaskDetails from "./components/TaskDetails";
-import Purchase from "./pages/Purchase";
+import Workouts from "./pages/Workouts";
+import Pricing from "./pages/Pricing";
+import Schedule from "./pages/Schedule";
+import Instructors from "./pages/Instructors";
 import Login from "./pages/Login";
 import CreateAccount from "./pages/CreateAccount";
-import Profile from "./pages/Profile";
+
 import Reviews from "./pages/Reviews";
+import Purchase from "./pages/Purchase";
 import Classes from "./pages/Classes";
+import Profile from "./pages/Profile";
 
 const App = () => {
   return (
@@ -23,10 +25,12 @@ const App = () => {
         <NavBar />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/search/:type" exact component={SearchResults} />
-          <Route path="/register" exact component={CreateAccount} />
-          <Route path="/search/:type/:id" exact component={TaskDetails} />
+          <Route path="/workouts" exact component={Workouts} />
+          <Route path="/pricing" exact component={Pricing} />
+          <Route path="/schedule" exact component={Schedule} />
+          <Route path="/instructors" exact component={Instructors} />
           <Route path="/login" exact component={Login} />
+          <Route path="/register" exact component={CreateAccount} />
           <PrivateRoute path="/reviews" exact component={Reviews} />
           <PrivateRoute path="/purchase" exact component={Purchase} />
           <PrivateRoute path="/classes" exact component={Classes} />

@@ -13,9 +13,9 @@ const Reviews = () => {
   const post = useFetchPost();
 
   const getReviews = async () => {
-    const { response, data } = await get("/review/view-all/");
+    const { res, data } = await get("/review/view-all/");
 
-    if (response.status === 200) {
+    if (res.status === 200) {
       setReviews(data);
     }
   };
@@ -29,14 +29,14 @@ const Reviews = () => {
     e.preventDefault();
 
     try {
-      const { response, data } = await post(`/review/create/`, {
+      const { res, data } = await post(`/review/create/`, {
         title: e.target.title.value,
         description: e.target.description.value,
         user: user.user_id,
         name: user.name,
       });
 
-      if (response.status === 200) {
+      if (res.status === 200) {
         console.log(data);
         window.location.reload(false);
       } else {
@@ -50,19 +50,6 @@ const Reviews = () => {
   return (
     <div className={styles.reviewsContainer}>
       <h3>Leave a review!</h3>
-      <ul>
-        {reviews.map((review) => (
-          <p key={review.id}>
-            Title: {review.title}
-            <br />
-            Description: {review.description}
-            <br />
-            Date: {review.date}
-            <br />
-            Submitted by: {review.name}
-          </p>
-        ))}
-      </ul>
 
       <div className={styles.reviewsForm}>
         <form onSubmit={createReview}>
@@ -91,6 +78,21 @@ const Reviews = () => {
             </button>
           </div>
         </form>
+
+        <br />
+        <ul>
+          {reviews.map((review) => (
+            <p key={review.id}>
+              Title: {review.title}
+              <br />
+              Description: {review.description}
+              <br />
+              Date: {review.date}
+              <br />
+              Submitted by: {review.name}
+            </p>
+          ))}
+        </ul>
       </div>
     </div>
   );

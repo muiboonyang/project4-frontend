@@ -14,22 +14,25 @@ const NavBar = () => {
       <div className={styles.navbar}>
         <Navbar>
           <Navbar.Brand>
-            <NavLink
-              to="/"
-              exact
-              activeClassName={styles.active}
-              style={{ textShadow: "1px 0 grey" }}
-            >
+            <NavLink to="/" exact style={{ textShadow: "1px 0 grey" }}>
               <i className="fa fa-fw fa-bicycle"></i> Anywhere Fitness
             </NavLink>
           </Navbar.Brand>
 
           <Nav className="me-auto">
-            <Link to="/">Home</Link>
-            <Link to="/workouts">Workouts</Link>
-            <Link to="/pricing">Pricing</Link>
-            <Link to="/schedule">Schedule</Link>
-            <Link to="/instructors">Instructors</Link>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/workouts" activeClassName={styles.active}>
+              Workouts
+            </NavLink>
+            <NavLink to="/pricing" activeClassName={styles.active}>
+              Pricing
+            </NavLink>
+            <NavLink to="/schedule" activeClassName={styles.active}>
+              Schedule
+            </NavLink>
+            <NavLink to="/instructors" activeClassName={styles.active}>
+              Instructors
+            </NavLink>
           </Nav>
 
           <Nav>
