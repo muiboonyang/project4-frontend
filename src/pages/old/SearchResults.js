@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import SearchCard from "../components/SearchCard.js";
+import SearchCard from "../../components/SearchCard.js";
 import styles from "./SearchResults.module.css";
 
 const SearchResults = () => {

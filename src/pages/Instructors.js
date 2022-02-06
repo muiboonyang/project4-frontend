@@ -7,11 +7,12 @@ import Col from "react-bootstrap/Col";
 const Instructors = () => {
   return (
     <div className={styles.instructorsContainer}>
+      <br />
+      <h2>Instructors</h2>
+      <br />
       <Container fluid="md">
         <Row>
-          <Col className="title">
-            <h2>Instructors</h2>
-          </Col>
+          <Col className="title">Content</Col>
         </Row>
       </Container>
     </div>

@@ -53,11 +53,12 @@ const Reviews = () => {
 
   return (
     <div className={styles.reviewsContainer}>
+      <br />
+      <h2>Leave a review</h2>
+      <br />
       <Container fluid="md">
         <Row>
           <Col>
-            <h3>Leave a review!</h3>
-
             <div className={styles.reviewsForm}>
               <form onSubmit={createReview}>
                 <Form.Group className="mb-3" controlId="reviewTitle">
