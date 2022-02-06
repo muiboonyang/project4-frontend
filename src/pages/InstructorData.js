@@ -48,6 +48,24 @@ const instructorData = [
     description:
       "Jasmine without the J. When she’s not behind the bar serving up a mean cup of coffee or designing for clients, she’s on her spin bike grooving to some Indie rock tunes. If you’re in luck, you could find yourself in a heart-pumping trance class. A Jill of all trades, master of everything, Asmine hustles round-the-clock and juggles multiple gigs at any one time. Her love for fitness is accompanied by her love for sweet things so much so that a tooth has been sacrificed (RIP Asmine’s tooth). Wild, fun and easy-going, there’s never a dull moment with her.",
   },
+
+  {
+    name: "jaysen",
+    class: "resistance",
+    cardImage: "https://i.imgur.com/TxiJezM.jpg",
+    profileImage: "https://i.imgur.com/2wq8wuw.jpg",
+    description:
+      "He may look well-adjusted in the gym but deep down, Jaysen is a goofball. Okay. Maybe not so deep down. In whatever he’s doing though, Jaysen always aims to show up authentically, and is committed to giving you his hundred percent inside the studio and out. He doesn’t believe in ‘one-size-fits-all’ with things fitness and beyond, so he’d like nothing more than for you to just come as you are. His ambition in fitness can be summarised by Jim Carrey’s quote: You can fail at the things you don’t like, so might as well do what you love.",
+  },
+
+  {
+    name: "ethel",
+    class: "ride",
+    cardImage: "https://i.imgur.com/3Rt653l.jpg",
+    profileImage: "https://i.imgur.com/18bDtqs.jpg",
+    description:
+      "Spin Diva meets guilty pleasures – sweaty sprints never looked so good. With a background in dance, Ethel brings her moves into the Ride room with groovy choreography all set to a huge smile and flirty fun. You’ll always be down for a good time and some feel-good fun with Ethel – come for a workout and leave feeling like you own the stage.",
+  },
 ];
 
 export default instructorData;
