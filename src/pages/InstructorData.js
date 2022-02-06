@@ -1,6 +1,7 @@
 const instructorData = [
   {
     name: "nick",
+    class: "ride",
     cardImage: "https://i.imgur.com/56F0Idm.jpg",
     profileImage:
       "https://i.imgur.com/woM4xCT.jpghttps://i.imgur.com/45ZM1rU.jpg",
@@ -9,6 +10,7 @@ const instructorData = [
   },
   {
     name: "aimee",
+    class: "ride",
     cardImage: "https://i.imgur.com/bXVGIme.jpg",
     profileImage: "https://i.imgur.com/j2QqsKl.jpg",
     description:
@@ -16,6 +18,7 @@ const instructorData = [
   },
   {
     name: "maya",
+    class: "resistance",
     cardImage: "https://i.imgur.com/BzNl6MA.jpg",
     profileImage: "https://i.imgur.com/fI1A1lc.jpg",
     description:
@@ -23,6 +26,7 @@ const instructorData = [
   },
   {
     name: "caleb",
+    class: "resistance",
     cardImage: "https://i.imgur.com/HFMiDix.jpg",
     profileImage: "https://i.imgur.com/45ZM1rU.jpg",
     description:
@@ -30,6 +34,7 @@ const instructorData = [
   },
   {
     name: "ryan",
+    class: "ride",
     cardImage: "https://i.imgur.com/4RZDjHB.jpg",
     profileImage: "https://i.imgur.com/REqcc4E.jpg",
     description:
@@ -37,6 +42,7 @@ const instructorData = [
   },
   {
     name: "asmine",
+    class: "resistance",
     cardImage: "https://i.imgur.com/KM1bHzV.jpg",
     profileImage: "https://i.imgur.com/EuTVRUm.jpg",
     description:

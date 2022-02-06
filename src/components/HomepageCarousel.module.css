@@ -1,8 +1,8 @@
 /* Formatting for carousel */
 
 .carousel img {
-  height: 800px;
-  opacity: 0.5;
+  height: 1220px;
+  /* opacity: 0.8; */
 }
 
 .carousel {
@@ -10,11 +10,13 @@
   position: relative;
   margin: auto;
   width: 100%;
-  /* overflow: auto; */
+  /* background-color: black; */
 }
 
 .carouselCaption {
   text-decoration: none;
-  outline: 10px;
   color: white;
+  text-transform: uppercase;
+  margin-bottom: 35%;
+  margin-right: 30%;
 }

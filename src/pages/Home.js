@@ -4,10 +4,7 @@ import HomepageCarousel from "../components/HomepageCarousel";
 const Home = () => {
   return (
     <>
-      <br />
-      <div className="carousel">
-        <HomepageCarousel />
-      </div>
+      <HomepageCarousel />
     </>
   );
 };

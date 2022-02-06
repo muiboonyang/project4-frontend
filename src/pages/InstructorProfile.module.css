@@ -1,0 +1,63 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5px;
+  margin-top: 5px;
+  color: rgb(160, 160, 160);
+  font-family: "Charlotte";
+}
+
+.imageContainer {
+  width: 30%;
+  border-radius: 15px;
+  padding: 1px;
+  margin-right: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  /* background-color: black; */
+}
+
+.imageContainer img {
+  width: 90%;
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px grey;
+}
+
+.rightColumn {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 50px;
+}
+
+.rightColumn p {
+  text-align: center;
+}
+
+.subheading {
+  display: flex;
+}
+
+.container h5 {
+  font-size: 4rem;
+  text-transform: uppercase;
+}
+
+.container h6 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: rgb(226, 27, 183);
+}
+
+.description {
+  font-size: 1.8rem;
+  font-style: italic;
+  padding: 5px;
+  margin-top: 80px;
+}
