@@ -32,8 +32,8 @@
 }
 
 .login {
-  background: none;
-  color: white;
+  background: rgb(161, 161, 161);
+  color: black;
 }
 
 .create:hover,

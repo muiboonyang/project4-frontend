@@ -1,5 +1,3 @@
-/* Formatting for login page */
-
 .container {
   margin-top: 10px;
   border-radius: 15px;
@@ -33,8 +31,8 @@
 }
 
 .create {
-  background: none;
-  color: white;
+  background: rgb(161, 161, 161);
+  color: black;
 }
 
 .submit:hover,
