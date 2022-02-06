@@ -8,7 +8,7 @@ const Pricing = () => {
   return (
     <div className={styles.pricingContainer}>
       <br />
-      <h2>Packages</h2>
+      <h2>Pricing</h2>
       <br />
       <Container fluid="md">
         <Row>

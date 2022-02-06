@@ -48,7 +48,7 @@ const CreateAccount = () => {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.createAccount}>
         <br />
         <h3>Create Account</h3>
@@ -144,7 +144,7 @@ const CreateAccount = () => {
 
         <br />
       </div>
-    </>
+    </div>
   );
 };
 

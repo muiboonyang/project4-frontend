@@ -1,7 +1,6 @@
-.message {
-  margin-top: 50px;
-  font-size: 1.2em;
-  text-align: center;
+.container {
+  margin-top: 10px;
+  border-radius: 15px;
 }
 
 .createAccount {
@@ -12,7 +11,7 @@
 .createAccount h3 {
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   text-transform: uppercase;

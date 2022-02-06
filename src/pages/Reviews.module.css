@@ -1,17 +1,13 @@
-.reviewsContainer {
-  padding: 10px;
-  margin: 10px;
-}
-
 .reviewsForm {
   margin: auto;
   width: 500px;
 }
 
 .reviewsContainer h2 {
+  padding: 10px;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   text-transform: uppercase;

@@ -6,6 +6,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import NavBar from "./components/NavBar";
 
 import Home from "./pages/Home";
+
 import Workouts from "./pages/Workouts";
 import Pricing from "./pages/Pricing";
 import Schedule from "./pages/Schedule";

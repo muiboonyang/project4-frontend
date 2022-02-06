@@ -4,7 +4,7 @@
   align-items: flex-start;
   justify-content: center;
   padding: 5px;
-  margin-top: 5px;
+  margin-top: 80px;
   color: rgb(160, 160, 160);
   font-family: "Charlotte";
 }
@@ -18,7 +18,6 @@
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  /* background-color: black; */
 }
 
 .imageContainer img {
@@ -31,28 +30,28 @@
   width: 30%;
   display: flex;
   flex-direction: column;
-  border-radius: 15px;
   padding: 15px;
   margin-top: 50px;
 }
 
-.rightColumn p {
-  text-align: center;
-}
-
-.subheading {
-  display: flex;
-}
-
-.container h5 {
-  font-size: 4rem;
+.container .name {
+  font-size: 70px;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
-.container h6 {
-  font-size: 2rem;
+.container .class1 {
+  font-size: 40px;
   text-transform: uppercase;
   color: rgb(226, 27, 183);
+  font-weight: bold;
+}
+
+.container .class2 {
+  font-size: 40px;
+  text-transform: uppercase;
+  color: rgb(0, 225, 255);
+  font-weight: bold;
 }
 
 .description {

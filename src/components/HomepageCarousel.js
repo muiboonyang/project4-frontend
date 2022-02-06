@@ -12,7 +12,7 @@ const HomepageCarousel = () => {
         controls={false}
         pause={false}
       >
-        <Carousel.Item interval={5000}>
+        <Carousel.Item interval={5000} className={styles.fillscreen}>
           <NavLink to="/register">
             <img
               className="d-block w-100"
@@ -26,7 +26,7 @@ const HomepageCarousel = () => {
           </NavLink>
         </Carousel.Item>
 
-        <Carousel.Item interval={5000}>
+        <Carousel.Item interval={5000} className={styles.fillscreen}>
           <NavLink to="/register">
             <img
               className="d-block w-100"

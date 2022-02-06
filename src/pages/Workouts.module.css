@@ -1,13 +1,82 @@
 .workoutsContainer {
-  padding: 10px;
-  margin: 10px;
+  background-color: black;
+  z-index: 1;
+  position: relative;
 }
 
 .workoutsContainer h2 {
+  padding: 10px;
   font-family: "Montserrat", sans-serif;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  font-size: 1.5rem;
+  font-size: 3rem;
+}
+
+.classContainer {
+  margin-top: 0px;
+}
+
+.classContainer a {
+  text-decoration: none;
+}
+
+.classDetails1,
+.classDetails2 {
+  display: flex;
+  flex-direction: column;
+  box-sizing: content-box;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100%;
+  width: 100%;
+  height: 33rem;
+  transition: transform 0.5s;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+.classDetails1 {
+  background-image: url("https://i.imgur.com/DiOWrDJ.jpg");
+  background-position: 0% 15%;
+}
+
+.classDetails2 {
+  background-image: url("https://i.imgur.com/smLX3WT.jpg");
+  background-position: 0% 30%;
+}
+
+.classDetails1:hover,
+.classDetails2:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.classContainer .title1 {
+  text-transform: uppercase;
+  color: rgb(0, 225, 255);
+  font-size: 60px;
   font-weight: bold;
+  margin-left: 20%;
+  margin-top: 2.5%;
+}
+
+.classContainer .description1 {
+  font-size: 40px;
+  color: white;
+  margin-left: 10%;
+}
+
+.classContainer .title2 {
+  text-transform: uppercase;
+  color: rgb(226, 27, 183);
+  font-size: 60px;
+  font-weight: bold;
+  margin-left: 69%;
+  margin-top: 3.5%;
+}
+
+.classContainer .description2 {
+  font-size: 40px;
+  color: white;
+  margin-left: 55%;
 }

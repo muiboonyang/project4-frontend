@@ -12,10 +12,10 @@ const Classes = () => {
       <br />
       <Container fluid="md">
         <Row>
-          <Col className="title">Content</Col>
+          <Col>Class 1</Col>
         </Row>
         <Row>
-          <Col>Class 1</Col>
+          <Col>Class 2</Col>
           <Col>Class 2</Col>
           <Col>Class 3</Col>
         </Row>

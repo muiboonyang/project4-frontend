@@ -10,7 +10,6 @@ const Instructors = () => {
     <div className={styles.instructorsContainer}>
       <br />
       <h2>Instructors</h2>
-      <br />
 
       <div className={styles.container}>
         {instructorData.map((cardData) => {

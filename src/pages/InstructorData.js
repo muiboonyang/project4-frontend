@@ -42,7 +42,7 @@ const instructorData = [
   },
   {
     name: "asmine",
-    class: "resistance",
+    class: "ride",
     cardImage: "https://i.imgur.com/KM1bHzV.jpg",
     profileImage: "https://i.imgur.com/EuTVRUm.jpg",
     description:
