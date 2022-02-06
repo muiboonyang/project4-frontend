@@ -11,3 +11,9 @@
   font-size: 1.5rem;
   font-weight: bold;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}

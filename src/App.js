@@ -10,6 +10,7 @@ import Workouts from "./pages/Workouts";
 import Pricing from "./pages/Pricing";
 import Schedule from "./pages/Schedule";
 import Instructors from "./pages/Instructors";
+import InstructorProfile from "./pages/InstructorProfile";
 import Login from "./pages/Login";
 import CreateAccount from "./pages/CreateAccount";
 
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/pricing" exact component={Pricing} />
           <Route path="/schedule" exact component={Schedule} />
           <Route path="/instructors" exact component={Instructors} />
+          <Route path="/instructor/:name" exact component={InstructorProfile} />
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={CreateAccount} />
           <PrivateRoute path="/reviews" exact component={Reviews} />

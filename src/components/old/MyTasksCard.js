@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import LoginContext from "../context/login-context";
+import LoginContext from "../../context/login-context";
 import styles from "./MyTasksCard.module.css";
 import Button from "react-bootstrap/Button";
 

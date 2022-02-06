@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import MyTasksCard from "../../components/MyTasksCard";
+import MyTasksCard from "../../components/old/MyTasksCard";
 import LoginContext from "../../context/login-context";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./MyTasks.module.css";

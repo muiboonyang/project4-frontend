@@ -1,6 +1,6 @@
 /* Formatting for carousel */
 
-img {
+.carousel img {
   height: 800px;
   opacity: 0.5;
 }
