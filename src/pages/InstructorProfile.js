@@ -39,9 +39,9 @@ const InstructorProfile = () => {
       <div className={styles.rightColumn}>
         <p className={styles.name}>{instructorName}</p>
         {instructorClassRide ? (
-          <p className={styles.class1}>{instructorClassRide}</p>
+          <p className={styles.classRide}>{instructorClassRide}</p>
         ) : (
-          <p className={styles.class2}>{instructorClassResistance}</p>
+          <p className={styles.classResistance}>{instructorClassResistance}</p>
         )}
         <div className={styles.description}>{instructorDescription}</div>
       </div>

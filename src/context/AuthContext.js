@@ -84,9 +84,9 @@ export const AuthProvider = ({ children }) => {
     console.log(data);
 
     if (res.status === 200) {
+      history.push("/");
       setUser(null);
       localStorage.removeItem("authTokens");
-      history.push("/");
     } else {
       alert("Logout Failed!");
     }

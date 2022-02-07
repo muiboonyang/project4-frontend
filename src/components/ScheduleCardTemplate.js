@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import styles from "./ReviewCardTemplate.module.css";
+import styles from "./ScheduleCardTemplate.module.css";
+import { NavLink } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import useFetchPost from "../utils/useFetchPost";
 
@@ -11,10 +12,28 @@ const ReviewCardTemplate = (props) => {
   // POST - Book class
   ///////////////////////////////
 
-  const bookClass = async () => {
-    const { res } = await post(`/class/create/`);
-    if (res.status === 200) {
-      window.location.reload(false);
+  const bookClass = async (e) => {
+    e.preventDefault();
+
+    try {
+      const { res, data } = await post(`/class/book/`, {
+        class_type: props.schedule.class_type,
+        class_instructor: props.schedule.class_instructor,
+        date: props.schedule.date,
+        time: props.schedule.time,
+        spot: props.schedule.spot[0],
+        name: user.name,
+        user: user.user_id,
+      });
+
+      if (res.status === 200) {
+        console.log(data);
+        window.location.reload(false);
+      } else {
+        alert("Failed to book class!");
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -73,26 +92,45 @@ const ReviewCardTemplate = (props) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  ////////////////////////////////
+  // Conditional formatting
+  ////////////////////////////////
+
+  let classRide, classResistance;
+
+  if (props.schedule.class_type === "ride") {
+    classRide = props.schedule.class_type;
+  } else {
+    classResistance = props.schedule.class_type;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.detailsContainer}>
-        <h2>{props.schedule.class_type}</h2>
+        {classRide ? (
+          <p className={styles.classRide}>{classRide}</p>
+        ) : (
+          <p class={styles.classResistance}>{classResistance}</p>
+        )}
         <div className={styles.content}>
           <p>{capitalizeFirstLetter(props.schedule.class_instructor)}</p>
-        </div>
-        <div className={styles.postDetails}>
           <p>{convertTimeFormat(props.schedule.time)}</p>
           <p>{convertToDateFormat(props.schedule.date)}</p>
         </div>
       </div>
+
       {user.admin ? (
-        <div className={styles.buy}>
-          <button className={styles.button} onClick="">
+        <div className={styles.book}>
+          <button className={styles.button} onClick={bookClass}>
             Book
           </button>
         </div>
       ) : (
-        ""
+        <div className={styles.book}>
+          <NavLink to="/login">
+            <button className={styles.button}>Book</button>
+          </NavLink>
+        </div>
       )}
     </div>
   );
