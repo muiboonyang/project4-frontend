@@ -15,14 +15,14 @@ const ReviewCardTemplate = (props) => {
 
   const bookClass = async (e) => {
     e.preventDefault();
-
+    let randomSpot = Math.floor(Math.random() * 30); // Random number from 0 to 29
     try {
       const { res } = await post(`/class/book/`, {
         class_type: props.schedule.class_type,
         class_instructor: props.schedule.class_instructor,
         date: props.schedule.date,
         time: props.schedule.time,
-        spot: props.schedule.spot[0],
+        spot: props.schedule.spot[randomSpot],
         name: user.name,
         user: user.user_id,
       });
