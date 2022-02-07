@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./InstructorProfile.module.css";
 import instructorData from "./InstructorData";
 import { useParams } from "react-router";
-import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 const InstructorProfile = () => {
+  let history = useHistory();
   const params = useParams();
 
   let instructorName,
@@ -47,9 +48,9 @@ const InstructorProfile = () => {
       </div>
 
       <div>
-        <NavLink to="/instructors">
+        <button onClick={history.goBack} className={styles.backButton}>
           <FontAwesomeIcon icon={faTimesCircle} className={styles.backButton} />
-        </NavLink>
+        </button>
       </div>
     </div>
   );

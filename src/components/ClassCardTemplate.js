@@ -1,36 +1,23 @@
-import React, { useContext } from "react";
-import styles from "./ScheduleCardTemplate.module.css";
-import { NavLink, useHistory } from "react-router-dom";
-import AuthContext from "../context/AuthContext";
-import useFetchPost from "../utils/useFetchPost";
+import React from "react";
+import styles from "./ClassCardTemplate.module.css";
+import { NavLink } from "react-router-dom";
+import useFetchDelete from "../utils/useFetchDelete";
 
 const ReviewCardTemplate = (props) => {
-  let { user } = useContext(AuthContext);
-  let history = useHistory();
-  const post = useFetchPost();
+  const del = useFetchDelete();
 
   ///////////////////////////////
   // POST - Book class
   ///////////////////////////////
 
-  const bookClass = async (e) => {
+  const cancelClass = async (e) => {
     e.preventDefault();
-
     try {
-      const { res } = await post(`/class/book/`, {
-        class_type: props.schedule.class_type,
-        class_instructor: props.schedule.class_instructor,
-        date: props.schedule.date,
-        time: props.schedule.time,
-        spot: props.schedule.spot[0],
-        name: user.name,
-        user: user.user_id,
-      });
-
+      const { res } = await del(`/class/delete/${props.classDetails.id}`);
       if (res.status === 200) {
-        history.push("/classes");
+        window.location.reload(false);
       } else {
-        alert("Failed to book class!");
+        alert("Failed to drop class!");
       }
     } catch (err) {
       console.log(err);
@@ -98,19 +85,19 @@ const ReviewCardTemplate = (props) => {
 
   let classRide, classResistance;
 
-  if (props.schedule.class_type === "ride") {
-    classRide = props.schedule.class_type;
+  if (props.classDetails.class_type === "ride") {
+    classRide = props.classDetails.class_type;
   } else {
-    classResistance = props.schedule.class_type;
+    classResistance = props.classDetails.class_type;
   }
 
   /////////////////////////////////
   // Formatted data
   /////////////////////////////////
 
-  let instructor = capitalizeFirstLetter(props.schedule.class_instructor);
-  let time = convertTimeFormat(props.schedule.time);
-  let date = convertToDateFormat(props.schedule.date);
+  let instructor = capitalizeFirstLetter(props.classDetails.class_instructor);
+  let time = convertTimeFormat(props.classDetails.time);
+  let date = convertToDateFormat(props.classDetails.date);
   let day = new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(
     new Date(date)
   );
@@ -124,28 +111,21 @@ const ReviewCardTemplate = (props) => {
           <p class={styles.classResistance}>{classResistance}</p>
         )}
         <div className={styles.content}>
-          <NavLink to={`/instructor/${props.schedule.class_instructor}`}>
+          <NavLink to={`/instructor/${props.classDetails.class_instructor}`}>
             <p className={styles.instructor}>{instructor}</p>
           </NavLink>
           <p>{time}</p>
           <p>{date}</p>
           <p>{day}</p>
+          <p>Spot {props.classDetails.spot}</p>
         </div>
       </div>
 
-      {user ? (
-        <div className={styles.book}>
-          <button className={styles.button} onClick={bookClass}>
-            Book
-          </button>
-        </div>
-      ) : (
-        <div className={styles.book}>
-          <NavLink to="/login">
-            <button className={styles.button}>Book</button>
-          </NavLink>
-        </div>
-      )}
+      <div className={styles.cancel}>
+        <button className={styles.button} onClick={cancelClass}>
+          Cancel
+        </button>
+      </div>
     </div>
   );
 };

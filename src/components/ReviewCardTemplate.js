@@ -11,10 +11,18 @@ const ReviewCardTemplate = (props) => {
   // DELETE - Delete specific review
   ///////////////////////////////
 
-  const deleteReview = async () => {
-    const { res } = await del(`/review/delete/${props.reviews.id}`);
-    if (res.status === 200) {
-      window.location.reload(false);
+  const deleteReview = async (e) => {
+    e.preventDefault();
+
+    try {
+      const { res } = await del(`/review/delete/${props.reviews.id}`);
+      if (res.status === 200) {
+        window.location.reload(false);
+      } else {
+        alert("Failed to drop class!");
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 

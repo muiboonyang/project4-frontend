@@ -77,7 +77,8 @@ const Reviews = () => {
             <Form.Label>Description</Form.Label>
             <Form.Control
               required
-              type="text"
+              as="textarea"
+              rows={3}
               name="description"
               placeholder="Enter description"
             />
