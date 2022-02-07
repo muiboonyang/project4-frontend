@@ -2,7 +2,11 @@ import { NavLink } from "react-router-dom";
 import React, { useContext } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRunning } from "@fortawesome/free-solid-svg-icons";
+import {
+  faRunning,
+  faSignOutAlt,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -51,16 +55,15 @@ const NavBar = () => {
                   My Classes
                 </NavLink>
                 <NavLink to="/profile" activeClassName={styles.active}>
-                  <i className="fa fa-fw fa-user"></i>
-                  {user.name}
+                  <FontAwesomeIcon icon={faUser} /> {user.name}
                 </NavLink>
-                <button onClick={logoutUser} className={styles.logout}>
-                  <i className="fa fa-fw fa-sign-out"></i>
+                <button onClick={logoutUser} className={styles.logoutButton}>
+                  <FontAwesomeIcon icon={faSignOutAlt} />
                 </button>
               </div>
             ) : (
               <NavLink to="/login" activeClassName={styles.active}>
-                <i className="fa fa-fw fa-user"></i> Log In
+                <FontAwesomeIcon icon={faUser} /> Log In
               </NavLink>
             )}
           </Nav>

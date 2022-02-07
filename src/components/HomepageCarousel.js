@@ -24,7 +24,7 @@ const HomepageCarousel = () => {
               />
 
               <Carousel.Caption className={styles.carouselCaption}>
-                <h1>Change Begins Here</h1>
+                <p>Change Begins Here</p>
               </Carousel.Caption>
             </Carousel.Item>
 
@@ -35,7 +35,7 @@ const HomepageCarousel = () => {
                 alt="HIIT-2"
               />
               <Carousel.Caption className={styles.carouselCaption}>
-                <h1>Change Begins Here</h1>
+                <p>Change Begins Here</p>
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
@@ -56,7 +56,7 @@ const HomepageCarousel = () => {
               />
 
               <Carousel.Caption className={styles.carouselCaption}>
-                <h1>Change Begins Here</h1>
+                <p>Change Begins Here</p>
               </Carousel.Caption>
             </Carousel.Item>
 
@@ -67,7 +67,7 @@ const HomepageCarousel = () => {
                 alt="HIIT-2"
               />
               <Carousel.Caption className={styles.carouselCaption}>
-                <h1>Change Begins Here</h1>
+                <p>Change Begins Here</p>
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>

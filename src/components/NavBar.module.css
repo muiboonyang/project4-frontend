@@ -34,9 +34,10 @@
   color: white;
 }
 
-.logout {
+.logoutButton {
   background-color: black;
   color: white;
+  border: none;
 }
 
 .message {

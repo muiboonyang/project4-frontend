@@ -1,9 +1,26 @@
 import React, { useContext } from "react";
 import styles from "./ReviewCardTemplate.module.css";
 import AuthContext from "../context/AuthContext";
+import useFetchDelete from "../utils/useFetchDelete";
 
 const ReviewCardTemplate = (props) => {
   let { user } = useContext(AuthContext);
+  const del = useFetchDelete();
+
+  ///////////////////////////////
+  // DELETE - Delete specific review
+  ///////////////////////////////
+
+  const deleteReview = async () => {
+    const { res } = await del(`/review/delete/${props.reviews.id}`);
+    if (res.status === 200) {
+      window.location.reload(false);
+    }
+  };
+
+  ///////////////////////////////
+  // Convert date format
+  ///////////////////////////////
 
   const convertToDateFormat = (string) => {
     const months = [
@@ -43,7 +60,7 @@ const ReviewCardTemplate = (props) => {
       </div>
       {user.admin ? (
         <div className={styles.buy}>
-          <button className={styles.button} onSubmit="">
+          <button className={styles.button} onClick={deleteReview}>
             Delete
           </button>
         </div>

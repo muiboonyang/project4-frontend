@@ -7,7 +7,7 @@ import AuthContext from "../context/AuthContext";
 // Custom hook (useFetchGet) to check token expiry during each 'GET' request and initiate token refresh
 ///////////////////////////////////////////////////////////
 
-const useFetchGet = () => {
+const useFetchDelete = () => {
   const config = {};
 
   let { authTokens, setAuthTokens, setUser } = useContext(AuthContext);
@@ -18,7 +18,7 @@ const useFetchGet = () => {
     url = `${baseURL}${url}`;
     let res = await fetch(url, config);
     let data = await res.json();
-    console.log("GETTING:", data);
+    console.log("DELETING:", data);
     return { res, data };
   };
 
@@ -61,6 +61,7 @@ const useFetchGet = () => {
     config["headers"] = {
       Authorization: `Bearer ${authTokens?.access}`,
     };
+    config["method"] = "DELETE";
     config["mode"] = "cors";
 
     let { res, data } = await originalRequest(url, config);
@@ -70,4 +71,4 @@ const useFetchGet = () => {
   return callFetch;
 };
 
-export default useFetchGet;
+export default useFetchDelete;

@@ -15,7 +15,8 @@
 
 .container:hover {
   /* transform: scale(1.1); */
-  background-color: rgb(166, 217, 241);
+  /* background-color: rgb(166, 217, 241); */
+  background-color: rgb(218, 142, 201);
 }
 
 .detailsContainer {

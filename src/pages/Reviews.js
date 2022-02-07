@@ -15,9 +15,12 @@ const Reviews = () => {
   const get = useFetchGet();
   const post = useFetchPost();
 
-  const getReviews = async () => {
-    const { res, data } = await get("/review/view-all/");
+  ///////////////////////////////
+  // POST - Get all review
+  ///////////////////////////////
 
+  const getReviews = async () => {
+    const { res, data } = await get(`/review/view-all/`);
     if (res.status === 200) {
       setReviews(data);
     }
@@ -27,6 +30,10 @@ const Reviews = () => {
     getReviews();
     // eslint-disable-next-line
   }, []);
+
+  ///////////////////////////////
+  // POST - Create review
+  ///////////////////////////////
 
   const createReview = async (e) => {
     e.preventDefault();
