@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import styles from "./ScheduleCardTemplate.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import useFetchPost from "../utils/useFetchPost";
 
 const ReviewCardTemplate = (props) => {
   let { user } = useContext(AuthContext);
+  let history = useHistory();
   const post = useFetchPost();
 
   ///////////////////////////////
@@ -16,7 +17,7 @@ const ReviewCardTemplate = (props) => {
     e.preventDefault();
 
     try {
-      const { res, data } = await post(`/class/book/`, {
+      const { res } = await post(`/class/book/`, {
         class_type: props.schedule.class_type,
         class_instructor: props.schedule.class_instructor,
         date: props.schedule.date,
@@ -27,8 +28,7 @@ const ReviewCardTemplate = (props) => {
       });
 
       if (res.status === 200) {
-        console.log(data);
-        window.location.reload(false);
+        history.push("/classes");
       } else {
         alert("Failed to book class!");
       }
@@ -119,7 +119,7 @@ const ReviewCardTemplate = (props) => {
         </div>
       </div>
 
-      {user.admin ? (
+      {user ? (
         <div className={styles.book}>
           <button className={styles.button} onClick={bookClass}>
             Book
