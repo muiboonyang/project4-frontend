@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./Schedule.module.css";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import ScheduleCardTemplate from "../components/ScheduleCardTemplate";
+import scheduleData from "./ScheduleData";
+import { v4 as uuidv4 } from "uuid";
 
 const Schedule = () => {
   return (
@@ -10,11 +10,15 @@ const Schedule = () => {
       <br />
       <h2>Schedule</h2>
       <br />
-      <Container fluid="md">
-        <Row>
-          <Col className="title">Content</Col>
-        </Row>
-      </Container>
+      <div className={styles.container}>
+        {scheduleData.map((schedule) => {
+          return (
+            <div key={uuidv4()}>
+              <ScheduleCardTemplate schedule={schedule} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
