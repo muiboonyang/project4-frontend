@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./ReviewCardTemplate.module.css";
+import AuthContext from "../context/AuthContext";
 
 const ReviewCardTemplate = (props) => {
+  let { user } = useContext(AuthContext);
+
   const convertToDateFormat = (string) => {
     const months = [
       "January",
@@ -38,11 +41,15 @@ const ReviewCardTemplate = (props) => {
           <p>Date: {convertToDateFormat(props.reviews.date)}</p>
         </div>
       </div>
-      <div className={styles.buy}>
-        <button className={styles.button} onSubmit="">
-          Delete
-        </button>
-      </div>
+      {user.admin ? (
+        <div className={styles.buy}>
+          <button className={styles.button} onSubmit="">
+            Delete
+          </button>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

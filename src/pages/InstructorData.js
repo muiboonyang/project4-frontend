@@ -2,7 +2,7 @@ const instructorData = [
   {
     name: "nick",
     class: "ride",
-    cardImage: "https://i.imgur.com/56F0Idm.jpg",
+    cardImage: "https://i.imgur.com/p54NsRs.jpg",
     profileImage:
       "https://i.imgur.com/woM4xCT.jpghttps://i.imgur.com/45ZM1rU.jpg",
     description:
@@ -11,7 +11,7 @@ const instructorData = [
   {
     name: "aimee",
     class: "ride",
-    cardImage: "https://i.imgur.com/bXVGIme.jpg",
+    cardImage: "https://i.imgur.com/FXkPUgL.jpg",
     profileImage: "https://i.imgur.com/j2QqsKl.jpg",
     description:
       "A fashion model and fitness fanatic, Aimee is a ball of energy that is passionate about creating a challenging yet exhilarating experience designed to push your mental and physical game to new heights. With her background in music and dance, expect a feel-good, invigorating ride with exciting choreography and long sprints, while also reconnecting with your inner strength to become the best version of you…all set to the beat of the music.",

@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./InstructorProfile.module.css";
 import instructorData from "./InstructorData";
 import { useParams } from "react-router";
+import NavLink from "react-bootstrap/NavLink";
 
 const InstructorProfile = () => {
   const params = useParams();
@@ -15,7 +16,7 @@ const InstructorProfile = () => {
   instructorData.forEach((data) => {
     if (params.name === data.name) {
       instructorName = data.name;
-      console.log(data.class);
+
       if (data.class === "ride") {
         instructorClassRide = data.class;
       } else {
@@ -41,6 +42,9 @@ const InstructorProfile = () => {
         )}
         <div className={styles.description}>{instructorDescription}</div>
       </div>
+      <NavLink to="/instructors">
+        <button>X</button>
+      </NavLink>
     </div>
   );
 };

@@ -24,6 +24,8 @@
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+  transition: transform 0.5s;
+  border-bottom: 2px solid rgb(0, 0, 0);
 }
 
 /* Navbar links on mouse-over */
@@ -42,14 +44,10 @@
   text-align: center;
 }
 
-.active {
+.navbar .active {
   border-bottom: 2px solid rgb(255, 255, 255);
 }
 
 .loggedInContainer a {
   margin-right: 15px;
-}
-
-.dropdown button:active {
-  background-color: rgb(67, 172, 173) !important;
 }
