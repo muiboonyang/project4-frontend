@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./BookingsCardTemplate.module.css";
 import { NavLink } from "react-router-dom";
 import useFetchDelete from "../utils/useFetchDelete";
+import useFetchPost from "../utils/useFetchPost";
+import AuthContext from "../context/AuthContext";
 
 const BookingsCardTemplate = (props) => {
+  let { user } = useContext(AuthContext);
+  const post = useFetchPost();
   const del = useFetchDelete();
 
   ///////////////////////////////
-  // POST - Book class
+  // POST - Refund credit
+  ///////////////////////////////
+
+  const refundCredit = async (e) => {
+    e.preventDefault();
+    try {
+      const { res } = await post(`/transactions/create/`, {
+        classesPurchased: 1,
+        user: user.user_id,
+        name: user.name,
+      });
+
+      if (res.status === 200) {
+        window.location.reload(false);
+      } else {
+        alert("Refund failed!");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  ///////////////////////////////
+  // POST - Cancel class
   ///////////////////////////////
 
   const cancelClass = async (e) => {
@@ -15,7 +42,7 @@ const BookingsCardTemplate = (props) => {
     try {
       const { res } = await del(`/class/delete/${props.classDetails.id}`);
       if (res.status === 200) {
-        window.location.reload(false);
+        // window.location.reload(false);
       } else {
         alert("Failed to drop class!");
       }
@@ -122,7 +149,7 @@ const BookingsCardTemplate = (props) => {
       </div>
 
       <div className={styles.cancel}>
-        <button className={styles.button} onClick={cancelClass}>
+        <button className={styles.button} onClick={(cancelClass, refundCredit)}>
           Cancel
         </button>
       </div>

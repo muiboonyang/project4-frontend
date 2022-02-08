@@ -16,14 +16,13 @@ const PricingCardTemplate = (props) => {
   const buyPackage = async (e) => {
     e.preventDefault();
     try {
-      const { res, data } = await post(`/transactions/create/`, {
+      const { res } = await post(`/transactions/create/`, {
         classesPurchased: props.pricingData.credits,
         user: user.user_id,
         name: user.name,
       });
 
       if (res.status === 200) {
-        console.log(data);
         window.location.reload(false);
       } else {
         alert("Purchase failed!");

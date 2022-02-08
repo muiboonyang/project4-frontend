@@ -28,8 +28,6 @@ const Bookings = () => {
     // eslint-disable-next-line
   }, []);
 
-  console.log(transactions);
-
   return (
     <div className={styles.classesContainer}>
       <br />
