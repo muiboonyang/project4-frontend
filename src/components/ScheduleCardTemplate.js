@@ -4,7 +4,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import useFetchPost from "../utils/useFetchPost";
 
-const ReviewCardTemplate = (props) => {
+const ScheduleCardTemplate = (props) => {
   let { user } = useContext(AuthContext);
   let history = useHistory();
   const post = useFetchPost();
@@ -135,9 +135,12 @@ const ReviewCardTemplate = (props) => {
 
       {user ? (
         <div className={styles.book}>
-          <button className={styles.button} onClick={bookClass}>
-            Book
-          </button>
+          <NavLink to={`/class/${props.schedule.id}`}>
+            <button className={styles.button}>
+              {/* <button className={styles.button} onClick={bookClass}> */}
+              Book
+            </button>
+          </NavLink>
         </div>
       ) : (
         <div className={styles.book}>
@@ -150,4 +153,4 @@ const ReviewCardTemplate = (props) => {
   );
 };
 
-export default ReviewCardTemplate;
+export default ScheduleCardTemplate;

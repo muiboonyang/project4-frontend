@@ -1,5 +1,6 @@
 const scheduleData = [
   {
+    id: 1,
     class_type: "resistance",
     class_instructor: "nick",
     date: "2022-02-11",
@@ -10,6 +11,7 @@ const scheduleData = [
     ],
   },
   {
+    id: 2,
     class_type: "ride",
     class_instructor: "aimee",
     date: "2022-02-11",
@@ -20,6 +22,7 @@ const scheduleData = [
     ],
   },
   {
+    id: 3,
     class_type: "ride",
     class_instructor: "maya",
     date: "2022-02-12",
@@ -30,6 +33,7 @@ const scheduleData = [
     ],
   },
   {
+    id: 4,
     class_type: "resistance",
     class_instructor: "asmine",
     date: "2022-02-13",
@@ -40,6 +44,7 @@ const scheduleData = [
     ],
   },
   {
+    id: 5,
     class_type: "ride",
     class_instructor: "ethel",
     date: "2022-02-14",
@@ -50,6 +55,7 @@ const scheduleData = [
     ],
   },
   {
+    id: 6,
     class_type: "resistance",
     class_instructor: "nick",
     date: "2022-02-14",
@@ -60,6 +66,7 @@ const scheduleData = [
     ],
   },
   {
+    id: 7,
     class_type: "ride",
     class_instructor: "aimee",
     date: "2022-02-15",
@@ -70,6 +77,7 @@ const scheduleData = [
     ],
   },
   {
+    id: 8,
     class_type: "ride",
     class_instructor: "maya",
     date: "2022-02-15",
@@ -80,6 +88,7 @@ const scheduleData = [
     ],
   },
   {
+    id: 9,
     class_type: "resistance",
     class_instructor: "asmine",
     date: "2022-02-16",
@@ -90,6 +99,7 @@ const scheduleData = [
     ],
   },
   {
+    id: 10,
     class_type: "ride",
     class_instructor: "ethel",
     date: "2022-02-16",
@@ -100,6 +110,7 @@ const scheduleData = [
     ],
   },
   {
+    id: 11,
     class_type: "resistance",
     class_instructor: "asmine",
     date: "2022-02-17",
@@ -110,6 +121,7 @@ const scheduleData = [
     ],
   },
   {
+    id: 12,
     class_type: "ride",
     class_instructor: "ethel",
     date: "2022-02-17",

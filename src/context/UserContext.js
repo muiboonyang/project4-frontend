@@ -6,6 +6,13 @@ const UserContext = React.createContext();
 
 export const UserProvider = ({ children }) => {
   const [transactions, setTransactions] = useState("");
+  let credits = transactions.classesPurchased;
+  let debits = transactions.classesUsed;
+  let balance = credits - debits;
+  console.log(transactions);
+  console.log(`Current credits: ${credits}`);
+  console.log(`Current debits: ${debits}`);
+  console.log(`Current balance: ${balance}`);
 
   const get = useFetchGet();
   let { user } = useContext(AuthContext);
@@ -16,7 +23,7 @@ export const UserProvider = ({ children }) => {
 
       if (res.status === 200) {
         setTransactions(data);
-        console.log(data);
+        // console.log(data);
       } else {
         alert("Failed to retrieve transactions!");
       }
@@ -36,6 +43,8 @@ export const UserProvider = ({ children }) => {
 
   const contextData = {
     transactions: transactions,
+    credits: credits,
+    debits: debits,
   };
 
   //////////////////////////////////
