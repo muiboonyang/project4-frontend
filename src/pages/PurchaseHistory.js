@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Purchase.module.css";
+import styles from "./PurchaseHistory.module.css";
 
 const Purchase = () => {
   return (

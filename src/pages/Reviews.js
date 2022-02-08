@@ -16,7 +16,7 @@ const Reviews = () => {
   const post = useFetchPost();
 
   ///////////////////////////////
-  // POST - Get all review
+  // GET - Get all review
   ///////////////////////////////
 
   const getReviews = async () => {

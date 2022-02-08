@@ -5,14 +5,7 @@ import AuthContext from "../context/AuthContext";
 const UserContext = React.createContext();
 
 export const UserProvider = ({ children }) => {
-  const [transactions, setTransactions] = useState("");
-  let credits = transactions.classesPurchased;
-  let debits = transactions.classesUsed;
-  let balance = credits - debits;
-  console.log(transactions);
-  console.log(`Current credits: ${credits}`);
-  console.log(`Current debits: ${debits}`);
-  console.log(`Current balance: ${balance}`);
+  const [transactions, setTransactions] = useState([]);
 
   const get = useFetchGet();
   let { user } = useContext(AuthContext);
@@ -23,7 +16,6 @@ export const UserProvider = ({ children }) => {
 
       if (res.status === 200) {
         setTransactions(data);
-        // console.log(data);
       } else {
         alert("Failed to retrieve transactions!");
       }
@@ -38,6 +30,24 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   //////////////////////////////////
+  // Calculate balance credits
+  //////////////////////////////////
+
+  let credits = transactions
+    .map((item) => item.classesPurchased)
+    .reduce((prev, next) => prev + next);
+
+  let debits = transactions
+    .map((item) => item.classesUsed)
+    .reduce((prev, next) => prev + next);
+
+  let balance = credits - debits;
+
+  console.log(`Current credits: ${credits}`);
+  console.log(`Current debits: ${debits}`);
+  console.log(`Current balance: ${balance}`);
+
+  //////////////////////////////////
   // Pass contextData into context provider
   //////////////////////////////////
 
@@ -45,6 +55,7 @@ export const UserProvider = ({ children }) => {
     transactions: transactions,
     credits: credits,
     debits: debits,
+    balance: balance,
   };
 
   //////////////////////////////////

@@ -11,6 +11,7 @@ const ScheduleCardTemplate = (props) => {
 
   ///////////////////////////////
   // POST - Book class
+  // To-do: pass to custom route (ClassDetails)
   ///////////////////////////////
 
   const bookClass = async (e) => {
