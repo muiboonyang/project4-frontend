@@ -5,7 +5,7 @@ import AuthContext from "../context/AuthContext";
 const UserContext = React.createContext();
 
 export const UserProvider = ({ children }) => {
-  const [transactions, setTransactions] = useState([0]);
+  const [transactions, setTransactions] = useState([]);
 
   const get = useFetchGet();
   let { user } = useContext(AuthContext);
@@ -35,11 +35,11 @@ export const UserProvider = ({ children }) => {
 
   let credits = transactions
     .map((item) => item.classCredit)
-    .reduce((prev, next) => prev + next);
+    .reduce((prev, next) => prev + next, 0);
 
   let debits = transactions
     .map((item) => item.classDebit)
-    .reduce((prev, next) => prev + next);
+    .reduce((prev, next) => prev + next, 0);
 
   let balance = credits - debits;
 

@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import styles from "./PurchaseHistory.module.css";
 import useFetchGet from "../utils/useFetchGet";
 import AuthContext from "../context/AuthContext";
+import Table from "react-bootstrap/Table";
 
 const Purchase = () => {
   let { user } = useContext(AuthContext);
@@ -27,7 +28,64 @@ const Purchase = () => {
     // eslint-disable-next-line
   }, []);
 
-  console.log("Purchase history: ", transactions);
+  ///////////////////////////////
+  // Convert date format
+  ///////////////////////////////
+
+  const convertToDateFormat = (string) => {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const year = string.slice(0, 4);
+    const month = months[string.slice(5, 7) - 1];
+    const day = string.slice(8, 10);
+    const formattedDate = `${day} ${month} ${year}`;
+
+    return formattedDate;
+  };
+
+  ///////////////////////////////
+  // Convert time format
+  ///////////////////////////////
+
+  const convertTimeFormat = (time) => {
+    // Check correct time format and split into components
+    time = time
+      .toString()
+      .match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+    if (time.length > 1) {
+      // If time format correct
+      time = time.slice(1); // Remove full string match value
+      time[5] = +time[0] < 12 ? " AM" : " PM"; // Set AM/PM
+      time[0] = +time[0] % 12 || 12; // Adjust hours
+    }
+    return time.join(""); // return adjusted time or original string
+  };
+
+  ///////////////////////////////
+  // Capitalize instructor name
+  ///////////////////////////////
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  /////////////////////////////////
+  // Formatted data
+  /////////////////////////////////
 
   const renderTable = transactions.map((item, idx) => {
     return (
@@ -36,9 +94,9 @@ const Purchase = () => {
         <td>{idx + 1}</td>
         <td>{item.classCredit}</td>
         <td>{item.classDebit}</td>
-        <td>{item.transaction_type}</td>
-        <td>{item.date}</td>
-        <td>{item.time}</td>
+        <td>{capitalizeFirstLetter(item.transaction_type)}</td>
+        <td>{convertToDateFormat(item.date)}</td>
+        <td>{convertTimeFormat(item.time)}</td>
       </tr>
     );
   });
@@ -49,7 +107,7 @@ const Purchase = () => {
       <h2>Purchase History</h2>
       <br />
 
-      <table className={styles.table}>
+      <Table striped bordered hover variant="dark" className={styles.table}>
         <thead className={styles.tableHead}>
           <tr className={styles.tableHeaders}>
             <th className={styles.tableHeader1}>S/N</th>
@@ -61,7 +119,7 @@ const Purchase = () => {
           </tr>
         </thead>
         <tbody>{renderTable}</tbody>
-      </table>
+      </Table>
     </div>
   );
 };

@@ -14,28 +14,5 @@
   font-size: 2rem;
   text-align: center;
   margin: auto;
-  border: 1px solid white;
-}
-
-.tableHead {
-  border: 1px solid white;
-}
-
-/* .th,
-td {
-  border: 1px solid white;
-} */
-
-.tableHeader1,
-.tableHeader2,
-.tableHeader3,
-.tableHeader4,
-.tableHeader5 {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-.tableHeader6 {
-  padding-left: 200px;
-  padding-right: 200px;
+  width: 70%;
 }
