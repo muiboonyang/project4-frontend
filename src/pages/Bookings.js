@@ -2,14 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./Bookings.module.css";
 import BookingsCardTemplate from "../components/BookingsCardTemplate";
 import AuthContext from "../context/AuthContext";
-import UserContext from "../context/UserContext";
 import useFetchGet from "../utils/useFetchGet";
 import { v4 as uuidv4 } from "uuid";
 
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
   let { user } = useContext(AuthContext);
-  let { transactions } = useContext(UserContext); // to refund class to user if they cancel
   const get = useFetchGet();
 
   ///////////////////////////////
