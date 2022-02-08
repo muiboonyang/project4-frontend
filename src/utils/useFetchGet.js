@@ -18,7 +18,7 @@ const useFetchGet = () => {
     url = `${baseURL}${url}`;
     let res = await fetch(url, config);
     let data = await res.json();
-    console.log("GETTING:", data);
+    console.log("GETTING:", data); // Console Log
     return { res, data };
   };
 

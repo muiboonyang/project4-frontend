@@ -18,7 +18,7 @@ const useFetchPost = () => {
     url = `${baseURL}${url}`;
     let res = await fetch(url, config);
     let data = await res.json();
-    console.log("POSTING:", data);
+    console.log("POSTING:", data); // Console Log
     return { res, data };
   };
 

@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import styles from "./ScheduleCardTemplate.module.css";
 import { NavLink, useHistory } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import UserContext from "../context/UserContext";
 import useFetchPost from "../utils/useFetchPost";
 
 const ScheduleCardTemplate = (props) => {
   let { user } = useContext(AuthContext);
+  let { balance } = useContext(UserContext);
   let history = useHistory();
   const post = useFetchPost();
 
@@ -135,14 +137,24 @@ const ScheduleCardTemplate = (props) => {
       </div>
 
       {user ? (
-        <div className={styles.book}>
-          <NavLink to={`/class/${props.schedule.id}`}>
-            <button className={styles.button}>
-              {/* <button className={styles.button} onClick={bookClass}> */}
-              Book
-            </button>
-          </NavLink>
-        </div>
+        <>
+          {balance > 0 ? (
+            <div className={styles.book}>
+              <NavLink to={`/class/${props.schedule.id}`}>
+                <button className={styles.button}>
+                  {/* <button className={styles.button} onClick={bookClass}> */}
+                  Book
+                </button>
+              </NavLink>
+            </div>
+          ) : (
+            <div className={styles.book}>
+              <NavLink to="/pricing">
+                <button className={styles.button}>Book</button>
+              </NavLink>
+            </div>
+          )}
+        </>
       ) : (
         <div className={styles.book}>
           <NavLink to="/login">

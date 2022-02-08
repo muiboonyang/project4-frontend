@@ -18,7 +18,7 @@ const useFetchDelete = () => {
     url = `${baseURL}${url}`;
     let res = await fetch(url, config);
     let data = await res.json();
-    console.log("DELETING:", data);
+    console.log("DELETING:", data); // Console Log
     return { res, data };
   };
 
