@@ -17,7 +17,8 @@ const PricingCardTemplate = (props) => {
     e.preventDefault();
     try {
       const { res } = await post(`/transactions/create/`, {
-        classesPurchased: props.pricingData.credits,
+        classCredit: props.pricingData.credits,
+        transaction_type: "purchase",
         user: user.user_id,
         name: user.name,
       });

@@ -10,15 +10,20 @@ const BookingsCardTemplate = (props) => {
   const post = useFetchPost();
   const del = useFetchDelete();
 
-  ///////////////////////////////
-  // POST - Refund credit
-  ///////////////////////////////
+  ////////////////////////////////////
+  // Cancel and refund
+  ////////////////////////////////////
 
-  const refundCredit = async (e) => {
+  const cancelAndRefund = async (e) => {
     e.preventDefault();
     try {
+      ///////////////////////////////
+      // POST - Refund credit
+      ///////////////////////////////
+
       const { res } = await post(`/transactions/create/`, {
-        classesPurchased: 1,
+        classCredit: 1,
+        transaction_type: "refund",
         user: user.user_id,
         name: user.name,
       });
@@ -28,28 +33,29 @@ const BookingsCardTemplate = (props) => {
       } else {
         alert("Refund failed!");
       }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+      //   } catch (err) {
+      //     console.log(err);
+      //   }
+      // };
 
-  ///////////////////////////////
-  // POST - Cancel class
-  ///////////////////////////////
+      ///////////////////////////////
+      // POST - Cancel class
+      ///////////////////////////////
 
-  const cancelClass = async (e) => {
-    e.preventDefault();
-    try {
-      const { res } = await del(`/class/delete/${props.classDetails.id}`);
-      if (res.status === 200) {
-        // window.location.reload(false);
+      const { res2 } = await del(`/class/delete/${props.classDetails.id}`);
+      if (res2.status === 200) {
+        window.location.reload(false);
       } else {
         alert("Failed to drop class!");
       }
+
+      ////////////////////////////////////
     } catch (err) {
       console.log(err);
     }
   };
+
+  ////////////////////////////////////
 
   ///////////////////////////////
   // Convert date format
@@ -129,6 +135,10 @@ const BookingsCardTemplate = (props) => {
     new Date(date)
   );
 
+  ///////////////////////////
+  // Combined function
+  ///////////////////////////
+
   return (
     <div className={styles.container}>
       <div className={styles.detailsContainer}>
@@ -149,7 +159,7 @@ const BookingsCardTemplate = (props) => {
       </div>
 
       <div className={styles.cancel}>
-        <button className={styles.button} onClick={(cancelClass, refundCredit)}>
+        <button className={styles.button} onClick={cancelAndRefund}>
           Cancel
         </button>
       </div>

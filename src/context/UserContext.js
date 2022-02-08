@@ -34,11 +34,11 @@ export const UserProvider = ({ children }) => {
   //////////////////////////////////
 
   let credits = transactions
-    .map((item) => item.classesPurchased)
+    .map((item) => item.classCredit)
     .reduce((prev, next) => prev + next);
 
   let debits = transactions
-    .map((item) => item.classesUsed)
+    .map((item) => item.classDebit)
     .reduce((prev, next) => prev + next);
 
   let balance = credits - debits;

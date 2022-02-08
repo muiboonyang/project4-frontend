@@ -50,13 +50,15 @@
   border-bottom: 2px solid rgb(255, 255, 255);
 }
 
-.balance {
+/* .balance {
   margin-right: 20px;
-}
+} */
 
 .loggedInContainer a {
   margin-right: 15px;
 }
+
+/* CSS for dropdown menu */
 
 .dropdown {
   width: 150px;

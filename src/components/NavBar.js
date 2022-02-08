@@ -44,7 +44,9 @@ const NavBar = () => {
           {user ? (
             <>
               <Nav>
-                <div className={styles.balance}>Credits: {balance}</div>
+                <NavLink to="/purchases">
+                  <div className={styles.balance}>Credits: {balance}</div>
+                </NavLink>
               </Nav>
 
               <Nav>
