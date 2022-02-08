@@ -8,8 +8,9 @@
   padding: 15px;
   background-color: rgb(0, 0, 0);
   font-family: "Montserrat", sans-serif;
-  box-shadow: 0 1px 1000px darkgray;
-  z-index: 1000;
+  z-index: 2;
+  /* box-shadow: 0 1px 1000px darkgray; */
+  /* z-index: 0; */
 }
 
 /* Navbar links */
@@ -77,7 +78,7 @@
 }
 
 .dropdownMenu a:hover {
-  background-color: rgb(67, 172, 173);
+  background-color: rgb(161, 161, 161);
   border: none;
 }
 

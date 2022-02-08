@@ -2,11 +2,7 @@ import { NavLink } from "react-router-dom";
 import React, { useContext } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faRunning,
-  faSignOutAlt,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faRunning, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import Dropdown from "react-bootstrap/Dropdown";
 import Nav from "react-bootstrap/Nav";
@@ -62,15 +58,15 @@ const NavBar = () => {
                       </Dropdown.Item>
                     </NavLink>
 
-                    <NavLink to="/classes">
+                    <NavLink to="/bookings">
                       <Dropdown.Item as="button" value="classes">
-                        My Classes
+                        Bookings
                       </Dropdown.Item>
                     </NavLink>
 
-                    <NavLink to="/purchase">
+                    <NavLink to="/purchases">
                       <Dropdown.Item as="button" value="purchases">
-                        My Purchases
+                        Purchases
                       </Dropdown.Item>
                     </NavLink>
 

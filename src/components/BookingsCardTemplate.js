@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./ClassCardTemplate.module.css";
+import styles from "./BookingsCardTemplate.module.css";
 import { NavLink } from "react-router-dom";
 import useFetchDelete from "../utils/useFetchDelete";
 
-const ReviewCardTemplate = (props) => {
+const BookingsCardTemplate = (props) => {
   const del = useFetchDelete();
 
   ///////////////////////////////
@@ -130,4 +130,4 @@ const ReviewCardTemplate = (props) => {
   );
 };
 
-export default ReviewCardTemplate;
+export default BookingsCardTemplate;
