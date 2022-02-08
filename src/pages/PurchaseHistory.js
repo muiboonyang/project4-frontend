@@ -111,8 +111,8 @@ const Purchase = () => {
         <thead className={styles.tableHead}>
           <tr className={styles.tableHeaders}>
             <th className={styles.tableHeader1}>S/N</th>
-            <th className={styles.tableHeader2}>Credit</th>
-            <th className={styles.tableHeader3}>Debit</th>
+            <th className={styles.tableHeader2}>Class Credits</th>
+            <th className={styles.tableHeader3}>Used</th>
             <th className={styles.tableHeader4}>Transaction Type</th>
             <th className={styles.tableHeader5}>Date</th>
             <th className={styles.tableHeader6}>Time</th>
