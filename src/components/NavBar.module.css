@@ -50,6 +50,10 @@
   border-bottom: 2px solid rgb(255, 255, 255);
 }
 
+.balance {
+  margin-right: 20px;
+}
+
 .loggedInContainer a {
   margin-right: 15px;
 }

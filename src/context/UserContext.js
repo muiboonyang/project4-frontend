@@ -5,7 +5,7 @@ import AuthContext from "../context/AuthContext";
 const UserContext = React.createContext();
 
 export const UserProvider = ({ children }) => {
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState([0]);
 
   const get = useFetchGet();
   let { user } = useContext(AuthContext);
@@ -43,9 +43,9 @@ export const UserProvider = ({ children }) => {
 
   let balance = credits - debits;
 
-  console.log(`Current credits: ${credits}`);
-  console.log(`Current debits: ${debits}`);
-  console.log(`Current balance: ${balance}`);
+  //   console.log(`Current credits: ${credits}`);
+  //   console.log(`Current debits: ${debits}`);
+  //   console.log(`Current balance: ${balance}`);
 
   //////////////////////////////////
   // Pass contextData into context provider

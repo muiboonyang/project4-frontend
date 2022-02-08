@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import React, { useContext } from "react";
+import AuthContext from "../context/AuthContext";
+import UserContext from "../context/UserContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRunning, faUser } from "@fortawesome/free-solid-svg-icons";
@@ -8,10 +10,10 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import styles from "./NavBar.module.css";
-import AuthContext from "../context/AuthContext";
 
 const NavBar = () => {
   let { user, logoutUser } = useContext(AuthContext);
+  let { balance } = useContext(UserContext);
 
   return (
     <>
@@ -39,61 +41,72 @@ const NavBar = () => {
             </NavLink>
           </Nav>
 
-          <Nav>
-            {user ? (
-              <div className={styles.loggedInContainer}>
-                <Dropdown className={styles.dropdown}>
-                  <Dropdown.Toggle
-                    variant="dark"
-                    style={{ fontWeight: "bold" }}
-                    className={styles.dropdownHeader}
-                  >
-                    {user.name}
-                  </Dropdown.Toggle>
+          {user ? (
+            <>
+              <Nav>
+                <div className={styles.balance}>Credits: {balance}</div>
+              </Nav>
 
-                  <Dropdown.Menu variant="dark" className={styles.dropdownMenu}>
-                    <NavLink to="/profile">
-                      <Dropdown.Item as="button" value="profile">
-                        Profile
-                      </Dropdown.Item>
-                    </NavLink>
+              <Nav>
+                <div className={styles.loggedInContainer}>
+                  <Dropdown className={styles.dropdown}>
+                    <Dropdown.Toggle
+                      variant="dark"
+                      style={{ fontWeight: "bold" }}
+                      className={styles.dropdownHeader}
+                    >
+                      {user.name}
+                    </Dropdown.Toggle>
 
-                    <NavLink to="/bookings">
-                      <Dropdown.Item as="button" value="classes">
-                        Bookings
-                      </Dropdown.Item>
-                    </NavLink>
+                    <Dropdown.Menu
+                      variant="dark"
+                      className={styles.dropdownMenu}
+                    >
+                      <NavLink to="/profile">
+                        <Dropdown.Item as="button" value="profile">
+                          Profile
+                        </Dropdown.Item>
+                      </NavLink>
 
-                    <NavLink to="/purchases">
-                      <Dropdown.Item as="button" value="purchases">
-                        Purchases
-                      </Dropdown.Item>
-                    </NavLink>
+                      <NavLink to="/bookings">
+                        <Dropdown.Item as="button" value="classes">
+                          Bookings
+                        </Dropdown.Item>
+                      </NavLink>
 
-                    <NavLink to="/reviews">
-                      <Dropdown.Item as="button" value="reviews">
-                        Reviews
-                      </Dropdown.Item>
-                    </NavLink>
+                      <NavLink to="/purchases">
+                        <Dropdown.Item as="button" value="purchases">
+                          Purchases
+                        </Dropdown.Item>
+                      </NavLink>
 
-                    <NavLink to="/">
-                      <Dropdown.Item
-                        as="button"
-                        value="logout"
-                        onClick={logoutUser}
-                      >
-                        Logout
-                      </Dropdown.Item>
-                    </NavLink>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
-            ) : (
+                      <NavLink to="/reviews">
+                        <Dropdown.Item as="button" value="reviews">
+                          Reviews
+                        </Dropdown.Item>
+                      </NavLink>
+
+                      <NavLink to="/">
+                        <Dropdown.Item
+                          as="button"
+                          value="logout"
+                          onClick={logoutUser}
+                        >
+                          Logout
+                        </Dropdown.Item>
+                      </NavLink>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>
+              </Nav>
+            </>
+          ) : (
+            <Nav>
               <NavLink to="/login" activeClassName={styles.active}>
                 <FontAwesomeIcon icon={faUser} /> Log In
               </NavLink>
-            )}
-          </Nav>
+            </Nav>
+          )}
         </Navbar>
       </div>
     </>
