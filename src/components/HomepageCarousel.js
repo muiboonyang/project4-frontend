@@ -19,24 +19,24 @@ const HomepageCarousel = () => {
             <Carousel.Item interval={5000} className={styles.fillscreen}>
               <img
                 className="d-block w-100"
-                src="https://i.imgur.com/SPMaMQR.jpg"
+                src="https://i.imgur.com/XQoR59Z.jpg"
                 alt="HIIT-1"
               />
 
-              <Carousel.Caption className={styles.carouselCaption}>
+              {/* <Carousel.Caption className={styles.carouselCaption}>
                 <p>Change Begins Here</p>
-              </Carousel.Caption>
+              </Carousel.Caption> */}
             </Carousel.Item>
 
             <Carousel.Item interval={5000} className={styles.fillscreen}>
               <img
                 className="d-block w-100"
-                src="https://i.imgur.com/uXFcCW4.jpg"
+                src="https://i.imgur.com/udAlChI.jpg"
                 alt="HIIT-2"
               />
-              <Carousel.Caption className={styles.carouselCaption}>
+              {/* <Carousel.Caption className={styles.carouselCaption}>
                 <p>Change Begins Here</p>
-              </Carousel.Caption>
+              </Carousel.Caption> */}
             </Carousel.Item>
           </Carousel>
         </NavLink>
@@ -51,24 +51,24 @@ const HomepageCarousel = () => {
             <Carousel.Item interval={5000} className={styles.fillscreen}>
               <img
                 className="d-block w-100"
-                src="https://i.imgur.com/SPMaMQR.jpg"
+                src="https://i.imgur.com/XQoR59Z.jpg"
                 alt="HIIT-1"
               />
 
-              <Carousel.Caption className={styles.carouselCaption}>
+              {/* <Carousel.Caption className={styles.carouselCaption}>
                 <p>Change Begins Here</p>
-              </Carousel.Caption>
+              </Carousel.Caption> */}
             </Carousel.Item>
 
             <Carousel.Item interval={5000} className={styles.fillscreen}>
               <img
                 className="d-block w-100"
-                src="https://i.imgur.com/uXFcCW4.jpg"
+                src="https://i.imgur.com/udAlChI.jpg"
                 alt="HIIT-2"
               />
-              <Carousel.Caption className={styles.carouselCaption}>
+              {/* <Carousel.Caption className={styles.carouselCaption}>
                 <p>Change Begins Here</p>
-              </Carousel.Caption>
+              </Carousel.Caption> */}
             </Carousel.Item>
           </Carousel>
         </NavLink>

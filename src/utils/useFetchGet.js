@@ -37,7 +37,7 @@ const useFetchGet = () => {
     return data;
   };
 
-  const callFetch = async (url) => {
+  const callFetchGet = async (url) => {
     // get access token expiry date
     const user = jwt_decode(authTokens.access);
     // compare access token expiry date and current date (<1 -> expired)
@@ -67,7 +67,7 @@ const useFetchGet = () => {
     return { res, data };
   };
 
-  return callFetch;
+  return callFetchGet;
 };
 
 export default useFetchGet;

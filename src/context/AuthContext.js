@@ -30,6 +30,7 @@ export const AuthProvider = ({ children }) => {
   //////////////////////////////////
   // LOGIN user
   //////////////////////////////////
+
   const loginUser = async (e) => {
     e.preventDefault();
     const res = await fetch("http://127.0.0.1:8000/auth/login/", {
@@ -55,7 +56,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   //////////////////////////////////
-  // LOGOUT user
+  // LOGOUT user (no blacklist)
   //////////////////////////////////
   //   const logoutUser = () => {
   //     setAuthTokens(null);
@@ -118,7 +119,7 @@ export const AuthProvider = ({ children }) => {
   }, [authTokens, loading]);
 
   //////////////////////////////////
-  // dont load child components until 'loading' is false
+  // dont load child components until 'loading' is false (complete)
   // - to render everything out with data passed in
   //////////////////////////////////
 

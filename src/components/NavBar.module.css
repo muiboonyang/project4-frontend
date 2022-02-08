@@ -9,7 +9,7 @@
   background-color: rgb(0, 0, 0);
   font-family: "Montserrat", sans-serif;
   box-shadow: 0 1px 1000px darkgray;
-  z-index: 0;
+  z-index: 1000;
 }
 
 /* Navbar links */
@@ -51,4 +51,38 @@
 
 .loggedInContainer a {
   margin-right: 15px;
+}
+
+.dropdown {
+  width: 150px;
+}
+
+.dropdownHeader {
+  background-color: rgb(0, 0, 0);
+  padding: 10;
+  text-transform: uppercase;
+  text-align: center;
+  width: 150px;
+}
+
+.dropdownMenu {
+  background-color: rgb(0, 0, 0);
+  padding: 0;
+}
+
+.dropdownMenu a {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.dropdownMenu a:hover {
+  background-color: rgb(67, 172, 173);
+  border: none;
+}
+
+.dropdownMenu button {
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  font-size: 15px;
 }

@@ -42,7 +42,7 @@ const useFetchPost = () => {
   // Check token expiry everytime we use useFetch, run originalRequest function
   ///////////////////////////////////
 
-  const callFetch = async (url, input) => {
+  const callFetchPost = async (url, input) => {
     // get access token expiry date
     const user = jwt_decode(authTokens.access);
     // compare access token expiry date and current date (<1 -> expired)
@@ -78,7 +78,7 @@ const useFetchPost = () => {
     return { res, data };
   };
 
-  return callFetch;
+  return callFetchPost;
 };
 
 export default useFetchPost;

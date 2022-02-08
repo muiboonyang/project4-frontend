@@ -37,7 +37,7 @@ const useFetchDelete = () => {
     return data;
   };
 
-  const callFetch = async (url) => {
+  const callFetchDelete = async (url) => {
     // get access token expiry date
     const user = jwt_decode(authTokens.access);
     // compare access token expiry date and current date (<1 -> expired)
@@ -68,7 +68,7 @@ const useFetchDelete = () => {
     return { res, data };
   };
 
-  return callFetch;
+  return callFetchDelete;
 };
 
 export default useFetchDelete;

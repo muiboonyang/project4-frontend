@@ -8,6 +8,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
+import Dropdown from "react-bootstrap/Dropdown";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import styles from "./NavBar.module.css";
@@ -45,21 +46,51 @@ const NavBar = () => {
           <Nav>
             {user ? (
               <div className={styles.loggedInContainer}>
-                <NavLink to="/reviews" activeClassName={styles.active}>
-                  Reviews
-                </NavLink>
-                <NavLink to="/purchase" activeClassName={styles.active}>
-                  Purchase
-                </NavLink>
-                <NavLink to="/classes" activeClassName={styles.active}>
-                  My Classes
-                </NavLink>
-                <NavLink to="/profile" activeClassName={styles.active}>
-                  <FontAwesomeIcon icon={faUser} /> {user.name}
-                </NavLink>
-                <button onClick={logoutUser} className={styles.logoutButton}>
-                  <FontAwesomeIcon icon={faSignOutAlt} />
-                </button>
+                <Dropdown className={styles.dropdown}>
+                  <Dropdown.Toggle
+                    variant="dark"
+                    style={{ fontWeight: "bold" }}
+                    className={styles.dropdownHeader}
+                  >
+                    {user.name}
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu variant="dark" className={styles.dropdownMenu}>
+                    <NavLink to="/profile">
+                      <Dropdown.Item as="button" value="profile">
+                        Profile
+                      </Dropdown.Item>
+                    </NavLink>
+
+                    <NavLink to="/classes">
+                      <Dropdown.Item as="button" value="classes">
+                        My Classes
+                      </Dropdown.Item>
+                    </NavLink>
+
+                    <NavLink to="/purchase">
+                      <Dropdown.Item as="button" value="purchases">
+                        My Purchases
+                      </Dropdown.Item>
+                    </NavLink>
+
+                    <NavLink to="/reviews">
+                      <Dropdown.Item as="button" value="reviews">
+                        Reviews
+                      </Dropdown.Item>
+                    </NavLink>
+
+                    <NavLink to="/">
+                      <Dropdown.Item
+                        as="button"
+                        value="logout"
+                        onClick={logoutUser}
+                      >
+                        Logout
+                      </Dropdown.Item>
+                    </NavLink>
+                  </Dropdown.Menu>
+                </Dropdown>
               </div>
             ) : (
               <NavLink to="/login" activeClassName={styles.active}>

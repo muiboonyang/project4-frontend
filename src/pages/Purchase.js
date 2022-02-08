@@ -7,6 +7,10 @@ const Purchase = () => {
       <br />
       <h2>Purchase History</h2>
       <br />
+      <p>
+        Credit history, debit history, check if balance more than 0 before
+        allowing users to book
+      </p>
     </div>
   );
 };

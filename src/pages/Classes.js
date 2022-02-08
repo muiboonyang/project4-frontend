@@ -2,15 +2,18 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./Classes.module.css";
 import ClassCardTemplate from "../components/ClassCardTemplate";
 import AuthContext from "../context/AuthContext";
+import UserContext from "../context/UserContext";
 import useFetchGet from "../utils/useFetchGet";
 import { v4 as uuidv4 } from "uuid";
 
 const Classes = () => {
   const [classes, setClasses] = useState([]);
   let { user } = useContext(AuthContext);
+  let { transactions } = useContext(UserContext);
   const get = useFetchGet();
+
   ///////////////////////////////
-  // POST - Get all review
+  // GET - Get all classes
   ///////////////////////////////
 
   const getClasses = async () => {
@@ -25,6 +28,8 @@ const Classes = () => {
     getClasses();
     // eslint-disable-next-line
   }, []);
+
+  console.log(transactions);
 
   return (
     <div className={styles.classesContainer}>
