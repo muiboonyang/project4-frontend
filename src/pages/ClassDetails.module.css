@@ -22,12 +22,26 @@
 
 .title {
   text-transform: uppercase;
-  text-align: center;
   font-size: 25px;
+  text-align: center;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.classRide {
+  color: rgb(226, 27, 183);
+  font-weight: bold;
+}
+
+.classResistance {
+  color: rgb(0, 225, 255);
+  font-weight: bold;
 }
 
 .leftColumn {
-  width: 30%;
+  /* width: 30%; */
   border-radius: 15px;
   padding: 1px;
   margin-right: 100px;
@@ -39,32 +53,13 @@
 }
 
 .rightColumn {
-  width: 30%;
+  /* width: 30%; */
+  width: 1000px;
   display: flex;
   flex-direction: column;
   padding: 15px;
   margin-top: 50px;
   border: 1px solid white;
-}
-
-.container .name {
-  font-size: 70px;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.container .classRide {
-  font-size: 40px;
-  text-transform: uppercase;
-  color: rgb(226, 27, 183);
-  font-weight: bold;
-}
-
-.container .classResistance {
-  font-size: 40px;
-  text-transform: uppercase;
-  color: rgb(0, 225, 255);
-  font-weight: bold;
 }
 
 .description {

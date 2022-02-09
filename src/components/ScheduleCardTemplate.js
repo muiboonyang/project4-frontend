@@ -1,44 +1,12 @@
 import React, { useContext } from "react";
 import styles from "./ScheduleCardTemplate.module.css";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import UserContext from "../context/UserContext";
-import useFetchPost from "../utils/useFetchPost";
 
 const ScheduleCardTemplate = (props) => {
   let { user } = useContext(AuthContext);
   let { balance } = useContext(UserContext);
-  let history = useHistory();
-  const post = useFetchPost();
-
-  ///////////////////////////////
-  // POST - Book class
-  // To-do: pass to custom route (ClassDetails)
-  ///////////////////////////////
-
-  const bookClass = async (e) => {
-    e.preventDefault();
-    let randomSpot = Math.floor(Math.random() * 30); // Random number from 0 to 29
-    try {
-      const { res } = await post(`/class/book/`, {
-        class_type: props.schedule.class_type,
-        class_instructor: props.schedule.class_instructor,
-        date: props.schedule.date,
-        time: props.schedule.time,
-        spot: props.schedule.spot[randomSpot],
-        name: user.name,
-        user: user.user_id,
-      });
-
-      if (res.status === 200) {
-        history.push("/classes");
-      } else {
-        alert("Failed to book class!");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   ///////////////////////////////
   // Convert date format
@@ -141,10 +109,7 @@ const ScheduleCardTemplate = (props) => {
           {balance > 0 ? (
             <div className={styles.book}>
               <NavLink to={`/class/${props.schedule.id}`}>
-                <button className={styles.button}>
-                  {/* <button className={styles.button} onClick={bookClass}> */}
-                  Book
-                </button>
+                <button className={styles.button}>Book</button>
               </NavLink>
             </div>
           ) : (

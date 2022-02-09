@@ -33,10 +33,6 @@ const BookingsCardTemplate = (props) => {
       } else {
         alert("Refund failed!");
       }
-      //   } catch (err) {
-      //     console.log(err);
-      //   }
-      // };
 
       ///////////////////////////////
       // POST - Cancel class
@@ -130,6 +126,7 @@ const BookingsCardTemplate = (props) => {
 
   let instructor = capitalizeFirstLetter(props.classDetails.class_instructor);
   let time = convertTimeFormat(props.classDetails.time);
+
   let date = convertToDateFormat(props.classDetails.date);
   let day = new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(
     new Date(date)

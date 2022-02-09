@@ -72,8 +72,6 @@ const useFetchPost = () => {
     config["mode"] = "cors";
     config["body"] = JSON.stringify(input);
 
-    console.log(config);
-
     let { res, data } = await originalRequest(url, config);
     return { res, data };
   };

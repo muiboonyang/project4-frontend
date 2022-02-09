@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import styles from "./PricingCardTemplate.module.css";
 
 import useFetchPost from "../utils/useFetchPost";
@@ -8,6 +8,7 @@ import AuthContext from "../context/AuthContext";
 const PricingCardTemplate = (props) => {
   let { user } = useContext(AuthContext);
   const post = useFetchPost();
+  let history = useHistory();
 
   ///////////////////////////////
   // POST - Purchase classes
@@ -24,6 +25,7 @@ const PricingCardTemplate = (props) => {
       });
 
       if (res.status === 200) {
+        history.push("/purchases");
         window.location.reload(false);
       } else {
         alert("Purchase failed!");
@@ -58,13 +60,19 @@ const PricingCardTemplate = (props) => {
           }}
         ></div>
       </div>
-      <div className={styles.buy}>
-        <NavLink to="/login">
+      {user ? (
+        <div className={styles.buy}>
           <button className={styles.button} onClick={buyPackage}>
             Buy
           </button>
-        </NavLink>
-      </div>
+        </div>
+      ) : (
+        <div className={styles.buy}>
+          <NavLink to="/login">
+            <button className={styles.button}>Buy</button>
+          </NavLink>
+        </div>
+      )}
     </div>
   );
 };
