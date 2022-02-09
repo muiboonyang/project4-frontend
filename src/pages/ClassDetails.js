@@ -187,35 +187,75 @@ const ClassDetails = () => {
         </div>
 
         <div className={styles.gymRow1}>
-          <button value="1">1</button>
-          <button value="2">2</button>
-          <button value="3">3</button>
-          <button value="4">4</button>
-          <button value="5">5</button>
+          <button value="1" onClick={bookClassAndDeduct}>
+            1
+          </button>
+          <button value="2" onClick={bookClassAndDeduct}>
+            2
+          </button>
+          <button value="3" onClick={bookClassAndDeduct}>
+            3
+          </button>
+          <button value="4" onClick={bookClassAndDeduct}>
+            4
+          </button>
+          <button value="5" onClick={bookClassAndDeduct}>
+            5
+          </button>
         </div>
 
         <div className={styles.gymRow2}>
-          <button value="6">6</button>
-          <button value="7">7</button>
-          <button value="8">8</button>
-          <button value="9">9</button>
-          <button value="10">10</button>
+          <button value="6" onClick={bookClassAndDeduct}>
+            6
+          </button>
+          <button value="7" onClick={bookClassAndDeduct}>
+            7
+          </button>
+          <button value="8" onClick={bookClassAndDeduct}>
+            8
+          </button>
+          <button value="9" onClick={bookClassAndDeduct}>
+            9
+          </button>
+          <button value="10" onClick={bookClassAndDeduct}>
+            10
+          </button>
         </div>
 
         <div className={styles.gymRow3}>
-          <button value="11">11</button>
-          <button value="12">12</button>
-          <button value="13">13</button>
-          <button value="14">14</button>
-          <button value="15">15</button>
+          <button value="11" onClick={bookClassAndDeduct}>
+            11
+          </button>
+          <button value="12" onClick={bookClassAndDeduct}>
+            12
+          </button>
+          <button value="13" onClick={bookClassAndDeduct}>
+            13
+          </button>
+          <button value="14" onClick={bookClassAndDeduct}>
+            14
+          </button>
+          <button value="15" onClick={bookClassAndDeduct}>
+            15
+          </button>
         </div>
 
         <div className={styles.gymRow4}>
-          <button value="16">16</button>
-          <button value="17">17</button>
-          <button value="18">18</button>
-          <button value="19">19</button>
-          <button value="20">20</button>
+          <button value="16" onClick={bookClassAndDeduct}>
+            16
+          </button>
+          <button value="17" onClick={bookClassAndDeduct}>
+            17
+          </button>
+          <button value="18" onClick={bookClassAndDeduct}>
+            18
+          </button>
+          <button value="19" onClick={bookClassAndDeduct}>
+            19
+          </button>
+          <button value="20" onClick={bookClassAndDeduct}>
+            20
+          </button>
         </div>
       </div>
     </div>
