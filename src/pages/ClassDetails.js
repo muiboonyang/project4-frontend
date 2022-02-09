@@ -163,7 +163,7 @@ const ClassDetails = () => {
             <p className={styles.classResistance}>{classLayout.class_type}</p>
           )}
           <p className={styles.name}>
-            {classDay}, {classFormattedDate},{classFormattedTime}
+            {classDay}, {classFormattedDate}, {classFormattedTime}
           </p>
           <NavLink to={`/instructor/${classLayout.class_instructor}`}>
             <p className={styles.instructor}>{classLayout.class_instructor}</p>
