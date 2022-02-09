@@ -7,7 +7,7 @@ import useFetchPost from "../utils/useFetchPost";
 import AuthContext from "../context/AuthContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
 const ClassDetails = () => {
   let history = useHistory();
@@ -152,40 +152,70 @@ const ClassDetails = () => {
     <div className={styles.classDetailsContainer}>
       <br />
       <h2>Class Details</h2>
-
-      <div className={styles.title}>
-        {classType === "ride" ? (
-          <p className={styles.classRide}>{classType}</p>
-        ) : (
-          <p className={styles.classResistance}>{classType}</p>
-        )}
-        <p className={styles.name}>
-          {classDay}, {classFormattedDate}, {classFormattedTime}
-        </p>
-        <p className={styles.name}>{instructorName}</p>
-      </div>
-
-      <div className={styles.container}>
-        <div className={styles.leftColumn}>Left Column</div>
-
-        <div className={styles.rightColumn}>
-          <p>Right Column</p>
-          <div className={styles.book}>
-            <NavLink to="/bookings">
-              <button className={styles.button} onClick={bookClassAndDeduct}>
-                Book
-              </button>
-            </NavLink>
-          </div>
-        </div>
-
-        <div>
+      <div className={styles.classHeader}>
+        <div className={styles.backButton}>
           <button onClick={history.goBack} className={styles.backButton}>
             <FontAwesomeIcon
-              icon={faTimesCircle}
+              icon={faArrowCircleLeft}
               className={styles.backButton}
             />
           </button>
+        </div>
+
+        <div className={styles.title}>
+          {classType === "ride" ? (
+            <p className={styles.classRide}>{classType}</p>
+          ) : (
+            <p className={styles.classResistance}>{classType}</p>
+          )}
+          <p className={styles.name}>
+            {classDay}, {classFormattedDate}, {classFormattedTime}
+          </p>
+          <p className={styles.name}>{instructorName}</p>
+
+          <NavLink to="/bookings">
+            <button className={styles.button} onClick={bookClassAndDeduct}>
+              Book
+            </button>
+          </NavLink>
+        </div>
+      </div>
+
+      <div className={styles.layoutContainer}>
+        <div className={styles.gymRow0}>
+          <p>Instructor</p>
+        </div>
+
+        <div className={styles.gymRow1}>
+          <button value="1">1</button>
+          <button value="2">2</button>
+          <button value="3">3</button>
+          <button value="4">4</button>
+          <button value="5">5</button>
+        </div>
+
+        <div className={styles.gymRow2}>
+          <button value="6">6</button>
+          <button value="7">7</button>
+          <button value="8">8</button>
+          <button value="9">9</button>
+          <button value="10">10</button>
+        </div>
+
+        <div className={styles.gymRow3}>
+          <button value="11">11</button>
+          <button value="12">12</button>
+          <button value="13">13</button>
+          <button value="14">14</button>
+          <button value="15">15</button>
+        </div>
+
+        <div className={styles.gymRow4}>
+          <button value="16">16</button>
+          <button value="17">17</button>
+          <button value="18">18</button>
+          <button value="19">19</button>
+          <button value="20">20</button>
         </div>
       </div>
     </div>

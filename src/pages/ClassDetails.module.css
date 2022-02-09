@@ -9,64 +9,16 @@
   text-align: center;
 }
 
-.container {
-  width: 100%;
+.classHeader {
+  border: 1px solid white;
+  width: 80%;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   padding: 5px;
-  margin-top: 80px;
-  color: rgb(160, 160, 160);
-  font-family: "Charlotte";
-}
-
-.title {
-  text-transform: uppercase;
-  font-size: 25px;
-  text-align: center;
-}
-
-.name {
-  font-weight: bold;
-}
-
-.classRide {
-  color: rgb(226, 27, 183);
-  font-weight: bold;
-}
-
-.classResistance {
-  color: rgb(0, 225, 255);
-  font-weight: bold;
-}
-
-.leftColumn {
-  /* width: 30%; */
-  border-radius: 15px;
-  padding: 1px;
-  margin-right: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
-  border: 1px solid white;
-}
-
-.rightColumn {
-  /* width: 30%; */
-  width: 1000px;
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
+  margin: auto;
   margin-top: 50px;
-  border: 1px solid white;
-}
-
-.description {
-  font-size: 1.8rem;
-  font-style: italic;
-  padding: 5px;
-  margin-top: 80px;
+  font-family: "Charlotte";
 }
 
 .backButton {
@@ -79,4 +31,59 @@
 
 .backButton:hover {
   color: rgb(255 193 7);
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 25px;
+  text-align: center;
+  border: 1px solid white;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.classRide {
+  color: rgb(226, 27, 183);
+  font-weight: bold;
+}
+
+.classResistance {
+  color: rgb(0, 225, 255);
+  font-weight: bold;
+}
+
+.layoutContainer {
+  width: 80%;
+  height: 600px;
+  margin: auto;
+  margin-top: 30px;
+  color: rgb(160, 160, 160);
+  border: 1px solid white;
+  text-align: center;
+}
+
+.gymRow0 {
+  width: 30%;
+  margin: auto;
+  padding-top: 20px;
+  font-size: 30px;
+  border: 1px solid white;
+}
+
+.layoutContainer button {
+  padding: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 50%;
+}
+
+.gymRow1,
+.gymRow2,
+.gymRow3,
+.gymRow4 {
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  border: 1px solid white;
 }
