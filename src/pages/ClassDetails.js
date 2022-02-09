@@ -165,28 +165,107 @@ const ClassDetails = () => {
       // POST - Update class layout
       ///////////////////////////////
 
-      const { res2 } = await post(`/layout/update/${params.id}`, {
-        spot_one_booked: e.target.value,
-        spot_two_booked: e.target.value,
-        spot_three_booked: e.target.value,
-        spot_four_booked: e.target.value,
-        spot_five_booked: e.target.value,
-        spot_six_booked: e.target.value,
-        spot_seven_booked: e.target.value,
-        spot_eight_booked: e.target.value,
-        spot_nine_booked: e.target.value,
-        spot_ten_booked: e.target.value,
-        spot_eleven_booked: e.target.value,
-        spot_twelve_booked: e.target.value,
-        spot_thirteen_booked: e.target.value,
-        spot_fourteen_booked: e.target.value,
-        spot_fifteen_booked: e.target.value,
-        spot_sixteen_booked: e.target.value,
-        spot_seventeen_booked: e.target.value,
-        spot_eighteen_booked: e.target.value,
-        spot_nineteen_booked: e.target.value,
-        spot_twenty_booked: e.target.value,
-      });
+      if (e.target.value === 1) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_one_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 2) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_two_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 3) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_three_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 4) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_four_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 5) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_five_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 6) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_six_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 7) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_seven_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 8) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_eight_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 9) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_nine_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 10) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_ten_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 11) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_eleven_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 12) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_twelve_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 13) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_thirteen_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 14) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_fourteen_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 15) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_fifteen_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 16) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_sixteen_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 17) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_seventeen_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 18) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_eighteen_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 19) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_nineteen_booked: true,
+        });
+        return res2;
+      } else if (e.target.value === 20) {
+        const { res2 } = await post(`/layout/update/${params.id}`, {
+          spot_twenty_booked: true,
+        });
+        return res2;
+      }
 
       ///////////////////////////////
       // POST - Add class to bookings
@@ -202,7 +281,7 @@ const ClassDetails = () => {
         user: user.user_id,
       });
 
-      if (res.status || res2.status || res3.status === 200) {
+      if (res.status || res3.status === 200) {
         history.push("/bookings");
         window.location.reload(false);
       } else {
