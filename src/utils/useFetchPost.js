@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 ///////////////////////////////////////////////////////////
 
 const useFetchPost = () => {
+  let history = useHistory();
   let config = {};
 
   let { authTokens, setAuthTokens, setUser } = useContext(AuthContext);

@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 ///////////////////////////////////////////////////////////
 
 const useFetchDelete = () => {
+  let history = useHistory();
   const config = {};
 
   let { authTokens, setAuthTokens, setUser } = useContext(AuthContext);
