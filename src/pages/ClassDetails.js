@@ -89,6 +89,17 @@ const ClassDetails = () => {
     <div className={styles.classDetailsContainer}>
       <br />
       <h2>Class Details</h2>
+      <div className={styles.title}>
+        <p className={styles.name}>{instructorName}</p>
+        {classRide ? (
+          <p className={styles.classRide}>{classRide}</p>
+        ) : (
+          <p className={styles.classResistance}>{classResistance}</p>
+        )}
+        <p>
+          {classDay}, {classDate}, {classTime}
+        </p>
+      </div>
 
       <div className={styles.container}>
         <div className={styles.leftColumn}>Left Column</div>

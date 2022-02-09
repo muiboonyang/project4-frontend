@@ -20,6 +20,12 @@
   font-family: "Charlotte";
 }
 
+.title {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 25px;
+}
+
 .leftColumn {
   width: 30%;
   border-radius: 15px;
