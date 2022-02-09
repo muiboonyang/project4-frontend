@@ -109,8 +109,6 @@ const ClassDetails = () => {
 
   const bookClassAndDeduct = async (e) => {
     e.preventDefault();
-
-    let randomSpot = Math.floor(Math.random() * 30) + 1; // Random number from 1 to 30
     try {
       ///////////////////////////////
       // POST - Deduct credit
