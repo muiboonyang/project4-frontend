@@ -9,6 +9,10 @@
   text-align: center;
 }
 
+.classDetailsContainer a {
+  text-decoration: none;
+}
+
 .classHeader {
   /* border: 1px solid white; */
   width: 80%;
@@ -51,6 +55,20 @@
 .classResistance {
   color: rgb(0, 225, 255);
   font-weight: bold;
+}
+
+.instructor {
+  color: white;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.instructor a {
+  text-decoration: none;
+}
+
+.instructor:hover {
+  color: rgb(255 193 7);
 }
 
 .layoutContainer {

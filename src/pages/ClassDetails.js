@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import useFetchPost from "../utils/useFetchPost";
 import AuthContext from "../context/AuthContext";
+import { NavLink } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -169,7 +170,9 @@ const ClassDetails = () => {
           <p className={styles.name}>
             {classDay}, {classFormattedDate}, {classFormattedTime}
           </p>
-          <p className={styles.name}>{instructorName}</p>
+          <NavLink to={`/instructor/${instructorName}`}>
+            <p className={styles.instructor}>{instructorName}</p>
+          </NavLink>
         </div>
       </div>
 

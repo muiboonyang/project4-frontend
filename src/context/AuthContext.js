@@ -50,6 +50,7 @@ export const AuthProvider = ({ children }) => {
       setUser(jwt_decode(data.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
       history.push("/");
+      window.location.reload(false);
     } else {
       alert("Login Failed!");
     }
