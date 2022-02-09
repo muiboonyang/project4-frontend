@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./ClassDetails.module.css";
 import scheduleData from "./ScheduleData";
 import { useParams } from "react-router";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import useFetchPost from "../utils/useFetchPost";
 import AuthContext from "../context/AuthContext";
 
@@ -170,12 +170,6 @@ const ClassDetails = () => {
             {classDay}, {classFormattedDate}, {classFormattedTime}
           </p>
           <p className={styles.name}>{instructorName}</p>
-
-          <NavLink to="/bookings">
-            <button className={styles.button} onClick={bookClassAndDeduct}>
-              Book
-            </button>
-          </NavLink>
         </div>
       </div>
 
