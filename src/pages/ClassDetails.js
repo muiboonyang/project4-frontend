@@ -25,6 +25,27 @@ const ClassDetails = () => {
   const [classFormattedTime, setClassFormattedTime] = useState("");
   const [classDay, setClassDay] = useState("");
 
+  const [spotOne, setSpotOne] = useState("");
+  const [spotTwo, setSpotTwo] = useState("");
+  const [spotThree, setSpotThree] = useState("");
+  const [spotFour, setSpotFour] = useState("");
+  const [spotFive, setSpotFive] = useState("");
+  const [spotSix, setSpotSix] = useState("");
+  const [spotSeven, setSpotSeven] = useState("");
+  const [spotEight, setSpotEight] = useState("");
+  const [spotNine, setSpotNine] = useState("");
+  const [spotTen, setSpotTen] = useState("");
+  const [spotEleven, setSpotEleven] = useState("");
+  const [spotTwelve, setSpotTwelve] = useState("");
+  const [spotThirteen, setSpotThirteen] = useState("");
+  const [spotFourteen, setSpotFourteen] = useState("");
+  const [spotFifteen, setSpotFifteen] = useState("");
+  const [spotSixteen, setSpotSixteen] = useState("");
+  const [spotSeventeen, setSeventeen] = useState("");
+  const [spotEighteen, setSpotEighteen] = useState("");
+  const [spotNinteen, setSpotNineteen] = useState("");
+  const [spotTwenty, setSpotTwenty] = useState("");
+
   const get = useFetchGet();
 
   const getClassLayout = async () => {
@@ -40,6 +61,27 @@ const ClassDetails = () => {
             weekday: "long",
           }).format(new Date(data.date))
         );
+
+        setSpotOne(data.spot_one_booked);
+        setSpotTwo(data.spot_two_booked);
+        setSpotThree(data.spot_three_booked);
+        setSpotFour(data.spot_four_booked);
+        setSpotFive(data.spot_five_booked);
+        setSpotSix(data.spot_six_booked);
+        setSpotSeven(data.spot_seven_booked);
+        setSpotEight(data.spot_eight_booked);
+        setSpotNine(data.spot_nine_booked);
+        setSpotTen(data.spot_ten_booked);
+        setSpotEleven(data.spot_eleven_booked);
+        setSpotTwelve(data.spot_twelve_booked);
+        setSpotThirteen(data.spot_thirteen_booked);
+        setSpotFourteen(data.spot_fourteen_booked);
+        setSpotFifteen(data.spot_fifteen_booked);
+        setSpotSixteen(data.spot_sixteen_booked);
+        setSeventeen(data.spot_seventeen_booked);
+        setSpotEighteen(data.spot_eighteen_booked);
+        setSpotNineteen(data.spot_nineteen_booked);
+        setSpotTwenty(data.spot_twenty_booked);
       }
     } catch (err) {
       console.log(err);
@@ -50,6 +92,8 @@ const ClassDetails = () => {
     getClassLayout();
     // eslint-disable-next-line
   }, []);
+
+  // console.log(typeof spotOne); // false (boolean)
 
   ///////////////////////////////
   // Convert date format
@@ -118,10 +162,37 @@ const ClassDetails = () => {
       });
 
       ///////////////////////////////
+      // POST - Update class layout
+      ///////////////////////////////
+
+      const { res2 } = await post(`/layout/update/${params.id}`, {
+        spot_one_booked: e.target.value,
+        spot_two_booked: e.target.value,
+        spot_three_booked: e.target.value,
+        spot_four_booked: e.target.value,
+        spot_five_booked: e.target.value,
+        spot_six_booked: e.target.value,
+        spot_seven_booked: e.target.value,
+        spot_eight_booked: e.target.value,
+        spot_nine_booked: e.target.value,
+        spot_ten_booked: e.target.value,
+        spot_eleven_booked: e.target.value,
+        spot_twelve_booked: e.target.value,
+        spot_thirteen_booked: e.target.value,
+        spot_fourteen_booked: e.target.value,
+        spot_fifteen_booked: e.target.value,
+        spot_sixteen_booked: e.target.value,
+        spot_seventeen_booked: e.target.value,
+        spot_eighteen_booked: e.target.value,
+        spot_nineteen_booked: e.target.value,
+        spot_twenty_booked: e.target.value,
+      });
+
+      ///////////////////////////////
       // POST - Add class to bookings
       ///////////////////////////////
 
-      const { res2 } = await post(`/class/book/`, {
+      const { res3 } = await post(`/class/book/`, {
         class_type: classLayout.class_type,
         class_instructor: classLayout.class_instructor,
         date: classLayout.date,
@@ -131,7 +202,7 @@ const ClassDetails = () => {
         user: user.user_id,
       });
 
-      if (res.status || res2.status === 200) {
+      if (res.status || res2.status || res3.status === 200) {
         history.push("/bookings");
         window.location.reload(false);
       } else {
@@ -177,75 +248,195 @@ const ClassDetails = () => {
         </div>
 
         <div className={styles.gymRow1}>
-          <button value="1" onClick={bookClassAndDeduct}>
-            1
-          </button>
-          <button value="2" onClick={bookClassAndDeduct}>
-            2
-          </button>
-          <button value="3" onClick={bookClassAndDeduct}>
-            3
-          </button>
-          <button value="4" onClick={bookClassAndDeduct}>
-            4
-          </button>
-          <button value="5" onClick={bookClassAndDeduct}>
-            5
-          </button>
+          {!spotOne ? (
+            <button value="1" onClick={bookClassAndDeduct}>
+              1
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotTwo ? (
+            <button value="2" onClick={bookClassAndDeduct}>
+              2
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotThree ? (
+            <button value="3" onClick={bookClassAndDeduct}>
+              3
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotFour ? (
+            <button value="4" onClick={bookClassAndDeduct}>
+              4
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotFive ? (
+            <button value="5" onClick={bookClassAndDeduct}>
+              5
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
         </div>
 
         <div className={styles.gymRow2}>
-          <button value="6" onClick={bookClassAndDeduct}>
-            6
-          </button>
-          <button value="7" onClick={bookClassAndDeduct}>
-            7
-          </button>
-          <button value="8" onClick={bookClassAndDeduct}>
-            8
-          </button>
-          <button value="9" onClick={bookClassAndDeduct}>
-            9
-          </button>
-          <button value="10" onClick={bookClassAndDeduct}>
-            10
-          </button>
+          {!spotSix ? (
+            <button value="6" onClick={bookClassAndDeduct}>
+              6
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotSeven ? (
+            <button value="7" onClick={bookClassAndDeduct}>
+              7
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotEight ? (
+            <button value="8" onClick={bookClassAndDeduct}>
+              8
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotNine ? (
+            <button value="9" onClick={bookClassAndDeduct}>
+              9
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotTen ? (
+            <button value="10" onClick={bookClassAndDeduct}>
+              10
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
         </div>
 
         <div className={styles.gymRow3}>
-          <button value="11" onClick={bookClassAndDeduct}>
-            11
-          </button>
-          <button value="12" onClick={bookClassAndDeduct}>
-            12
-          </button>
-          <button value="13" onClick={bookClassAndDeduct}>
-            13
-          </button>
-          <button value="14" onClick={bookClassAndDeduct}>
-            14
-          </button>
-          <button value="15" onClick={bookClassAndDeduct}>
-            15
-          </button>
+          {!spotEleven ? (
+            <button value="11" onClick={bookClassAndDeduct}>
+              11
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotTwelve ? (
+            <button value="12" onClick={bookClassAndDeduct}>
+              12
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotThirteen ? (
+            <button value="13" onClick={bookClassAndDeduct}>
+              13
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotFourteen ? (
+            <button value="14" onClick={bookClassAndDeduct}>
+              14
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotFifteen ? (
+            <button value="15" onClick={bookClassAndDeduct}>
+              15
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
         </div>
 
         <div className={styles.gymRow4}>
-          <button value="16" onClick={bookClassAndDeduct}>
-            16
-          </button>
-          <button value="17" onClick={bookClassAndDeduct}>
-            17
-          </button>
-          <button value="18" onClick={bookClassAndDeduct}>
-            18
-          </button>
-          <button value="19" onClick={bookClassAndDeduct}>
-            19
-          </button>
-          <button value="20" onClick={bookClassAndDeduct}>
-            20
-          </button>
+          {!spotSixteen ? (
+            <button value="16" onClick={bookClassAndDeduct}>
+              16
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotSeventeen ? (
+            <button value="17" onClick={bookClassAndDeduct}>
+              17
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotEighteen ? (
+            <button value="18" onClick={bookClassAndDeduct}>
+              18
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotNinteen ? (
+            <button value="19" onClick={bookClassAndDeduct}>
+              19
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
+          {!spotTwenty ? (
+            <button value="20" onClick={bookClassAndDeduct}>
+              20
+            </button>
+          ) : (
+            <button className={styles.booked} disabled>
+              X
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -109,3 +109,9 @@
   margin-top: 50px;
   border: 1px solid white;
 }
+
+.booked {
+  background-color: grey;
+  color: grey;
+  border: 1px solid white;
+}
