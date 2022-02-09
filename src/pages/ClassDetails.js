@@ -132,7 +132,7 @@ const ClassDetails = () => {
         class_instructor: instructorName,
         date: classDate,
         time: classTime,
-        spot: randomSpot,
+        spot: e.target.value,
         name: user.name,
         user: user.user_id,
       });
