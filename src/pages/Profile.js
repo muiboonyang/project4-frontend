@@ -41,9 +41,10 @@ const Profile = () => {
 
       if (res.status === 200) {
         setUserInfo1(data);
-      } else {
-        alert("Failed to retrieve profile!");
       }
+      // else {
+      //   alert("Failed to retrieve profile!");
+      // }
     } catch (err) {
       console.log(err);
     }
@@ -55,9 +56,10 @@ const Profile = () => {
 
       if (res.status === 200) {
         setUserInfo2(data);
-      } else {
-        alert("Failed to retrieve profile!");
       }
+      // else {
+      //   alert("Failed to retrieve profile!");
+      // }
     } catch (err) {
       console.log(err);
     }

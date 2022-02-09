@@ -2,6 +2,7 @@ import { useContext } from "react";
 import jwt_decode from "jwt-decode";
 import dayjs from "dayjs";
 import AuthContext from "../context/AuthContext";
+import { useHistory } from "react-router-dom";
 
 ////////////////////////////////////////////////////////////
 // Custom hook (useFetchGet) to check token expiry during each 'GET' request and initiate token refresh
@@ -53,8 +54,14 @@ const useFetchDelete = () => {
     );
 
     // Initiate token refresh when access token has expired, to get new access token
-    if (isExpired) {
+    let refreshTokenExists = authTokens.refresh;
+
+    if (isExpired && refreshTokenExists) {
       authTokens = await refreshToken(authTokens);
+    } else if (isExpired && !refreshTokenExists) {
+      history.push("/login");
+      setUser(null);
+      localStorage.removeItem("authTokens");
     }
 
     //Proceed with request

@@ -17,7 +17,8 @@ export const UserProvider = ({ children }) => {
       if (res.status === 200) {
         setTransactions(data);
       } else {
-        alert("Failed to retrieve transactions!");
+        alert("Please login again!");
+        //  alert("Failed to retrieve transactions!");
       }
     } catch (err) {
       console.log(err);

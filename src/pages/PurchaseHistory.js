@@ -15,9 +15,10 @@ const Purchase = () => {
 
       if (res.status === 200) {
         setTansactions(data);
-      } else {
-        alert("Failed to retrieve profile!");
       }
+      // else {
+      //   alert("Failed to retrieve profile!");
+      // }
     } catch (err) {
       console.log(err);
     }
