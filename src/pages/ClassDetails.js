@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./ClassDetails.module.css";
-import scheduleData from "./ScheduleData";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import useFetchPost from "../utils/useFetchPost";
+import useFetchGet from "../utils/useFetchGet";
 import AuthContext from "../context/AuthContext";
 import { NavLink } from "react-router-dom";
 
@@ -16,13 +16,40 @@ const ClassDetails = () => {
   const post = useFetchPost();
   let { user } = useContext(AuthContext);
 
-  const [instructorName, setInstructorName] = useState("");
-  const [classType, setClassType] = useState("");
-  const [classDate, setClassDate] = useState("");
+  ///////////////////////////////
+  // Get Class Layout
+  ///////////////////////////////
+
+  const [classLayout, setClassLayout] = useState([]);
   const [classFormattedDate, setClassFormattedDate] = useState("");
-  const [classTime, setClassTime] = useState("");
   const [classFormattedTime, setClassFormattedTime] = useState("");
   const [classDay, setClassDay] = useState("");
+
+  const get = useFetchGet();
+
+  const getClassLayout = async () => {
+    try {
+      const { res, data } = await get(`/layout/view/${params.id}`);
+
+      if (res.status === 200) {
+        setClassLayout(data);
+        setClassFormattedTime(convertTimeFormat(data.time));
+        setClassFormattedDate(convertToDateFormat(data.date));
+        setClassDay(
+          new Intl.DateTimeFormat("en-US", {
+            weekday: "long",
+          }).format(new Date(data.date))
+        );
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getClassLayout();
+    // eslint-disable-next-line
+  }, []);
 
   ///////////////////////////////
   // Convert date format
@@ -72,38 +99,6 @@ const ClassDetails = () => {
   };
 
   ///////////////////////////////
-  // useParams
-  ///////////////////////////////
-
-  const populateData = () => {
-    scheduleData.forEach((data) => {
-      if (parseInt(params.id) === data.id) {
-        if (data.class_type === "ride") {
-          setClassType(data.class_type);
-        } else {
-          setClassType(data.class_type);
-        }
-        setInstructorName(data.class_instructor);
-        setClassFormattedTime(convertTimeFormat(data.time));
-        setClassFormattedDate(convertToDateFormat(data.date));
-        setClassTime(data.time);
-        setClassDate(data.date);
-        setClassDay("Tuesday");
-        setClassDay(
-          new Intl.DateTimeFormat("en-US", {
-            weekday: "long",
-          }).format(new Date(data.date))
-        );
-      }
-    });
-  };
-
-  useEffect(() => {
-    populateData();
-    // eslint-disable-next-line
-  }, []);
-
-  ///////////////////////////////
   // POST - Book class
   // To-do: pass to custom route (ClassDetails)
   ///////////////////////////////
@@ -127,10 +122,10 @@ const ClassDetails = () => {
       ///////////////////////////////
 
       const { res2 } = await post(`/class/book/`, {
-        class_type: classType,
-        class_instructor: instructorName,
-        date: classDate,
-        time: classTime,
+        class_type: classLayout.class_type,
+        class_instructor: classLayout.class_instructor,
+        date: classLayout.date,
+        time: classLayout.time,
         spot: e.target.value,
         name: user.name,
         user: user.user_id,
@@ -162,16 +157,16 @@ const ClassDetails = () => {
         </div>
 
         <div className={styles.title}>
-          {classType === "ride" ? (
-            <p className={styles.classRide}>{classType}</p>
+          {classLayout.class_type === "ride" ? (
+            <p className={styles.classRide}>{classLayout.class_type}</p>
           ) : (
-            <p className={styles.classResistance}>{classType}</p>
+            <p className={styles.classResistance}>{classLayout.class_type}</p>
           )}
           <p className={styles.name}>
-            {classDay}, {classFormattedDate}, {classFormattedTime}
+            {classDay}, {classFormattedDate},{classFormattedTime}
           </p>
-          <NavLink to={`/instructor/${instructorName}`}>
-            <p className={styles.instructor}>{instructorName}</p>
+          <NavLink to={`/instructor/${classLayout.class_instructor}`}>
+            <p className={styles.instructor}>{classLayout.class_instructor}</p>
           </NavLink>
         </div>
       </div>
