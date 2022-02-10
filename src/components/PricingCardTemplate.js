@@ -25,7 +25,7 @@ const PricingCardTemplate = (props) => {
       });
 
       if (res.status === 200) {
-        history.push("/purchases");
+        history.push("/transactions");
         window.location.reload(false);
       } else {
         alert("Purchase failed!");
