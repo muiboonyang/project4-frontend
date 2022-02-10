@@ -44,7 +44,7 @@ const NavBar = () => {
           {user ? (
             <>
               <Nav>
-                <NavLink to="/purchases">
+                <NavLink to="/transactions">
                   <div className={styles.balance}>Credits: {balance}</div>
                 </NavLink>
               </Nav>
@@ -72,13 +72,13 @@ const NavBar = () => {
 
                       <NavLink to="/bookings">
                         <Dropdown.Item as="button" value="classes">
-                          Bookings
+                          My Classes
                         </Dropdown.Item>
                       </NavLink>
 
-                      <NavLink to="/purchases">
-                        <Dropdown.Item as="button" value="purchases">
-                          Purchases
+                      <NavLink to="/transactions">
+                        <Dropdown.Item as="button" value="transactions">
+                          Transactions
                         </Dropdown.Item>
                       </NavLink>
 

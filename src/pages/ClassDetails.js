@@ -165,107 +165,9 @@ const ClassDetails = () => {
       // POST - Update class layout
       ///////////////////////////////
 
-      if (e.target.value === 1) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_one_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 2) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_two_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 3) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_three_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 4) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_four_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 5) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_five_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 6) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_six_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 7) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_seven_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 8) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_eight_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 9) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_nine_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 10) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_ten_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 11) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_eleven_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 12) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_twelve_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 13) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_thirteen_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 14) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_fourteen_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 15) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_fifteen_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 16) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_sixteen_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 17) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_seventeen_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 18) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_eighteen_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 19) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_nineteen_booked: true,
-        });
-        return res2;
-      } else if (e.target.value === 20) {
-        const { res2 } = await post(`/layout/update/${params.id}`, {
-          spot_twenty_booked: true,
-        });
-        return res2;
-      }
+      const { res2 } = await post(`/layout/update/${params.id}`, {
+        button_id: e.target.id,
+      });
 
       ///////////////////////////////
       // POST - Add class to bookings
@@ -281,7 +183,7 @@ const ClassDetails = () => {
         user: user.user_id,
       });
 
-      if (res.status || res3.status === 200) {
+      if (res.status || res2.status || res3.status === 200) {
         history.push("/bookings");
         window.location.reload(false);
       } else {
@@ -328,7 +230,7 @@ const ClassDetails = () => {
 
         <div className={styles.gymRow1}>
           {!spotOne ? (
-            <button value="1" onClick={bookClassAndDeduct}>
+            <button id="one" value="1" onClick={bookClassAndDeduct}>
               1
             </button>
           ) : (
@@ -337,7 +239,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotTwo ? (
-            <button value="2" onClick={bookClassAndDeduct}>
+            <button id="two" value="2" onClick={bookClassAndDeduct}>
               2
             </button>
           ) : (
@@ -346,7 +248,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotThree ? (
-            <button value="3" onClick={bookClassAndDeduct}>
+            <button id="three" value="3" onClick={bookClassAndDeduct}>
               3
             </button>
           ) : (
@@ -355,7 +257,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotFour ? (
-            <button value="4" onClick={bookClassAndDeduct}>
+            <button id="four" value="4" onClick={bookClassAndDeduct}>
               4
             </button>
           ) : (
@@ -364,7 +266,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotFive ? (
-            <button value="5" onClick={bookClassAndDeduct}>
+            <button id="five" value="5" onClick={bookClassAndDeduct}>
               5
             </button>
           ) : (
@@ -376,7 +278,7 @@ const ClassDetails = () => {
 
         <div className={styles.gymRow2}>
           {!spotSix ? (
-            <button value="6" onClick={bookClassAndDeduct}>
+            <button id="six" value="6" onClick={bookClassAndDeduct}>
               6
             </button>
           ) : (
@@ -385,7 +287,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotSeven ? (
-            <button value="7" onClick={bookClassAndDeduct}>
+            <button id="seven" value="7" onClick={bookClassAndDeduct}>
               7
             </button>
           ) : (
@@ -394,7 +296,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotEight ? (
-            <button value="8" onClick={bookClassAndDeduct}>
+            <button id="eight" value="8" onClick={bookClassAndDeduct}>
               8
             </button>
           ) : (
@@ -403,7 +305,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotNine ? (
-            <button value="9" onClick={bookClassAndDeduct}>
+            <button id="nine" value="9" onClick={bookClassAndDeduct}>
               9
             </button>
           ) : (
@@ -412,7 +314,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotTen ? (
-            <button value="10" onClick={bookClassAndDeduct}>
+            <button id="ten" value="10" onClick={bookClassAndDeduct}>
               10
             </button>
           ) : (
@@ -424,7 +326,7 @@ const ClassDetails = () => {
 
         <div className={styles.gymRow3}>
           {!spotEleven ? (
-            <button value="11" onClick={bookClassAndDeduct}>
+            <button id="eleven" value="11" onClick={bookClassAndDeduct}>
               11
             </button>
           ) : (
@@ -433,7 +335,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotTwelve ? (
-            <button value="12" onClick={bookClassAndDeduct}>
+            <button id="twelve" value="12" onClick={bookClassAndDeduct}>
               12
             </button>
           ) : (
@@ -442,7 +344,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotThirteen ? (
-            <button value="13" onClick={bookClassAndDeduct}>
+            <button id="thirteen" value="13" onClick={bookClassAndDeduct}>
               13
             </button>
           ) : (
@@ -451,7 +353,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotFourteen ? (
-            <button value="14" onClick={bookClassAndDeduct}>
+            <button id="fourteen" value="14" onClick={bookClassAndDeduct}>
               14
             </button>
           ) : (
@@ -460,7 +362,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotFifteen ? (
-            <button value="15" onClick={bookClassAndDeduct}>
+            <button id="fifteen" value="15" onClick={bookClassAndDeduct}>
               15
             </button>
           ) : (
@@ -472,7 +374,7 @@ const ClassDetails = () => {
 
         <div className={styles.gymRow4}>
           {!spotSixteen ? (
-            <button value="16" onClick={bookClassAndDeduct}>
+            <button id="sixteen" value="16" onClick={bookClassAndDeduct}>
               16
             </button>
           ) : (
@@ -481,7 +383,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotSeventeen ? (
-            <button value="17" onClick={bookClassAndDeduct}>
+            <button id="seventeen" value="17" onClick={bookClassAndDeduct}>
               17
             </button>
           ) : (
@@ -490,7 +392,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotEighteen ? (
-            <button value="18" onClick={bookClassAndDeduct}>
+            <button id="eighteen" value="18" onClick={bookClassAndDeduct}>
               18
             </button>
           ) : (
@@ -499,7 +401,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotNinteen ? (
-            <button value="19" onClick={bookClassAndDeduct}>
+            <button id="nineteen" value="19" onClick={bookClassAndDeduct}>
               19
             </button>
           ) : (
@@ -508,7 +410,7 @@ const ClassDetails = () => {
             </button>
           )}
           {!spotTwenty ? (
-            <button value="20" onClick={bookClassAndDeduct}>
+            <button id="twenty" value="20" onClick={bookClassAndDeduct}>
               20
             </button>
           ) : (

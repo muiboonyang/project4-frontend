@@ -29,7 +29,7 @@ const Bookings = () => {
   return (
     <div className={styles.classesContainer}>
       <br />
-      <h2>Booking History</h2>
+      <h2>My Classes</h2>
       <br />
 
       <div className={styles.container}>

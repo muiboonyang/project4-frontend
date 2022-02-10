@@ -19,7 +19,7 @@ import CreateAccount from "./pages/CreateAccount";
 
 // Public routes
 import Reviews from "./pages/Reviews";
-import PurchaseHistory from "./pages/PurchaseHistory";
+import Transactions from "./pages/Transactions";
 import Bookings from "./pages/Bookings";
 import Profile from "./pages/Profile";
 
@@ -44,7 +44,7 @@ const App = () => {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={CreateAccount} />
             <PrivateRoute path="/reviews" exact component={Reviews} />
-            <PrivateRoute path="/purchases" exact component={PurchaseHistory} />
+            <PrivateRoute path="/transactions" exact component={Transactions} />
             <PrivateRoute path="/bookings" exact component={Bookings} />
             <PrivateRoute path="/profile" exact component={Profile} />
           </Switch>

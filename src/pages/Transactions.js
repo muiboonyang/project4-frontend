@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import styles from "./PurchaseHistory.module.css";
+import styles from "./Transactions.module.css";
 import useFetchGet from "../utils/useFetchGet";
 import AuthContext from "../context/AuthContext";
 import Table from "react-bootstrap/Table";
 
-const Purchase = () => {
+const Transactions = () => {
   let { user } = useContext(AuthContext);
   const get = useFetchGet();
   const [transactions, setTansactions] = useState([]);
@@ -105,7 +105,7 @@ const Purchase = () => {
   return (
     <div className={styles.purchaseContainer}>
       <br />
-      <h2>Purchase History</h2>
+      <h2>Transactions</h2>
       <br />
 
       <Table striped bordered hover variant="dark" className={styles.table}>
@@ -125,4 +125,4 @@ const Purchase = () => {
   );
 };
 
-export default Purchase;
+export default Transactions;
