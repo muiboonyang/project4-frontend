@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
         //  alert("Failed to retrieve transactions!");
       }
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   };
 
