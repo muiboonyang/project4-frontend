@@ -2,7 +2,7 @@ const scheduleData = [
   {
     id: 1,
     class_type: "resistance",
-    class_instructor: "nick",
+    class_instructor: "jared",
     date: "2022-02-11",
     time: "18:00",
     spot: [
@@ -57,7 +57,7 @@ const scheduleData = [
   {
     id: 6,
     class_type: "resistance",
-    class_instructor: "nick",
+    class_instructor: "jared",
     date: "2022-02-14",
     time: "18:00",
     spot: [
