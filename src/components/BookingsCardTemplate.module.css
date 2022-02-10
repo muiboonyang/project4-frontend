@@ -83,6 +83,6 @@
 
 .button:hover {
   background-color: rgb(167, 39, 92);
-  border: 1px solid rgb(255, 193, 7);
+  border: 1px solid rgb(167, 39, 92);
   color: black;
 }
