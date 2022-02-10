@@ -72,25 +72,29 @@ export const AuthProvider = ({ children }) => {
 
   const logoutUser = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://127.0.0.1:8000/auth/logout/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        refresh: authTokens.refresh,
-      }),
-    });
 
-    const data = await res.json();
-    console.log(data); // shows message from backend
+    if (authTokens.refresh) {
+      const res = await fetch("http://127.0.0.1:8000/auth/logout/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          refresh: authTokens.refresh,
+        }),
+      });
 
-    if (res.status === 200) {
-      history.push("/");
-      setUser(null);
-      localStorage.removeItem("authTokens");
+      const data = await res.json();
+      console.log(data); // shows message from backend (Logout + Token blacklist successful!)
+
+      if (res.status === 200) {
+        history.push("/");
+        setUser(null);
+        localStorage.removeItem("authTokens");
+      } else {
+        alert("Logout Failed!");
+      }
     } else {
-      // alert("Logout Failed!");
       history.push("/");
       setUser(null);
       localStorage.removeItem("authTokens");
