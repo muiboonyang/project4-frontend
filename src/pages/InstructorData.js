@@ -1,12 +1,11 @@
 const instructorData = [
   {
-    name: "nick",
-    class: "ride",
-    cardImage: "https://i.imgur.com/p54NsRs.jpg",
-    profileImage:
-      "https://i.imgur.com/woM4xCT.jpghttps://i.imgur.com/45ZM1rU.jpg",
+    name: "jared",
+    class: "resistance",
+    cardImage: "https://i.imgur.com/XwNS1h2.jpg",
+    profileImage: "https://i.imgur.com/hm27amM.jpg",
     description:
-      "Better known as the Spin Doctor, you can immediately identify when Nick’s class is in session the moment you walk through the studio doors. Get ready for soundwaves of trance vibes and mad drops coupled with inspirational words and a sense of vulnerability that will get you feeling a sense of euphoria that you’ve never experienced before.",
+      "Once an unfit kid to now a slightly more fit kid. Used to only go to the gym with no motivation, rekindled his love for fitness again. Jared focuses on form and technique instead of just burning cals during class. What’s important is the quality and not the quantity. Come and have a fun time and sweat it out with Jared!",
   },
   {
     name: "aimee",

@@ -35,30 +35,37 @@
 }
 
 .container .name {
-  font-size: 70px;
+  /* font-size: 70px; */
+  font-size: 4vw;
   text-transform: uppercase;
   font-weight: bold;
 }
 
 .container .classRide {
-  font-size: 40px;
+  /* font-size: 40px; */
+  font-size: 2vw;
   text-transform: uppercase;
   color: rgb(226, 27, 183);
   font-weight: bold;
 }
 
 .container .classResistance {
-  font-size: 40px;
+  /* font-size: 40px; */
+  font-size: 2vw;
   text-transform: uppercase;
   color: rgb(0, 225, 255);
   font-weight: bold;
 }
 
 .description {
-  font-size: 1.8rem;
+  /* font-size: 1.8rem; */
+  font-size: 1.25vw;
   font-style: italic;
   padding: 5px;
-  margin-top: 80px;
+  /* margin-top: 80px; */
+  margin-top: 5%;
+  width: 610px;
+  /* border: 1px solid white; */
 }
 
 .backButton {
