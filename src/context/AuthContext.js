@@ -83,14 +83,17 @@ export const AuthProvider = ({ children }) => {
     });
 
     const data = await res.json();
-    console.log(data);
+    console.log(data); // shows message from backend
 
     if (res.status === 200) {
       history.push("/");
       setUser(null);
       localStorage.removeItem("authTokens");
     } else {
-      alert("Logout Failed!");
+      // alert("Logout Failed!");
+      history.push("/");
+      setUser(null);
+      localStorage.removeItem("authTokens");
     }
   };
 

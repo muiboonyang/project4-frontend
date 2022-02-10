@@ -70,12 +70,6 @@ const BookingsCardTemplate = (props) => {
     }
   };
 
-  ////////////////////////////////////
-
-  console.log("Class details: " + props.classDetails); //
-  console.log("Class id: " + props.classDetails.class_id); //1
-  console.log("Spot name: " + props.classDetails.spot_name); // seventeen
-
   ///////////////////////////////
   // Convert date format
   ///////////////////////////////
