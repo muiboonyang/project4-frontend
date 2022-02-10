@@ -11,7 +11,5 @@ A fitness class booking app made with React, Django and Postgres.
 
 <h3></h3>
 <ul>
-  <li></li>
-
   
 </ul>
