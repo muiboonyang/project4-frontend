@@ -14,7 +14,7 @@ const useFetchGet = () => {
 
   let { authTokens, setAuthTokens, setUser } = useContext(AuthContext);
 
-  const baseURL = "http://127.0.0.1:8000";
+  const baseURL = "https://anywhere-fitness-first.herokuapp.com";
 
   const originalRequest = async (url, config) => {
     url = `${baseURL}${url}`;

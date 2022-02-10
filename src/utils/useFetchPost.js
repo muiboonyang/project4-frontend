@@ -14,7 +14,7 @@ const useFetchPost = () => {
 
   let { authTokens, setAuthTokens, setUser } = useContext(AuthContext);
 
-  const baseURL = "http://127.0.0.1:8000";
+  const baseURL = "https://anywhere-fitness-first.herokuapp.com";
 
   const originalRequest = async (url, config) => {
     url = `${baseURL}${url}`;
@@ -26,13 +26,16 @@ const useFetchPost = () => {
 
   // Token refresh process
   const refreshToken = async (authTokens) => {
-    let res = await fetch("http://127.0.0.1:8000/auth/refreshtoken/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ refresh: authTokens.refresh }),
-    });
+    let res = await fetch(
+      "https://anywhere-fitness-first.herokuapp.com/auth/refreshtoken/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ refresh: authTokens.refresh }),
+      }
+    );
     let data = await res.json();
     localStorage.setItem("authTokens", JSON.stringify(data));
     setAuthTokens(data);

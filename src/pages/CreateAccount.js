@@ -20,19 +20,22 @@ const CreateAccount = () => {
     } else {
       e.preventDefault();
       try {
-        const res = await fetch("http://127.0.0.1:8000/auth/register/", {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: e.target.email.value,
-            password: e.target.password.value,
-            name: e.target.name.value,
-            surname: e.target.surname.value,
-          }),
-        });
+        const res = await fetch(
+          "https://anywhere-fitness-first.herokuapp.com/auth/register/",
+          {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: e.target.email.value,
+              password: e.target.password.value,
+              name: e.target.name.value,
+              surname: e.target.surname.value,
+            }),
+          }
+        );
 
         await res.json();
 

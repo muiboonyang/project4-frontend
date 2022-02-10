@@ -85,7 +85,7 @@ const Profile = () => {
         // Update section1: email, password, name, surname
 
         const res = await fetch(
-          `http://127.0.0.1:8000/auth/update/${user.user_id}`,
+          `https://anywhere-fitness-first.herokuapp.com/auth/update/${user.user_id}`,
           {
             method: "POST",
             mode: "cors",
@@ -106,7 +106,7 @@ const Profile = () => {
         // Update section2: personal details
 
         const res2 = await fetch(
-          `http://127.0.0.1:8000/personal-details/update/${user.user_id}`,
+          `https://anywhere-fitness-first.herokuapp.com/personal-details/update/${user.user_id}`,
           {
             method: "POST",
             mode: "cors",
