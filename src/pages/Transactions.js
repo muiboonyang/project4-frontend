@@ -91,8 +91,8 @@ const Transactions = () => {
   const renderTable = transactions.map((item, idx) => {
     return (
       <tr key={idx}>
-        {/* <td>{idx + 1}</td> */}
-        <td>{item.id}</td>
+        <td>{idx + 1}</td>
+        {/* <td>{item.id}</td> */}
         <td>{item.classCredit}</td>
         <td>{item.classDebit}</td>
         <td>{capitalizeFirstLetter(item.transaction_type)}</td>
