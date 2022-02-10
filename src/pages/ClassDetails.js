@@ -168,7 +168,7 @@ const ClassDetails = () => {
         });
 
         ///////////////////////////////
-        // POST - Update class layout
+        // POST - Update class layout, grey out spot
         ///////////////////////////////
 
         const { res2 } = await post(`/layout/update/${params.id}`, {
@@ -185,8 +185,10 @@ const ClassDetails = () => {
           date: classLayout.date,
           time: classLayout.time,
           spot: e.target.value,
+          spot_name: e.target.id,
           name: user.name,
           user: user.user_id,
+          class_id: classLayout.id,
         });
 
         if (res.status || res2.status || res3.status === 200) {

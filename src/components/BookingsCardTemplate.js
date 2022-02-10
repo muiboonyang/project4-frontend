@@ -28,30 +28,53 @@ const BookingsCardTemplate = (props) => {
         name: user.name,
       });
 
-      if (res.status === 200) {
-        window.location.reload(false);
-      } else {
-        alert("Refund failed!");
-      }
+      // if (res.status === 200) {
+      //   window.location.reload(false);
+      // } else {
+      //   alert("Refund failed!");
+      // }
 
       ///////////////////////////////
       // POST - Cancel class
       ///////////////////////////////
 
       const { res2 } = await del(`/class/delete/${props.classDetails.id}`);
-      if (res2.status === 200) {
+      // if (res2.status === 200) {
+      //   window.location.reload(false);
+      // } else {
+      //   alert("Failed to drop class!");
+      // }
+
+      ///////////////////////////////
+      // POST - Release booked spot
+      ///////////////////////////////
+
+      const { res3 } = await post(
+        `/layout/refund/${props.classDetails.class_id}`,
+        {
+          button_id: e.target.value,
+        }
+      );
+
+      ///////////////////////////////
+      console.log(e.target.name);
+      ///////////////////////////////
+
+      if (res.status || res2.status || res3.status === 200) {
         window.location.reload(false);
       } else {
-        alert("Failed to drop class!");
+        alert("Failed to release spot!");
       }
-
-      ////////////////////////////////////
     } catch (err) {
       console.log(err);
     }
   };
 
   ////////////////////////////////////
+
+  console.log("Class details: " + props.classDetails); //
+  console.log("Class id: " + props.classDetails.class_id); //1
+  console.log("Spot name: " + props.classDetails.spot_name); // seventeen
 
   ///////////////////////////////
   // Convert date format
@@ -156,7 +179,11 @@ const BookingsCardTemplate = (props) => {
       </div>
 
       <div className={styles.cancel}>
-        <button className={styles.button} onClick={cancelAndRefund}>
+        <button
+          value={props.classDetails.spot_name}
+          className={styles.button}
+          onClick={cancelAndRefund}
+        >
           Cancel
         </button>
       </div>
