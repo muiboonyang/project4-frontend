@@ -83,6 +83,9 @@ const CreateAccount = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              <Form.Text id="passwordHelpBlock" muted>
+                Your password must contain at least 8 characters.
+              </Form.Text>
             </Form.Group>
             <Form.Group
               as={Col}
@@ -98,6 +101,9 @@ const CreateAccount = () => {
                 value={password2}
                 onChange={(e) => setPassword2(e.target.value)}
               />
+              <Form.Text id="passwordHelpBlock" muted>
+                Your password must contain at least 8 characters.
+              </Form.Text>
             </Form.Group>
           </Row>
 
