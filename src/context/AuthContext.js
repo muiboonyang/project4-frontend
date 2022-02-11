@@ -86,6 +86,7 @@ export const AuthProvider = ({ children }) => {
           },
           body: JSON.stringify({
             refresh: authTokens.refresh,
+            // access: authTokens.access,
           }),
         }
       );
