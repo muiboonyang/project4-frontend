@@ -11,5 +11,12 @@ A fitness class booking app made with React, Django and Postgres.
 
 <h3></h3>
 <ul>
-  
+  <li>Create user and login/logout</li>
+  <li>Login/logout with JWT and token blacklist</li>
+  <li>Purchase of class credits</li>
+  <li>Booking of class with credits</li>
+  <li>Selection of spot in gym for each class</li>
+  <li>Cancellation of class and refund of credits</li>
+  <li>Transaction History for credit purchase, class bookings and refunds</li>
+  <li>Submit and delete reviews</li>
 </ul>
