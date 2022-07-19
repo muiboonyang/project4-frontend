@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }) => {
   const loginUser = async (e) => {
     e.preventDefault();
     const res = await fetch(
+      // "http://localhost:8000/auth/login/",
       "https://anywhere-fitness-first.herokuapp.com/auth/login/",
       {
         method: "POST",
